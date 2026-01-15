@@ -12,7 +12,7 @@ const Hero: FC = () => {
         alignItems: "center",
       }}
     >
-      {/* Geometric Pattern Overlay */}
+      {/* Geometric Pattern SVG Background */}
       <div
         className='position-absolute'
         style={{
@@ -20,15 +20,10 @@ const Hero: FC = () => {
           left: 0,
           right: 0,
           bottom: 0,
-          opacity: 0.05,
-          backgroundImage: `
-            linear-gradient(45deg, #84DADE 25%, transparent 25%),
-            linear-gradient(-45deg, #1ECAD3 25%, transparent 25%),
-            linear-gradient(45deg, transparent 75%, #FF4438 75%),
-            linear-gradient(-45deg, transparent 75%, #0099A8 75%)
-          `,
-          backgroundSize: "100px 100px",
-          backgroundPosition: "0 0, 0 50px, 50px -50px, -50px 0px",
+          backgroundImage: "url('/assets/images/hero/hero-background.svg')",
+          backgroundSize: "cover",
+          backgroundPosition: "center center",
+          backgroundRepeat: "no-repeat",
           pointerEvents: "none",
         }}
       />
@@ -159,7 +154,7 @@ const Hero: FC = () => {
                       padding: "0 20px",
                       background: "#000000",
                       borderRadius: "8px",
-                      transition: "all 0.3s ease",
+                      transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
                     }}
                     onMouseEnter={(e) => {
                       e.currentTarget.style.transform = "translateY(-2px)";
@@ -202,7 +197,7 @@ const Hero: FC = () => {
                       padding: "0 20px",
                       background: "#000000",
                       borderRadius: "8px",
-                      transition: "all 0.3s ease",
+                      transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
                     }}
                     onMouseEnter={(e) => {
                       e.currentTarget.style.transform = "translateY(-2px)";

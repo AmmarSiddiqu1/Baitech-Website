@@ -89,7 +89,7 @@ const FinalCTA: FC = () => {
                   padding: "0 20px",
                   background: "#000000",
                   borderRadius: "8px",
-                  transition: "all 0.3s ease",
+                  transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
                 }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.transform = "translateY(-2px)";
@@ -132,7 +132,7 @@ const FinalCTA: FC = () => {
                   padding: "0 20px",
                   background: "#000000",
                   borderRadius: "8px",
-                  transition: "all 0.3s ease",
+                  transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
                 }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.transform = "translateY(-2px)";

@@ -39,8 +39,8 @@ const Header: FC = () => {
     { label: "Home", href: "#home" },
     { label: "Features", href: "#features" },
     { label: "How It Works", href: "#how-it-works" },
-    { label: "For Landlords", href: "#for-landlords" },
     { label: "Pricing", href: "#pricing" },
+    { label: "For Landlords", href: "#for-landlords" },
     { label: "FAQ", href: "#faq" },
     { label: "Contact", href: "#contact" },
   ];
@@ -58,7 +58,7 @@ const Header: FC = () => {
           right: 0,
           zIndex: 1000,
           boxShadow: scroll ? "0 2px 10px rgba(0,0,0,0.1)" : "none",
-          transition: "all 0.3s ease",
+          transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
         }}
       >
         <div className='container container-two'>
@@ -93,10 +93,20 @@ const Header: FC = () => {
                     >
                       <a
                         href={item.href}
-                        className='nav-menu__link hover--translate-y-1 text-heading tw-py-9 fw-semibold w-100'
+                        className='nav-menu__link text-heading tw-py-9 fw-semibold w-100'
                         style={{
                           color: isActive ? "#1ECAD3" : "#002B49",
                           textDecoration: "none",
+                          transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
+                          position: "relative",
+                        }}
+                        onMouseEnter={(e) => {
+                          e.currentTarget.style.transform = "translateY(-2px)";
+                          e.currentTarget.style.color = "#1ECAD3";
+                        }}
+                        onMouseLeave={(e) => {
+                          e.currentTarget.style.transform = "translateY(0)";
+                          e.currentTarget.style.color = isActive ? "#1ECAD3" : "#002B49";
                         }}
                       >
                         {item.label}
@@ -123,13 +133,15 @@ const Header: FC = () => {
                   borderRadius: "50%",
                   background: "#25D366",
                   textDecoration: "none",
-                  transition: "all 0.3s ease",
+                  transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
                 }}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.transform = "scale(1.1)";
+                  e.currentTarget.style.transform = "scale(1.1) translateY(-2px)";
+                  e.currentTarget.style.boxShadow = "0 4px 12px rgba(37, 211, 102, 0.3)";
                 }}
                 onMouseLeave={(e) => {
-                  e.currentTarget.style.transform = "scale(1)";
+                  e.currentTarget.style.transform = "scale(1) translateY(0)";
+                  e.currentTarget.style.boxShadow = "none";
                 }}
               >
                 {/* Using newer WhatsApp icon - replace with official logo image when available */}
@@ -171,7 +183,7 @@ const Header: FC = () => {
         }`}
         style={{
           transform: mobileMenu ? "translateX(0)" : "translateX(-100%)",
-          transition: "transform 0.3s ease",
+          transition: "transform 0.4s cubic-bezier(0.4, 0, 0.2, 1)",
         }}
       >
         <button

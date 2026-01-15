@@ -66,6 +66,13 @@ const FAQ: FC = () => {
                     borderRadius: "12px",
                     border: "1px solid #E9ECEF",
                     overflow: "hidden",
+                    transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.boxShadow = "0 4px 12px rgba(0, 43, 73, 0.08)";
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.boxShadow = "none";
                   }}
                 >
                   <button
@@ -78,6 +85,7 @@ const FAQ: FC = () => {
                       border: "none",
                       cursor: "pointer",
                       textAlign: "left",
+                      transition: "all 0.2s ease",
                     }}
                   >
                     <h3
@@ -91,17 +99,37 @@ const FAQ: FC = () => {
                     >
                       {faq.question}
                     </h3>
-                    <i
-                      className={`ph ph-${openIndex === index ? "minus" : "plus"}`}
+                    <div
                       style={{
-                        fontSize: "24px",
-                        color: "#1ECAD3",
                         flexShrink: 0,
                         marginLeft: "16px",
+                        width: "24px",
+                        height: "24px",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        transition: "transform 0.4s cubic-bezier(0.4, 0, 0.2, 1)",
+                        transform: openIndex === index ? "rotate(180deg)" : "rotate(0deg)",
                       }}
-                    />
+                    >
+                      <i
+                        className={`ph ph-${openIndex === index ? "minus" : "plus"}`}
+                        style={{
+                          fontSize: "24px",
+                          color: "#1ECAD3",
+                          transition: "opacity 0.2s ease",
+                        }}
+                      />
+                    </div>
                   </button>
-                  {openIndex === index && (
+                  <div
+                    style={{
+                      maxHeight: openIndex === index ? "500px" : "0",
+                      overflow: "hidden",
+                      transition: "max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease",
+                      opacity: openIndex === index ? 1 : 0,
+                    }}
+                  >
                     <div
                       className='p-4'
                       style={{
@@ -121,7 +149,7 @@ const FAQ: FC = () => {
                         {faq.answer}
                       </p>
                     </div>
-                  )}
+                  </div>
                 </div>
               </div>
             ))}

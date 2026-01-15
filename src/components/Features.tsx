@@ -79,7 +79,7 @@ const Features: FC = () => {
                   background: "#FFFFFF",
                   borderRadius: "16px",
                   border: "1px solid #E9ECEF",
-                  transition: "all 0.3s ease",
+                  transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
                   height: "100%",
                 }}
                 onMouseEnter={(e) => {

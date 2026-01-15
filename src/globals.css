@@ -41,6 +41,21 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Global Smooth Transitions */
+* {
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+/* Buttery smooth animations for common elements */
+a, button {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Hover effects */
+a:hover, button:hover {
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
 /* Brand Color Overrides */
 .bg-baitech-light-blue {
   background-color: var(--baitech-light-blue) !important;

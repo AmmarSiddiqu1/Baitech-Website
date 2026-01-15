@@ -168,7 +168,7 @@ const AppScreens: FC = () => {
               justifyContent: "center",
               cursor: "pointer",
               zIndex: 10,
-              transition: "all 0.3s ease",
+              transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
               boxShadow: "0 4px 12px rgba(0, 43, 73, 0.2)",
             }}
             onMouseEnter={(e) => {
@@ -215,7 +215,7 @@ const AppScreens: FC = () => {
               justifyContent: "center",
               cursor: "pointer",
               zIndex: 10,
-              transition: "all 0.3s ease",
+              transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
               boxShadow: "0 4px 12px rgba(0, 43, 73, 0.2)",
             }}
             onMouseEnter={(e) => {
