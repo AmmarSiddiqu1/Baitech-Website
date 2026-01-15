@@ -1,0 +1,185 @@
+@import url("../public/assets/css/bootstrap.min.css");
+@import url("../public/assets/css/main.css");
+
+/* Filson Pro Font Face Declarations */
+@font-face {
+  font-family: 'Filson Pro';
+  src: url('/assets/fonts/FilsonProRegular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Filson Pro';
+  src: url('/assets/fonts/FilsonProBold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Baitech Brand Colors */
+:root {
+  --baitech-light-blue: #84DADE;
+  --baitech-medium-blue: #1ECAD3;
+  --baitech-darker-blue: #0099A8;
+  --baitech-warm-red: #FF4438;
+  --baitech-dark-navy: #002B49;
+  --baitech-white: #FFFFFF;
+  --baitech-black: #000000;
+}
+
+/* Filson Pro Font Family - Applied Globally */
+* {
+  font-family: 'Filson Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Smooth Scroll */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Brand Color Overrides */
+.bg-baitech-light-blue {
+  background-color: var(--baitech-light-blue) !important;
+}
+
+.bg-baitech-medium-blue {
+  background-color: var(--baitech-medium-blue) !important;
+}
+
+.bg-baitech-darker-blue {
+  background-color: var(--baitech-darker-blue) !important;
+}
+
+.bg-baitech-warm-red {
+  background-color: var(--baitech-warm-red) !important;
+}
+
+.bg-baitech-dark-navy {
+  background-color: var(--baitech-dark-navy) !important;
+}
+
+.text-baitech-light-blue {
+  color: var(--baitech-light-blue) !important;
+}
+
+.text-baitech-medium-blue {
+  color: var(--baitech-medium-blue) !important;
+}
+
+.text-baitech-darker-blue {
+  color: var(--baitech-darker-blue) !important;
+}
+
+.text-baitech-warm-red {
+  color: var(--baitech-warm-red) !important;
+}
+
+.text-baitech-dark-navy {
+  color: var(--baitech-dark-navy) !important;
+}
+
+/* Button Styles */
+.btn-baitech-primary {
+  background-color: var(--baitech-warm-red);
+  color: var(--baitech-white);
+  border: none;
+  padding: 12px 32px;
+  border-radius: 50px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.btn-baitech-primary:hover {
+  background-color: var(--baitech-darker-blue);
+  color: var(--baitech-white);
+  transform: translateY(-2px);
+}
+
+.btn-baitech-secondary {
+  background-color: transparent;
+  color: var(--baitech-dark-navy);
+  border: 2px solid var(--baitech-dark-navy);
+  padding: 12px 32px;
+  border-radius: 50px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.btn-baitech-secondary:hover {
+  background-color: var(--baitech-dark-navy);
+  color: var(--baitech-white);
+  transform: translateY(-2px);
+}
+
+/* Geometric Pattern Background */
+.geometric-pattern {
+  position: relative;
+  overflow: hidden;
+}
+
+.geometric-pattern::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0.1;
+  background-image: 
+    linear-gradient(45deg, var(--baitech-light-blue) 25%, transparent 25%),
+    linear-gradient(-45deg, var(--baitech-medium-blue) 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, var(--baitech-warm-red) 75%),
+    linear-gradient(-45deg, transparent 75%, var(--baitech-darker-blue) 75%);
+  background-size: 60px 60px;
+  background-position: 0 0, 0 30px, 30px -30px, -30px 0px;
+  pointer-events: none;
+}
+
+/* RTL Support */
+[dir="rtl"] {
+  direction: rtl;
+  text-align: right;
+}
+
+[dir="rtl"] .text-start {
+  text-align: right !important;
+}
+
+[dir="rtl"] .text-end {
+  text-align: left !important;
+}
+
+/* Section Spacing */
+section {
+  padding: 80px 0;
+}
+
+@media (max-width: 768px) {
+  section {
+    padding: 60px 0;
+  }
+}
+
+/* App Screens Carousel - Custom Navigation Arrows */
+.app-screens-swiper .swiper-button-next,
+.app-screens-swiper .swiper-button-prev {
+  display: none !important;
+}
+
+/* Hide default Swiper navigation */
+.app-screens-swiper .swiper-button-next::after,
+.app-screens-swiper .swiper-button-prev::after {
+  display: none;
+}
+
+/* Custom arrow buttons - responsive */
+@media (max-width: 1024px) {
+  .app-screens-prev,
+  .app-screens-next {
+    display: none !important;
+  }
+}
