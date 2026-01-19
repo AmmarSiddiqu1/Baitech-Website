@@ -1,143 +1,385 @@
 import type { FC } from "react";
 
 const Features: FC = () => {
-  const features = [
-    {
-      title: "AI Ops Assistant",
-      description:
-        "Answers landlord & tenant queries, drafts reminders and notices in EN/AR.",
-      icon: "ph-brain",
-      color: "#1ECAD3",
-    },
-    {
-      title: "Maintenance Triage",
-      description:
-        "Auto-categorizes requests, requests approval when needed, assigns vendors.",
-      icon: "ph-wrench",
-      color: "#84DADE",
-    },
-    {
-      title: "WhatsApp-first Comms",
-      description:
-        "OTP, reminders, and updates over WhatsApp/SMS with quiet hours.",
-      icon: "ph-whatsapp-logo",
-      color: "#0099A8",
-    },
-    {
-      title: "Local Payments",
-      description:
-        "BenefitPay (Bahrain) and Tap (GCC) with webhook reconciliation & receipts.",
-      icon: "ph-credit-card",
-      color: "#FF4438",
-    },
-  ];
-
   return (
-    <section id='features' className='tw-py-80-px'>
-      <div className='container'>
-        <div className='row'>
-          <div className='col-12 text-center tw-mb-12'>
+    <>
+      {/* Offer Five Section */}
+      <section id="features" className="offer-five py-120" style={{ background: "linear-gradient(180deg, rgba(132, 218, 222, 0.08) 0%, rgba(255, 255, 255, 0) 100%)" }}>
+        <div className="container">
+          <div className="row justify-content-center">
+            <div className="col-xl-10">
+              <div className="row gy-5 flex-wrap-reverse align-items-center">
+                {/* Left Image Placeholder */}
+                <div className="col-md-6">
+                  <div className="pe-lg-5 d-flex h-100">
+                    <div
+                      data-aos="fade-right"
+                      data-aos-duration="1000"
+                      style={{
+                        width: "100%",
+                        height: "500px",
+                        background: "linear-gradient(135deg, #0099A8 0%, #002B49 100%)",
+                        borderRadius: "24px",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        boxShadow: "0 20px 60px rgba(0, 153, 168, 0.3)",
+                        border: "3px dashed #84DADE",
+                      }}
+                    >
+                      <div style={{ textAlign: "center", color: "#FFFFFF" }}>
+                        <i className="ph-bold ph-image" style={{ fontSize: "70px", marginBottom: "16px", display: "block" }} />
+                        <div style={{ fontSize: "28px", fontWeight: 700 }}>IMAGE HERE</div>
+                        <div style={{ fontSize: "16px", marginTop: "8px" }}>Features Image</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Right Content */}
+                <div className="col-md-6">
+                  <div className="">
+                    <div className="max-w-780-px text-start mx-auto">
+                      {/* Badge */}
+                      <div
+                        className="tw-py-2 tw-px-7 rounded-pill fw-bold text-capitalize tw-leading-none d-inline-flex align-items-center tw-gap-2 tw-mb-405 min-w-max"
+                        data-aos="fade-up"
+                        data-aos-anchor-placement="top-bottom"
+                        data-aos-duration="600"
+                        style={{
+                          background: "linear-gradient(135deg, #1ECAD3 0%, #0099A8 100%)",
+                          color: "#FFFFFF",
+                          boxShadow: "0 8px 24px rgba(30, 202, 211, 0.3)",
+                        }}
+                      >
+                        why choose us
+                      </div>
+                      {/* Headline */}
+                      <h2
+                        className="splitTextStyleOne text-heading text-capitalize tw-leading-none"
+                        style={{
+                          fontSize: "clamp(28px, 4vw, 42px)",
+                          fontWeight: 700,
+                          color: "#002B49",
+                          lineHeight: 1.2,
+                          marginTop: "1rem",
+                        }}
+                      >
+                        Why should you choose Baitech property management
+                      </h2>
+                      {/* Description */}
+                      <p
+                        className="tw-text-lg tw-mt-605 splitTextStyleOne max-w-5 fw-medium tw-leading-145 max-w-570-px"
+                        style={{
+                          fontSize: "18px",
+                          color: "#002B49",
+                          marginTop: "1rem",
+                          opacity: 0.8,
+                        }}
+                      >
+                        Baitech simplifies property management, allowing you to focus more on your business and enjoy peace of mind.
+                      </p>
+                    </div>
+
+                    {/* Feature Cards */}
+                    <div className="tw-mt-11 d-flex flex-column tw-gap-7">
+                      {/* Feature 1 */}
+                      <div
+                        className="tw-rounded-3xl tw-py-8 tw-px-9 d-flex align-items-start tw-gap-605"
+                        data-aos="fade-left"
+                        data-aos-duration="800"
+                        style={{
+                          borderRadius: "24px",
+                          background: "linear-gradient(135deg, rgba(132, 218, 222, 0.15) 0%, rgba(30, 202, 211, 0.1) 100%)",
+                          padding: "32px 36px",
+                          transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
+                          cursor: "pointer",
+                        }}
+                        onMouseEnter={(e) => {
+                          e.currentTarget.style.background = "linear-gradient(135deg, #1ECAD3 0%, #0099A8 100%)";
+                          e.currentTarget.style.transform = "translateY(-4px)";
+                          e.currentTarget.style.boxShadow = "0 16px 48px rgba(30, 202, 211, 0.3)";
+                          const icon = e.currentTarget.querySelector('.feature-icon') as HTMLElement;
+                          if (icon) icon.style.background = "#FFFFFF";
+                          const texts = e.currentTarget.querySelectorAll('.feature-text');
+                          texts.forEach(text => (text as HTMLElement).style.color = "#FFFFFF");
+                        }}
+                        onMouseLeave={(e) => {
+                          e.currentTarget.style.background = "linear-gradient(135deg, rgba(132, 218, 222, 0.15) 0%, rgba(30, 202, 211, 0.1) 100%)";
+                          e.currentTarget.style.transform = "translateY(0)";
+                          e.currentTarget.style.boxShadow = "none";
+                          const icon = e.currentTarget.querySelector('.feature-icon') as HTMLElement;
+                          if (icon) icon.style.background = "linear-gradient(135deg, #84DADE 0%, #1ECAD3 100%)";
+                          const texts = e.currentTarget.querySelectorAll('.feature-text');
+                          texts.forEach(text => (text as HTMLElement).style.color = "#002B49");
+                        }}
+                      >
+                        <div className="">
+                          <div
+                            className="feature-icon"
+                            style={{
+                              width: "52px",
+                              height: "52px",
+                              background: "linear-gradient(135deg, #84DADE 0%, #1ECAD3 100%)",
+                              borderRadius: "14px",
+                              display: "flex",
+                              alignItems: "center",
+                              justifyContent: "center",
+                              transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
+                            }}
+                          >
+                            <i className="ph-bold ph-check-circle" style={{ fontSize: "28px", color: "#FFFFFF" }} />
+                          </div>
+                        </div>
+                        <div className="">
+                          <h6
+                            className="feature-text tw-mb-405 splitTextStyleOne"
+                            style={{
+                              fontSize: "20px",
+                              fontWeight: 700,
+                              color: "#002B49",
+                              marginBottom: "0.5rem",
+                              transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
+                            }}
+                          >
+                            AI-Powered Automation
+                          </h6>
+                          <p
+                            className="feature-text tw-text-lg max-w-278-px tw-leading-153 splitTextStyleOne"
+                            style={{
+                              fontSize: "16px",
+                              color: "#002B49",
+                              lineHeight: 1.5,
+                              opacity: 0.8,
+                              transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
+                            }}
+                          >
+                            Automate rent reminders, maintenance requests, and WhatsApp communications with AI.
+                          </p>
+                        </div>
+                      </div>
+
+                      {/* Feature 2 */}
+                      <div
+                        className="tw-rounded-3xl tw-py-8 tw-px-9 d-flex align-items-start tw-gap-605"
+                        data-aos="fade-left"
+                        data-aos-duration="1000"
+                        style={{
+                          borderRadius: "24px",
+                          background: "linear-gradient(135deg, rgba(255, 68, 56, 0.12) 0%, rgba(255, 68, 56, 0.08) 100%)",
+                          padding: "32px 36px",
+                          transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
+                          cursor: "pointer",
+                        }}
+                        onMouseEnter={(e) => {
+                          e.currentTarget.style.background = "linear-gradient(135deg, #FF4438 0%, #FF6B5E 100%)";
+                          e.currentTarget.style.transform = "translateY(-4px)";
+                          e.currentTarget.style.boxShadow = "0 16px 48px rgba(255, 68, 56, 0.3)";
+                          const icon = e.currentTarget.querySelector('.feature-icon') as HTMLElement;
+                          if (icon) icon.style.background = "#FFFFFF";
+                          const texts = e.currentTarget.querySelectorAll('.feature-text');
+                          texts.forEach(text => (text as HTMLElement).style.color = "#FFFFFF");
+                        }}
+                        onMouseLeave={(e) => {
+                          e.currentTarget.style.background = "linear-gradient(135deg, rgba(255, 68, 56, 0.12) 0%, rgba(255, 68, 56, 0.08) 100%)";
+                          e.currentTarget.style.transform = "translateY(0)";
+                          e.currentTarget.style.boxShadow = "none";
+                          const icon = e.currentTarget.querySelector('.feature-icon') as HTMLElement;
+                          if (icon) icon.style.background = "linear-gradient(135deg, #FF4438 0%, #FF6B5E 100%)";
+                          const texts = e.currentTarget.querySelectorAll('.feature-text');
+                          texts.forEach(text => (text as HTMLElement).style.color = "#002B49");
+                        }}
+                      >
+                        <div className="">
+                          <div
+                            className="feature-icon"
+                            style={{
+                              width: "52px",
+                              height: "52px",
+                              background: "linear-gradient(135deg, #FF4438 0%, #FF6B5E 100%)",
+                              borderRadius: "14px",
+                              display: "flex",
+                              alignItems: "center",
+                              justifyContent: "center",
+                              transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
+                            }}
+                          >
+                            <i className="ph-bold ph-star" style={{ fontSize: "28px", color: "#FFFFFF" }} />
+                          </div>
+                        </div>
+                        <div className="">
+                          <h6
+                            className="feature-text tw-mb-405 splitTextStyleOne"
+                            style={{
+                              fontSize: "20px",
+                              fontWeight: 700,
+                              color: "#002B49",
+                              marginBottom: "0.5rem",
+                              transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
+                            }}
+                          >
+                            Local Payment Integration
+                          </h6>
+                          <p
+                            className="feature-text tw-text-lg max-w-278-px tw-leading-153 splitTextStyleOne"
+                            style={{
+                              fontSize: "16px",
+                              color: "#002B49",
+                              lineHeight: 1.5,
+                              opacity: 0.8,
+                              transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
+                            }}
+                          >
+                            BenefitPay for Bahrain and Tap for GCC with automatic reconciliation and receipts.
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* About Features Section - 4 Cards */}
+      <section className="about-features py-120" style={{ background: "#FFFFFF" }}>
+        <div className="container">
+          <div className="text-center mx-auto tw-pb-15 max-w-910-px">
+            {/* Badge */}
+            <div
+              className="tw-py-2 tw-px-7 rounded-pill fw-bold text-capitalize tw-leading-none d-inline-flex align-items-center tw-gap-2 tw-mb-405 min-w-max"
+              data-aos="fade-up"
+              data-aos-anchor-placement="top-bottom"
+              data-aos-duration="600"
+              style={{
+                background: "linear-gradient(135deg, #002B49 0%, #0099A8 100%)",
+                color: "#FFFFFF",
+                boxShadow: "0 8px 24px rgba(0, 43, 73, 0.3)",
+              }}
+            >
+              key features
+            </div>
+            {/* Headline */}
             <h2
-              className='tw-mb-4'
+              className="splitTextStyleOne text-heading text-capitalize tw-leading-none"
               style={{
                 fontSize: "clamp(28px, 4vw, 48px)",
                 fontWeight: 700,
                 color: "#002B49",
-                fontFamily: "'Filson Pro', sans-serif",
+                lineHeight: 1.2,
+                marginTop: "1rem",
               }}
-              data-aos='fade-up'
             >
-              Why Baitech
+              Simplifying your property management
             </h2>
+            {/* Description */}
             <p
+              className="splitTextStyleOne max-w-602-px mx-auto fw-medium tw-mt-5"
               style={{
                 fontSize: "18px",
-                color: "#666",
-                fontFamily: "'Filson Pro', sans-serif",
-                maxWidth: "600px",
-                margin: "0 auto",
+                color: "#002B49",
+                marginTop: "1rem",
+                opacity: 0.8,
               }}
-              data-aos='fade-up'
-              data-aos-delay={100}
             >
-              Reduce manual work with AI agents and n8n automations.
+              Discover how Baitech not only simplifies your management process but also empowers you to make smarter decisions.
             </p>
           </div>
-        </div>
 
-        <div className='row gy-4'>
-          {features.map((feature, index) => (
-            <div
-              key={feature.title}
-              className='col-md-6 col-lg-3'
-              data-aos='fade-up'
-              data-aos-delay={index * 100}
-            >
-              <div
-                className='h-100 p-4'
-                style={{
-                  background: "#FFFFFF",
-                  borderRadius: "16px",
-                  border: "1px solid #E9ECEF",
-                  transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
-                  height: "100%",
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.transform = "translateY(-5px)";
-                  e.currentTarget.style.boxShadow = "0 10px 30px rgba(0,0,0,0.1)";
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.transform = "translateY(0)";
-                  e.currentTarget.style.boxShadow = "none";
-                }}
-              >
+          {/* 4 Feature Cards */}
+          <div className="row gy-4">
+            {[
+              { icon: "ph-users", title: "User-friendly Interface", desc: "Designed for everyone, from tech-savvy users to elderly tenants and landlords.", color: "#1ECAD3" },
+              { icon: "ph-wallet", title: "Payment Solutions", desc: "Integrated with BenefitPay and Tap for seamless GCC-wide transactions.", color: "#0099A8" },
+              { icon: "ph-wrench", title: "Maintenance Management", desc: "Auto-categorize requests, get approvals, and assign vendors efficiently.", color: "#84DADE" },
+              { icon: "ph-bell", title: "Smart Notifications", desc: "WhatsApp, SMS, and email alerts with configurable quiet hours for respect.", color: "#FF4438" },
+            ].map((feature, idx) => (
+              <div key={idx} className="col-xl-3 col-sm-6" data-aos="fade-up" data-aos-anchor-placement="top-bottom" data-aos-duration={600 + idx * 200}>
                 <div
-                  className='tw-mb-4'
+                  className="tw-rounded-2xl tw-py-14 tw-px-7 h-100"
                   style={{
-                    width: "60px",
-                    height: "60px",
-                    borderRadius: "12px",
-                    background: `${feature.color}15`,
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
+                    borderRadius: "20px",
+                    background: `linear-gradient(135deg, ${feature.color}15 0%, ${feature.color}08 100%)`,
+                    padding: "56px 28px",
+                    transition: "all 0.4s cubic-bezier(0.4, 0, 0.2, 1)",
+                    height: "100%",
+                    cursor: "pointer",
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.background = `linear-gradient(135deg, ${feature.color} 0%, ${feature.color}DD 100%)`;
+                    e.currentTarget.style.transform = "translateY(-8px) scale(1.02)";
+                    e.currentTarget.style.boxShadow = `0 20px 60px ${feature.color}40`;
+                    const texts = e.currentTarget.querySelectorAll('.card-text');
+                    texts.forEach(text => (text as HTMLElement).style.color = "#FFFFFF");
+                    const icon = e.currentTarget.querySelector('.card-icon') as HTMLElement;
+                    if (icon) {
+                      icon.style.background = "#FFFFFF";
+                      icon.style.color = feature.color;
+                    }
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.background = `linear-gradient(135deg, ${feature.color}15 0%, ${feature.color}08 100%)`;
+                    e.currentTarget.style.transform = "translateY(0) scale(1)";
+                    e.currentTarget.style.boxShadow = "none";
+                    const texts = e.currentTarget.querySelectorAll('.card-text');
+                    texts.forEach(text => (text as HTMLElement).style.color = "#002B49");
+                    const icon = e.currentTarget.querySelector('.card-icon') as HTMLElement;
+                    if (icon) {
+                      icon.style.background = feature.color;
+                      icon.style.color = "#FFFFFF";
+                    }
                   }}
                 >
-                  <i
-                    className={`ph ${feature.icon}`}
+                  <span
+                    className="card-icon rounded-circle d-flex align-items-center justify-content-center"
                     style={{
-                      fontSize: "32px",
-                      color: feature.color,
+                      width: "76px",
+                      height: "76px",
+                      borderRadius: "50%",
+                      background: feature.color,
+                      boxShadow: `0 8px 24px ${feature.color}40`,
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      marginBottom: "2rem",
+                      transition: "all 0.4s cubic-bezier(0.4, 0, 0.2, 1)",
                     }}
-                  />
+                  >
+                    <i className={`ph-bold ${feature.icon}`} style={{ fontSize: "38px", color: "#FFFFFF", transition: "all 0.4s cubic-bezier(0.4, 0, 0.2, 1)" }} />
+                  </span>
+                  <h4
+                    className="card-text splitTextStyleOne tw-mb-7"
+                    style={{
+                      fontSize: "22px",
+                      fontWeight: 700,
+                      color: "#002B49",
+                      marginBottom: "1rem",
+                      transition: "all 0.4s cubic-bezier(0.4, 0, 0.2, 1)",
+                    }}
+                  >
+                    {feature.title}
+                  </h4>
+                  <p
+                    className="card-text splitTextStyleOne fw-medium"
+                    style={{
+                      fontSize: "16px",
+                      color: "#002B49",
+                      lineHeight: 1.5,
+                      opacity: 0.8,
+                      transition: "all 0.4s cubic-bezier(0.4, 0, 0.2, 1)",
+                    }}
+                  >
+                    {feature.desc}
+                  </p>
                 </div>
-                <h3
-                  className='tw-mb-3'
-                  style={{
-                    fontSize: "24px",
-                    fontWeight: 700,
-                    color: "#002B49",
-                    fontFamily: "'Filson Pro', sans-serif",
-                  }}
-                >
-                  {feature.title}
-                </h3>
-                <p
-                  style={{
-                    fontSize: "16px",
-                    color: "#666",
-                    fontFamily: "'Filson Pro', sans-serif",
-                    lineHeight: "1.6",
-                  }}
-                >
-                  {feature.description}
-                </p>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 };
 

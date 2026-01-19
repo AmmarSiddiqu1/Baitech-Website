@@ -12,7 +12,7 @@ const Header: FC = () => {
       setScroll(y >= 150);
 
       // Update active section based on scroll position
-      const sections = ["home", "features", "how-it-works", "for-landlords", "pricing", "faq", "contact"];
+      const sections = ["home", "features", "how-it-works", "faq", "contact"];
       const current = sections.find((section) => {
         const element = document.getElementById(section);
         if (element) {
@@ -39,8 +39,6 @@ const Header: FC = () => {
     { label: "Home", href: "#home" },
     { label: "Features", href: "#features" },
     { label: "How It Works", href: "#how-it-works" },
-    { label: "Pricing", href: "#pricing" },
-    { label: "For Landlords", href: "#for-landlords" },
     { label: "FAQ", href: "#faq" },
     { label: "Contact", href: "#contact" },
   ];

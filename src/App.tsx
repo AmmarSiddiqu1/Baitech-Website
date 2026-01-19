@@ -1,19 +1,12 @@
 import type { FC } from "react";
 import Header from "./components/Header";
 import Hero from "./components/Hero";
-import TrustStrip from "./components/TrustStrip";
 import Features from "./components/Features";
-import About from "./components/About";
-import Services from "./components/Services";
 import HowItWorks from "./components/HowItWorks";
-import AppScreens from "./components/AppScreens";
 import Metrics from "./components/Metrics";
-import Pricing from "./components/Pricing";
-import ForLandlords from "./components/ForLandlords";
-import ForTenants from "./components/ForTenants";
-import Testimonials from "./components/Testimonials";
-import FAQ from "./components/FAQ";
+import AppScreens from "./components/AppScreens";
 import FinalCTA from "./components/FinalCTA";
+import FAQ from "./components/FAQ";
 import Footer from "./components/Footer";
 import SmoothScroll from "./helper/SmoothScroll";
 import InitializeAOS from "./helper/InitializeAOS";
@@ -25,19 +18,12 @@ const App: FC = () => {
       <InitializeAOS />
       <Header />
       <Hero />
-      <TrustStrip />
-      <Features />
-      <About />
-      <Services />
       <HowItWorks />
-      <AppScreens />
+      <Features />
       <Metrics />
-      <Pricing />
-      <ForLandlords />
-      <ForTenants />
-      <Testimonials />
-      <FAQ />
       <FinalCTA />
+      <AppScreens />
+      <FAQ />
       <section id='contact' className='tw-py-80-px bg-light'>
         <div className='container'>
           <div className='row'>

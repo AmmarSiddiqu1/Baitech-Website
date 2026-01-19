@@ -1,248 +1,104 @@
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Autoplay } from "swiper/modules";
 import type { FC } from "react";
 
 const AppScreens: FC = () => {
-  const screens = [
-    {
-      title: "Dashboard",
-      description: "See dues, arrears, and open tickets at a glance.",
-      color: "#84DADE",
-    },
-    {
-      title: "Maintenance",
-      description: "Log issues with photos/video and track vendor progress.",
-      color: "#1ECAD3",
-    },
-    {
-      title: "Payments",
-      description: "Pay in seconds via BenefitPay or Tap; instant receipts.",
-      color: "#0099A8",
-    },
-    {
-      title: "Chat",
-      description: "Ask Baitech anything—EN/AR, 24/7.",
-      color: "#FF4438",
-    },
-  ];
-
   return (
-    <section className='tw-py-80-px'>
-      <div className='container'>
-        <div className='row'>
-          <div className='col-12 text-center tw-mb-12'>
-            <h2
-              className='tw-mb-4'
-              style={{
-                fontSize: "clamp(28px, 4vw, 48px)",
-                fontWeight: 700,
-                color: "#002B49",
-                fontFamily: "'Filson Pro', sans-serif",
-              }}
-              data-aos='fade-up'
-            >
-              App Screens
-            </h2>
+    <section className="app-screenshot position-relative z-1 overflow-hidden" style={{ background: "linear-gradient(180deg, rgba(0, 153, 168, 0.08) 0%, rgba(132, 218, 222, 0.12) 50%, rgba(30, 202, 211, 0.08) 100%)", padding: "120px 0" }}>
+      <div className="container">
+        <div className="text-center mx-auto tw-pb-15 max-w-910-px">
+          {/* Badge */}
+          <div
+            className="tw-py-2 tw-px-7 rounded-pill fw-bold text-capitalize tw-leading-none d-inline-flex align-items-center tw-gap-2 tw-mb-405 min-w-max"
+            data-aos="fade-up"
+            data-aos-anchor-placement="top-bottom"
+            data-aos-duration="600"
+            style={{
+              background: "linear-gradient(135deg, #0099A8 0%, #002B49 100%)",
+              color: "#FFFFFF",
+              boxShadow: "0 8px 24px rgba(0, 153, 168, 0.3)",
+            }}
+          >
+            app showcase
           </div>
+          {/* Headline */}
+          <h2
+            className="splitTextStyleOne text-heading text-capitalize tw-leading-none"
+            style={{
+              fontSize: "clamp(28px, 4vw, 48px)",
+              fontWeight: 700,
+              color: "#002B49",
+              lineHeight: 1.2,
+              marginTop: "1rem",
+            }}
+          >
+            Experience the future of property management
+          </h2>
+          {/* Description */}
+          <p
+            className="splitTextStyleOne tw-text-lg mx-auto fw-medium tw-mt-5"
+            style={{
+              fontSize: "18px",
+              color: "#002B49",
+              marginTop: "1rem",
+              maxWidth: "602px",
+              opacity: 0.8,
+            }}
+          >
+            Discover how Baitech not only simplifies your management process but also empowers you to make smarter, data-driven decisions.
+          </p>
         </div>
 
-        <div className='position-relative' style={{ padding: "0 60px" }}>
-          <Swiper
-            modules={[Navigation, Autoplay]}
-            spaceBetween={30}
-            slidesPerView={1}
-            loop={true}
-            direction="horizontal"
-            navigation={{
-              nextEl: '.app-screens-next',
-              prevEl: '.app-screens-prev',
-            }}
-            autoplay={{
-              delay: 3000,
-              disableOnInteraction: false,
-              reverseDirection: false,
-            }}
-            breakpoints={{
-              768: {
-                slidesPerView: 2,
-              },
-              1024: {
-                slidesPerView: 3,
-              },
-            }}
-            className='app-screens-swiper'
-          >
-          {screens.map((screen, index) => (
-            <SwiperSlide key={screen.title} style={{ height: "auto" }}>
-              <div
-                className='p-4'
-                style={{
-                  background: "#FFFFFF",
-                  borderRadius: "20px",
-                  border: "1px solid #E9ECEF",
-                  height: "100%",
-                  minHeight: "450px",
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "center",
-                  justifyContent: "flex-start",
-                }}
-                data-aos='fade-up'
-                data-aos-delay={index * 100}
-              >
-                {/* REPLACE: Replace this placeholder with actual app screenshots */}
-                {/* Place screenshots at: public/assets/images/app-screens/dashboard.png, maintenance.png, payments.png, chat.png */}
-                {/* Then replace this div with: <img src={`/assets/images/app-screens/${screen.title.toLowerCase()}.png`} alt={screen.title} style={{ width: "100%", height: "auto", borderRadius: "12px" }} /> */}
-                <div
-                  style={{
-                    width: "100%",
-                    height: "250px",
-                    minHeight: "250px",
-                    background: `linear-gradient(135deg, ${screen.color} 0%, ${screen.color}dd 100%)`,
-                    borderRadius: "12px",
-                    marginBottom: "24px",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    flexShrink: 0,
-                  }}
-                >
-                  <div
-                    style={{
-                      fontSize: "32px",
-                      color: "white",
-                      fontWeight: 700,
-                      fontFamily: "'Filson Pro', sans-serif",
-                    }}
-                  >
-                    {screen.title}
-                  </div>
-                </div>
-                <h3
-                  className='text-center'
-                  style={{
-                    fontSize: "24px",
-                    fontWeight: 700,
-                    color: "#002B49",
-                    fontFamily: "'Filson Pro', sans-serif",
-                    marginBottom: "12px",
-                    flexShrink: 0,
-                  }}
-                >
-                  {screen.title}
-                </h3>
-                <p
-                  className='text-center'
-                  style={{
-                    fontSize: "16px",
-                    color: "#666",
-                    fontFamily: "'Filson Pro', sans-serif",
-                    lineHeight: "1.6",
-                    margin: 0,
-                    flex: 1,
-                  }}
-                >
-                  {screen.description}
-                </p>
-              </div>
-            </SwiperSlide>
-          ))}
-          </Swiper>
-          {/* Custom Navigation Arrows - Outside Carousel */}
-          <button
-            className='app-screens-prev'
-            aria-label='Previous slide'
+        {/* Centered Screenshot Placeholder */}
+        <div className="text-center">
+          <div
+            data-aos="zoom-in"
+            data-aos-anchor-placement="top-bottom"
+            data-aos-duration="1200"
             style={{
-              position: "absolute",
-              left: "-50px",
-              top: "50%",
-              transform: "translateY(-50%)",
-              width: "50px",
-              height: "50px",
-              borderRadius: "50%",
-              background: "#002B49",
-              border: "none",
-              color: "#FFFFFF",
+              width: "100%",
+              maxWidth: "1100px",
+              height: "650px",
+              margin: "0 auto",
+              background: "linear-gradient(135deg, #FF4438 0%, #FF6B5E 50%, #1ECAD3 100%)",
+              borderRadius: "32px",
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
-              cursor: "pointer",
-              zIndex: 10,
-              transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
-              boxShadow: "0 4px 12px rgba(0, 43, 73, 0.2)",
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.background = "#0099A8";
-              e.currentTarget.style.transform = "translateY(-50%) scale(1.1)";
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.background = "#002B49";
-              e.currentTarget.style.transform = "translateY(-50%) scale(1)";
+              boxShadow: "0 32px 80px rgba(30, 202, 211, 0.4)",
+              border: "4px dashed #FFFFFF",
+              position: "relative",
+              overflow: "hidden",
             }}
           >
-            <svg
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M15 18L9 12L15 6"
-                stroke="currentColor"
-                strokeWidth="2.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
-          </button>
-          <button
-            className='app-screens-next'
-            aria-label='Next slide'
-            style={{
-              position: "absolute",
-              right: "-50px",
-              top: "50%",
-              transform: "translateY(-50%)",
-              width: "50px",
-              height: "50px",
-              borderRadius: "50%",
-              background: "#002B49",
-              border: "none",
-              color: "#FFFFFF",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              cursor: "pointer",
-              zIndex: 10,
-              transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
-              boxShadow: "0 4px 12px rgba(0, 43, 73, 0.2)",
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.background = "#0099A8";
-              e.currentTarget.style.transform = "translateY(-50%) scale(1.1)";
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.background = "#002B49";
-              e.currentTarget.style.transform = "translateY(-50%) scale(1)";
-            }}
-          >
-            <svg
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M9 18L15 12L9 6"
-                stroke="currentColor"
-                strokeWidth="2.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
-          </button>
+            {/* Decorative circles */}
+            <div
+              style={{
+                position: "absolute",
+                width: "200px",
+                height: "200px",
+                borderRadius: "50%",
+                background: "rgba(255, 255, 255, 0.1)",
+                top: "-50px",
+                right: "-50px",
+              }}
+            />
+            <div
+              style={{
+                position: "absolute",
+                width: "150px",
+                height: "150px",
+                borderRadius: "50%",
+                background: "rgba(255, 255, 255, 0.1)",
+                bottom: "-30px",
+                left: "-30px",
+              }}
+            />
+            <div style={{ textAlign: "center", color: "#FFFFFF", position: "relative", zIndex: 1 }}>
+              <i className="ph-bold ph-image" style={{ fontSize: "100px", marginBottom: "24px", display: "block" }} />
+              <div style={{ fontSize: "42px", fontWeight: 700 }}>IMAGE HERE</div>
+              <div style={{ fontSize: "20px", marginTop: "12px" }}>App Screenshots</div>
+              <div style={{ fontSize: "16px", marginTop: "8px", opacity: 0.9 }}>1100x650px recommended</div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
