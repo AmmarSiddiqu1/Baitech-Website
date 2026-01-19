@@ -7,7 +7,7 @@ const Hero: FC = () => {
       className='banner tw-py-80-px overflow-hidden section-bg-three position-relative geometric-pattern'
       style={{
         background: "linear-gradient(135deg, #FFFFFF 0%, #F8F9FA 100%)",
-        minHeight: "90vh",
+        minHeight: "100vh",
         display: "flex",
         alignItems: "center",
       }}
@@ -75,12 +75,22 @@ const Hero: FC = () => {
                 >
                   Trusted By:
                 </span>
-                <div className='d-flex flex-column align-items-center' style={{ gap: "4px" }}>
+                <div className='d-flex flex-column align-items-center' style={{ gap: "2px" }}>
                   <img
                     src='/assets/images/logo/benefitpay-download.png'
                     alt='BenefitPay'
                     style={{ height: "40px", width: "auto" }}
                   />
+                  <span
+                    style={{
+                      fontSize: "14px",
+                      fontWeight: 600,
+                      color: "#002B49",
+                      fontFamily: "'Filson Pro', sans-serif",
+                    }}
+                  >
+                    Benefit Pay
+                  </span>
                 </div>
                 <span
                   style={{
@@ -102,6 +112,7 @@ const Hero: FC = () => {
                       fontSize: "14px",
                       fontWeight: 600,
                       color: "#002B49",
+                      fontFamily: "'Filson Pro', sans-serif",
                     }}
                   >
                     1 tap
@@ -127,6 +138,7 @@ const Hero: FC = () => {
                       fontSize: "14px",
                       fontWeight: 600,
                       color: "#002B49",
+                      fontFamily: "'Filson Pro', sans-serif",
                     }}
                   >
                     WhatsApp Business API
@@ -257,8 +269,9 @@ const Hero: FC = () => {
               <div
                 className='tw-mt-6'
                 style={{
-                  fontSize: "16px",
-                  color: "#84DADE",
+                  fontSize: "20px",
+                  color: "#FF4438",
+                  fontFamily: "Nastaliq, 'Filson Pro', sans-serif",
                   fontStyle: "italic",
                 }}
                 data-aos='fade-up'
@@ -269,59 +282,19 @@ const Hero: FC = () => {
             </div>
           </div>
 
-          {/* Hero Image/Illustration Placeholder */}
-          {/* REPLACE: Replace this placeholder with your hero image/app screenshot */}
-          {/* Place image at: public/assets/images/hero/hero-image.png or hero-image.jpg */}
-          {/* Then replace this entire div with: <img src="/assets/images/hero/hero-image.png" alt="Baitech App" style={{ width: "100%", height: "auto", borderRadius: "20px" }} /> */}
+          {/* Hero Image/Illustration */}
+          {/* REPLACE: Place your SVG image at: public/assets/images/hero/hero-visual.svg */}
+          {/* Recommended dimensions: 800px × 600px (4:3 aspect ratio) or 900px × 600px (3:2 aspect ratio) */}
           <div className='col-lg-6' data-aos='fade-left' data-aos-duration={800}>
-            <div
+            <img
+              src='/assets/images/hero/hero-visual.svg'
+              alt='Baitech App Visual'
               style={{
                 width: "100%",
-                height: "500px",
-                background: "linear-gradient(135deg, #84DADE 0%, #1ECAD3 50%, #FF4438 100%)",
-                borderRadius: "20px",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                position: "relative",
-                overflow: "hidden",
+                height: "auto",
+                display: "block",
               }}
-            >
-              {/* Placeholder for app screenshot or illustration */}
-              <div
-                style={{
-                  fontSize: "48px",
-                  color: "white",
-                  fontWeight: 700,
-                  fontFamily: "'Filson Pro', sans-serif",
-                }}
-              >
-                Baitech App
-              </div>
-              {/* Geometric shapes overlay */}
-              <div
-                className='position-absolute'
-                style={{
-                  top: "-50px",
-                  right: "-50px",
-                  width: "200px",
-                  height: "200px",
-                  background: "rgba(255, 255, 255, 0.1)",
-                  borderRadius: "50%",
-                }}
-              />
-              <div
-                className='position-absolute'
-                style={{
-                  bottom: "-30px",
-                  left: "-30px",
-                  width: "150px",
-                  height: "150px",
-                  background: "rgba(255, 255, 255, 0.1)",
-                  borderRadius: "50%",
-                }}
-              />
-            </div>
+            />
           </div>
         </div>
       </div>

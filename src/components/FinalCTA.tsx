@@ -37,39 +37,6 @@ const FinalCTA: FC = () => {
             >
               Start in Bahrain. Expand across the GCC.
             </p>
-            <div
-              className='d-flex align-items-center justify-content-center tw-gap-4 flex-wrap tw-mb-6'
-              data-aos='fade-up'
-              data-aos-delay={200}
-            >
-              <a
-                href='#contact'
-                className='btn-baitech-secondary'
-                style={{
-                  textDecoration: "none",
-                  background: "transparent",
-                  color: "#FFFFFF",
-                  borderColor: "#FFFFFF",
-                }}
-              >
-                Book a Demo
-              </a>
-              <a
-                href='https://wa.me/97312345678'
-                target='_blank'
-                rel='noopener noreferrer'
-                className='d-flex align-items-center tw-gap-2'
-                style={{
-                  color: "#FFFFFF",
-                  textDecoration: "none",
-                  fontFamily: "'Filson Pro', sans-serif",
-                  fontWeight: 600,
-                }}
-              >
-                <i className='ph ph-whatsapp-logo' style={{ fontSize: "24px" }} />
-                Chat on WhatsApp
-              </a>
-            </div>
             {/* App Store Buttons */}
             <div
               className='d-flex align-items-center justify-content-center tw-gap-3 flex-wrap'

@@ -110,7 +110,7 @@ const HeroVisual: FC = () => {
     const spreadX = rect.width * 2;
     const spreadY = rect.height * 2;
     
-    particlesRef.current = targets.map((target, index) => {
+    particlesRef.current = targets.map((target, _index) => {
       const side = Math.floor(Math.random() * 4);
       let startX: number, startY: number;
       
