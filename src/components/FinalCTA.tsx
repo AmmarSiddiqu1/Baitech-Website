@@ -5,33 +5,32 @@ const FinalCTA: FC = () => {
     <section className="download-app py-120" style={{ background: "#FFFFFF" }}>
       <div className="container">
         <div className="row gy-4 align-items-center">
-          {/* Left Image Placeholder */}
-          <div className="col-md-6">
+          {/* Left Image */}
+          <div className="col-md-6" style={{ paddingRight: "2rem" }}>
             <div
               data-aos="fade-right"
               data-aos-duration="1000"
               style={{
                 width: "100%",
-                height: "550px",
-                background: "linear-gradient(135deg, #1ECAD3 0%, #0099A8 50%, #002B49 100%)",
                 borderRadius: "24px",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                boxShadow: "0 20px 60px rgba(30, 202, 211, 0.3)",
-                border: "3px dashed #84DADE",
+                overflow: "hidden",
               }}
             >
-              <div style={{ textAlign: "center", color: "#FFFFFF" }}>
-                <i className="ph-bold ph-image" style={{ fontSize: "80px", marginBottom: "20px", display: "block" }} />
-                <div style={{ fontSize: "32px", fontWeight: 700 }}>IMAGE HERE</div>
-                <div style={{ fontSize: "18px", marginTop: "8px" }}>Download App Image</div>
-              </div>
+              <img
+                src="/assets/images/get_started_today/why_should_you_choose.png"
+                alt="Why should you choose Baitech"
+                style={{
+                  width: "100%",
+                  height: "auto",
+                  display: "block",
+                  borderRadius: "24px",
+                }}
+              />
             </div>
           </div>
 
           {/* Right Content */}
-          <div className="col-md-6">
+          <div className="col-md-6" style={{ paddingLeft: "2rem" }}>
             <div className="">
               <div className="max-w-780-px text-start mx-auto">
                 {/* Badge */}

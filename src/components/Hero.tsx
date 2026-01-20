@@ -3,27 +3,13 @@ import type { FC } from "react";
 const Hero: FC = () => {
   return (
     <section id="home" className="banner-five" style={{ minHeight: "100vh", display: "flex", alignItems: "center" }}>
-      <div className="tw-pt-100-px tw-mx-48-px position-relative gradient-bg-hero rounded-top-30-px z-1" style={{ width: "100%" }}>
+      <div className="tw-pt-100-px tw-mx-48-px position-relative gradient-bg-seven rounded-top-30-px z-1" style={{ width: "100%" }}>
+        <img src="/assets/images/hero/wave-line-shadow.png" alt="Wave Line shape" className="position-absolute tw-start-0 w-100 bottom-0 z-n1 pb-120" />
         <div className="container">
           <div className="row justify-content-center">
             <div className="col-xxl-10">
               <div className="text-center">
                 <div className="max-w-780-px text-center mx-auto">
-                  {/* Badge */}
-                  <div
-                    className="bg-white tw-py-2 tw-px-7 rounded-pill fw-bold text-capitalize tw-leading-none d-inline-flex align-items-center tw-gap-2 tw-mb-405 min-w-max"
-                    data-aos="fade-up"
-                    data-aos-anchor-placement="top-bottom"
-                    data-aos-duration="600"
-                    style={{
-                      color: "#1ECAD3",
-                      boxShadow: "0 8px 24px rgba(30, 202, 211, 0.2)",
-                      transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
-                    }}
-                  >
-                    what we offering
-                  </div>
-                  
                   {/* Headline */}
                   <h1
                     className="splitTextStyleOne text-heading text-capitalize tw-leading-none"
@@ -39,16 +25,7 @@ const Hero: FC = () => {
                   </h1>
                   
                   {/* Subheadline */}
-                  <p
-                    className="tw-text-xl tw-mt-605 splitTextStyleOne max-w-5 mx-auto fw-medium tw-leading-145 max-w-548-px"
-                    style={{
-                      fontSize: "20px",
-                      color: "#002B49",
-                      marginTop: "1rem",
-                      marginBottom: "2rem",
-                      opacity: 0.8,
-                    }}
-                  >
+                  <p className="text-neutral-600 tw-text-xl tw-mt-605 splitTextStyleOne max-w-5 mx-auto fw-medium tw-leading-145 max-w-548-px">
                     Automate rent reminders, maintenance, and WhatsApp updates—built in Bahrain, ready for the GCC.
                   </p>
                   
@@ -57,17 +34,9 @@ const Hero: FC = () => {
                     <div data-aos="fade-up" data-aos-anchor-placement="top-bottom" data-aos-duration="800">
                       <a
                         href="https://play.google.com/store/apps"
+                        className="hover--translate-y-1 active--translate-y-scale-9 tw-rounded-2xl common-shadow-twentyEight"
                         style={{
                           display: "inline-block",
-                          transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
-                        }}
-                        onMouseEnter={(e) => {
-                          e.currentTarget.style.transform = "translateY(-4px)";
-                          e.currentTarget.style.boxShadow = "0 12px 32px rgba(30, 202, 211, 0.3)";
-                        }}
-                        onMouseLeave={(e) => {
-                          e.currentTarget.style.transform = "translateY(0)";
-                          e.currentTarget.style.boxShadow = "none";
                         }}
                       >
                         <div
@@ -93,17 +62,9 @@ const Hero: FC = () => {
                     <div data-aos="fade-up" data-aos-anchor-placement="top-bottom" data-aos-duration="800">
                       <a
                         href="https://www.apple.com/app-store"
+                        className="hover--translate-y-1 active--translate-y-scale-9 tw-rounded-2xl common-shadow-twentyEight"
                         style={{
                           display: "inline-block",
-                          transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
-                        }}
-                        onMouseEnter={(e) => {
-                          e.currentTarget.style.transform = "translateY(-4px)";
-                          e.currentTarget.style.boxShadow = "0 12px 32px rgba(30, 202, 211, 0.3)";
-                        }}
-                        onMouseLeave={(e) => {
-                          e.currentTarget.style.transform = "translateY(0)";
-                          e.currentTarget.style.boxShadow = "none";
                         }}
                       >
                         <div
@@ -129,32 +90,15 @@ const Hero: FC = () => {
                   </div>
                 </div>
 
-                {/* Hero Image Placeholder */}
+                {/* Hero Image */}
                 <div className="tw-mt-14 d-inline-flex">
-                  <div
+                  <img
+                    src="/assets/images/hero/hero_banner.png"
+                    alt="Hero Banner"
                     data-aos="zoom-in"
                     data-aos-anchor-placement="top-bottom"
                     data-aos-duration="1200"
-                    style={{
-                      width: "100%",
-                      maxWidth: "800px",
-                      height: "500px",
-                      background: "linear-gradient(135deg, #84DADE 0%, #1ECAD3 50%, #0099A8 100%)",
-                      borderRadius: "24px",
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      boxShadow: "0 20px 60px rgba(30, 202, 211, 0.3)",
-                      border: "3px dashed #FFFFFF",
-                    }}
-                  >
-                    <div style={{ textAlign: "center", color: "#FFFFFF" }}>
-                      <i className="ph-bold ph-image" style={{ fontSize: "80px", marginBottom: "20px", display: "block" }} />
-                      <div style={{ fontSize: "32px", fontWeight: 700 }}>IMAGE HERE</div>
-                      <div style={{ fontSize: "18px", marginTop: "8px" }}>Hero Section Image</div>
-                      <div style={{ fontSize: "14px", marginTop: "4px", opacity: 0.8 }}>800x500px recommended</div>
-                    </div>
-                  </div>
+                  />
                 </div>
               </div>
             </div>

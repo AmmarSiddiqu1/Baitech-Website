@@ -224,6 +224,45 @@ section {
   background: linear-gradient(135deg, rgba(30, 202, 211, 0.12) 0%, rgba(0, 153, 168, 0.15) 50%, rgba(132, 218, 222, 0.1) 100%);
 }
 
+.gradient-bg-seven {
+  background: linear-gradient(180deg, #d7f2ff 0%, #f5f5fd 74.92%, #ffffff 100%);
+}
+
+.gradient-bg-eight {
+  background: linear-gradient(0deg, #daf2ff 0%, #daf2ff 100%);
+}
+
+.stair-bg {
+  position: relative;
+}
+
+.stair-bg::before,
+.stair-bg::after {
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 100%;
+  top: -35px;
+  left: 0;
+  background: linear-gradient(0deg, #ffe3da 0%, #ffe3da 100%);
+  z-index: -1;
+  border-radius: inherit;
+}
+
+.stair-bg::after {
+  background: #1ECAD3;
+  top: -70px;
+  z-index: -2;
+}
+
+.bg-deep-green {
+  background-color: #0a8a22 !important;
+}
+
+.border-blue {
+  border-color: #1ECAD3 !important;
+}
+
 .gradient-bg-features {
   background: linear-gradient(180deg, rgba(132, 218, 222, 0.08) 0%, rgba(255, 255, 255, 0) 100%);
 }

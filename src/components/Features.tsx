@@ -9,30 +9,21 @@ const Features: FC = () => {
           <div className="row justify-content-center">
             <div className="col-xl-10">
               <div className="row gy-5 flex-wrap-reverse align-items-center">
-                {/* Left Image Placeholder */}
+                {/* Left Image */}
                 <div className="col-md-6">
                   <div className="pe-lg-5 d-flex h-100">
-                    <div
+                    <img
+                      src="/assets/images/why_choose_us/transactions.png"
+                      alt="Why choose Baitech"
+                      className="w-100"
                       data-aos="fade-right"
                       data-aos-duration="1000"
                       style={{
-                        width: "100%",
-                        height: "500px",
-                        background: "linear-gradient(135deg, #0099A8 0%, #002B49 100%)",
                         borderRadius: "24px",
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        boxShadow: "0 20px 60px rgba(0, 153, 168, 0.3)",
-                        border: "3px dashed #84DADE",
+                        objectFit: "contain",
+                        height: "auto",
                       }}
-                    >
-                      <div style={{ textAlign: "center", color: "#FFFFFF" }}>
-                        <i className="ph-bold ph-image" style={{ fontSize: "70px", marginBottom: "16px", display: "block" }} />
-                        <div style={{ fontSize: "28px", fontWeight: 700 }}>IMAGE HERE</div>
-                        <div style={{ fontSize: "16px", marginTop: "8px" }}>Features Image</div>
-                      </div>
-                    </div>
+                    />
                   </div>
                 </div>
 
@@ -96,20 +87,28 @@ const Features: FC = () => {
                           cursor: "pointer",
                         }}
                         onMouseEnter={(e) => {
-                          e.currentTarget.style.background = "linear-gradient(135deg, #1ECAD3 0%, #0099A8 100%)";
-                          e.currentTarget.style.transform = "translateY(-4px)";
+                          e.currentTarget.style.background = "linear-gradient(135deg, #84DADE 0%, #1ECAD3 100%)";
                           e.currentTarget.style.boxShadow = "0 16px 48px rgba(30, 202, 211, 0.3)";
                           const icon = e.currentTarget.querySelector('.feature-icon') as HTMLElement;
-                          if (icon) icon.style.background = "#FFFFFF";
+                          if (icon) {
+                            icon.style.background = "#FFFFFF";
+                            icon.style.transform = "scale(1.15)";
+                            const iconElement = icon.querySelector('i') as HTMLElement;
+                            if (iconElement) iconElement.style.color = "#1ECAD3";
+                          }
                           const texts = e.currentTarget.querySelectorAll('.feature-text');
                           texts.forEach(text => (text as HTMLElement).style.color = "#FFFFFF");
                         }}
                         onMouseLeave={(e) => {
                           e.currentTarget.style.background = "linear-gradient(135deg, rgba(132, 218, 222, 0.15) 0%, rgba(30, 202, 211, 0.1) 100%)";
-                          e.currentTarget.style.transform = "translateY(0)";
                           e.currentTarget.style.boxShadow = "none";
                           const icon = e.currentTarget.querySelector('.feature-icon') as HTMLElement;
-                          if (icon) icon.style.background = "linear-gradient(135deg, #84DADE 0%, #1ECAD3 100%)";
+                          if (icon) {
+                            icon.style.background = "linear-gradient(135deg, #84DADE 0%, #1ECAD3 100%)";
+                            icon.style.transform = "scale(1)";
+                            const iconElement = icon.querySelector('i') as HTMLElement;
+                            if (iconElement) iconElement.style.color = "#FFFFFF";
+                          }
                           const texts = e.currentTarget.querySelectorAll('.feature-text');
                           texts.forEach(text => (text as HTMLElement).style.color = "#002B49");
                         }}
@@ -173,19 +172,27 @@ const Features: FC = () => {
                         }}
                         onMouseEnter={(e) => {
                           e.currentTarget.style.background = "linear-gradient(135deg, #FF4438 0%, #FF6B5E 100%)";
-                          e.currentTarget.style.transform = "translateY(-4px)";
                           e.currentTarget.style.boxShadow = "0 16px 48px rgba(255, 68, 56, 0.3)";
                           const icon = e.currentTarget.querySelector('.feature-icon') as HTMLElement;
-                          if (icon) icon.style.background = "#FFFFFF";
+                          if (icon) {
+                            icon.style.background = "#FFFFFF";
+                            icon.style.transform = "scale(1.15)";
+                            const iconElement = icon.querySelector('i') as HTMLElement;
+                            if (iconElement) iconElement.style.color = "#FF4438";
+                          }
                           const texts = e.currentTarget.querySelectorAll('.feature-text');
                           texts.forEach(text => (text as HTMLElement).style.color = "#FFFFFF");
                         }}
                         onMouseLeave={(e) => {
                           e.currentTarget.style.background = "linear-gradient(135deg, rgba(255, 68, 56, 0.12) 0%, rgba(255, 68, 56, 0.08) 100%)";
-                          e.currentTarget.style.transform = "translateY(0)";
                           e.currentTarget.style.boxShadow = "none";
                           const icon = e.currentTarget.querySelector('.feature-icon') as HTMLElement;
-                          if (icon) icon.style.background = "linear-gradient(135deg, #FF4438 0%, #FF6B5E 100%)";
+                          if (icon) {
+                            icon.style.background = "linear-gradient(135deg, #FF4438 0%, #FF6B5E 100%)";
+                            icon.style.transform = "scale(1)";
+                            const iconElement = icon.querySelector('i') as HTMLElement;
+                            if (iconElement) iconElement.style.color = "#FFFFFF";
+                          }
                           const texts = e.currentTarget.querySelectorAll('.feature-text');
                           texts.forEach(text => (text as HTMLElement).style.color = "#002B49");
                         }}
@@ -309,26 +316,28 @@ const Features: FC = () => {
                   }}
                   onMouseEnter={(e) => {
                     e.currentTarget.style.background = `linear-gradient(135deg, ${feature.color} 0%, ${feature.color}DD 100%)`;
-                    e.currentTarget.style.transform = "translateY(-8px) scale(1.02)";
                     e.currentTarget.style.boxShadow = `0 20px 60px ${feature.color}40`;
                     const texts = e.currentTarget.querySelectorAll('.card-text');
                     texts.forEach(text => (text as HTMLElement).style.color = "#FFFFFF");
                     const icon = e.currentTarget.querySelector('.card-icon') as HTMLElement;
                     if (icon) {
                       icon.style.background = "#FFFFFF";
-                      icon.style.color = feature.color;
+                      icon.style.transform = "scale(1.2)";
+                      const iconElement = icon.querySelector('i') as HTMLElement;
+                      if (iconElement) iconElement.style.color = feature.color;
                     }
                   }}
                   onMouseLeave={(e) => {
                     e.currentTarget.style.background = `linear-gradient(135deg, ${feature.color}15 0%, ${feature.color}08 100%)`;
-                    e.currentTarget.style.transform = "translateY(0) scale(1)";
                     e.currentTarget.style.boxShadow = "none";
                     const texts = e.currentTarget.querySelectorAll('.card-text');
                     texts.forEach(text => (text as HTMLElement).style.color = "#002B49");
                     const icon = e.currentTarget.querySelector('.card-icon') as HTMLElement;
                     if (icon) {
                       icon.style.background = feature.color;
-                      icon.style.color = "#FFFFFF";
+                      icon.style.transform = "scale(1)";
+                      const iconElement = icon.querySelector('i') as HTMLElement;
+                      if (iconElement) iconElement.style.color = "#FFFFFF";
                     }
                   }}
                 >
