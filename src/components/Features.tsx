@@ -293,29 +293,19 @@ const Features: FC = () => {
                   onMouseEnter={(e) => {
                     e.currentTarget.style.background = `linear-gradient(135deg, ${feature.color} 0%, ${feature.color}DD 100%)`;
                     e.currentTarget.style.boxShadow = `0 20px 60px ${feature.color}40`;
-                    const texts = e.currentTarget.querySelectorAll('.card-text');
-                    texts.forEach(text => (text as HTMLElement).style.color = "#FFFFFF");
+                    // Scale up the icon only
                     const icon = e.currentTarget.querySelector('.card-icon') as HTMLElement;
                     if (icon) {
-                      icon.style.background = feature.color;
-                      icon.style.border = `2px solid ${feature.color}`;
-                      icon.style.transform = "scale(1.2)";
-                      const iconElement = icon.querySelector('i') as HTMLElement;
-                      if (iconElement) iconElement.style.color = "#FFFFFF";
+                      icon.style.transform = "scale(1.15)";
                     }
                   }}
                   onMouseLeave={(e) => {
                     e.currentTarget.style.background = `linear-gradient(135deg, ${feature.color}15 0%, ${feature.color}08 100%)`;
                     e.currentTarget.style.boxShadow = "none";
-                    const texts = e.currentTarget.querySelectorAll('.card-text');
-                    texts.forEach(text => (text as HTMLElement).style.color = "#002B49");
+                    // Reset icon scale
                     const icon = e.currentTarget.querySelector('.card-icon') as HTMLElement;
                     if (icon) {
-                      icon.style.background = "#FFFFFF";
-                      icon.style.border = `2px solid ${feature.color}`;
                       icon.style.transform = "scale(1)";
-                      const iconElement = icon.querySelector('i') as HTMLElement;
-                      if (iconElement) iconElement.style.color = feature.color;
                     }
                   }}
                 >

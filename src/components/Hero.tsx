@@ -7,34 +7,44 @@ const Hero: FC = () => {
   const imageRef = useRef<HTMLImageElement>(null);
 
   useEffect(() => {
+    let ticking = false;
+
     const handleScroll = () => {
-      if (!heroRef.current || !contentRef.current || !imageRef.current) return;
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          if (!heroRef.current || !contentRef.current || !imageRef.current) {
+            ticking = false;
+            return;
+          }
 
-      const scrollY = window.scrollY;
-      const heroRect = heroRef.current.getBoundingClientRect();
-      const heroTop = heroRect.top + scrollY;
-      const heroHeight = heroRect.height;
-      const windowHeight = window.innerHeight;
+          const heroRect = heroRef.current.getBoundingClientRect();
+          const heroTop = heroRect.top;
+          const heroHeight = heroRect.height;
+          const windowHeight = window.innerHeight;
 
-      // Parallax effect for content
-      if (scrollY < heroTop + heroHeight) {
-        const progress = Math.max(0, Math.min(1, (scrollY - heroTop + windowHeight) / (heroHeight + windowHeight)));
-        const translateY = progress * 50; // Parallax distance
-        const opacity = 1 - progress * 0.3; // Fade out slightly
-        
-        if (contentRef.current) {
-          contentRef.current.style.transform = `translateY(${translateY}px)`;
-          contentRef.current.style.opacity = opacity.toString();
-          contentRef.current.style.transition = 'transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1)';
-        }
+          // Calculate progress based on scroll position relative to hero section
+          const progress = Math.max(0, Math.min(1, (windowHeight - heroTop) / (windowHeight + heroHeight * 0.5)));
 
-        // Parallax effect for image (opposite direction for depth)
-        if (imageRef.current) {
-          const imageTranslateY = progress * -30;
-          imageRef.current.style.transform = `translateY(${imageTranslateY}px) scale(${1 - progress * 0.1})`;
-          imageRef.current.style.opacity = (1 - progress * 0.2).toString();
-          imageRef.current.style.transition = 'transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1)';
-        }
+          // Smooth parallax effect for content - keep full opacity at top
+          const translateY = progress * 30; // Reduced parallax distance for smoother effect
+          const opacity = Math.max(0.98, 1 - progress * 0.05); // Minimal fade, keep quality high
+          
+          if (contentRef.current) {
+            contentRef.current.style.transform = `translateY(${translateY}px)`;
+            contentRef.current.style.opacity = opacity.toString();
+          }
+
+          // Smooth parallax effect for image - keep full opacity at top
+          if (imageRef.current) {
+            const imageTranslateY = progress * -20; // Reduced for smoother effect
+            const imageScale = Math.max(0.95, 1 - progress * 0.05); // Subtle scale
+            imageRef.current.style.transform = `translateY(${imageTranslateY}px) scale(${imageScale})`;
+            imageRef.current.style.opacity = Math.max(0.98, 1 - progress * 0.05).toString(); // Minimal fade, keep quality high
+          }
+
+          ticking = false;
+        });
+        ticking = true;
       }
     };
 
@@ -48,12 +58,12 @@ const Hero: FC = () => {
 
   return (
     <section ref={heroRef} id="home" className="banner-five" style={{ minHeight: "100vh", display: "flex", alignItems: "center", position: "relative", zIndex: 1001 }}>
-      <div className="tw-pt-100-px tw-mx-48-px position-relative gradient-bg-seven rounded-top-30-px z-1" style={{ width: "100%" }}>
-        <img src="/assets/images/hero/wave-line-shadow.png" alt="Wave Line shape" className="position-absolute tw-start-0 w-100 bottom-0 z-n1 pb-120" />
+      <div className="tw-pt-100-px tw-mx-48-px position-relative gradient-bg-seven rounded-top-30-px z-1" style={{ width: "100%", isolation: "isolate" }}>
+        <img src="/assets/images/hero/wave-line-shadow.png" alt="Wave Line shape" className="position-absolute tw-start-0 w-100 bottom-0 pb-120" style={{ zIndex: -1 }} />
         <div className="container">
           <div className="row justify-content-center">
             <div className="col-xxl-10">
-              <div ref={contentRef} className="text-center" style={{ transition: "transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1)" }}>
+              <div ref={contentRef} className="text-center" style={{ willChange: "transform, opacity" }}>
                 <div className="max-w-780-px text-center mx-auto">
                   {/* Headline */}
                   <h1
@@ -130,11 +140,11 @@ const Hero: FC = () => {
                             transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
                           }}
                         >
-                          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" style={{ flexShrink: 0 }}>
-                            <path d="M1.571 23.664l10.531-10.501 3.712 3.701-12.519 6.3c-.223.12-.49.12-.724 0z" fill="#FBBC04"/>
-                            <path d="M15.726 12.84l-3.713-3.701L1.57 23.664c.224.12.49.12.724 0l13.432-10.824z" fill="#EA4335"/>
-                            <path d="M1.571 23.664l10.531-10.501L1.571 2.336c-.223.12-.39.32-.39.57v20.188c0 .25.167.45.39.57z" fill="#4285F4"/>
-                            <path d="M15.726 12.84L1.571 2.336c.224-.12.49-.12.724 0l12.519 6.3 3.712 3.701-2.8 2.503z" fill="#34A853"/>
+                          <svg width="28" height="28" viewBox="0 0 512 512" fill="none" style={{ flexShrink: 0 }}>
+                            <path d="M48 59.49v393a4.33 4.33 0 007.37 3.07L260 256 55.37 56.42A4.33 4.33 0 0048 59.49z" fill="#4285F4"/>
+                            <path d="M345.8 174L89.22 32.64l-.16-.09c-4.42-2.4-8.62 3.58-5 7.06l201.13 192.32z" fill="#34A853"/>
+                            <path d="M84.08 472.39c-3.64 3.48.56 9.46 5 7.06l.16-.09L345.8 338l-60.61-57.95z" fill="#FBBC04"/>
+                            <path d="M457.67 256c0-16.2-8.85-31.18-23.16-39.15l-52.84-31.26-60.61 57.95 60.61 57.95 52.84-31.26c14.31-7.97 23.16-22.95 23.16-39.15z" fill="#EA4335"/>
                           </svg>
                           <div style={{ textAlign: "left", lineHeight: 1.2 }}>
                             <div style={{ fontSize: "11px", color: "#000000", fontWeight: 400 }}>GET IT ON</div>
@@ -155,7 +165,7 @@ const Hero: FC = () => {
                     data-aos="zoom-in"
                     data-aos-anchor-placement="top-bottom"
                     data-aos-duration="1200"
-                    style={{ transition: "transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1)" }}
+                    style={{ willChange: "transform, opacity" }}
                   />
                 </div>
               </div>

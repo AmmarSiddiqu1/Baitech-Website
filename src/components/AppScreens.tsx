@@ -5,18 +5,6 @@ const AppScreens: FC = () => {
     <section className="app-screenshot position-relative z-1 overflow-hidden" style={{ background: "linear-gradient(180deg, #ffffff 0%, #f5f5fd 25.08%, #d7f2ff 100%)", height: "100vh", display: "flex", flexDirection: "column", padding: "80px 0 0 0" }}>
       <div className="container" style={{ flex: "0 0 auto" }}>
         <div className="text-center mx-auto tw-pb-15 max-w-910-px">
-          {/* Badge */}
-          <div
-            className="bg-white tw-py-2 tw-px-7 rounded-pill fw-bold text-capitalize tw-leading-none d-inline-flex align-items-center tw-gap-2 tw-mb-405 min-w-max common-shadow-twentyNine"
-            data-aos="fade-up"
-            data-aos-anchor-placement="top-bottom"
-            data-aos-duration="600"
-            style={{
-              color: "#666666",
-            }}
-          >
-            What We Offering
-          </div>
           {/* Headline */}
           <h2
             className="splitTextStyleOne text-heading text-capitalize tw-leading-none"

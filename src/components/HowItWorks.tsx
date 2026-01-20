@@ -7,12 +7,16 @@ const HowItWorks: FC = () => {
         <div className="text-center mx-auto tw-pb-15">
           {/* Badge */}
           <div
-            className="bg-white tw-py-2 tw-px-7 rounded-pill text-main-600 fw-bold text-capitalize tw-leading-none d-inline-flex align-items-center tw-gap-2 tw-mb-405 min-w-max common-shadow-twentyNine"
+            className="tw-py-2 tw-px-7 rounded-pill fw-bold text-capitalize tw-leading-none d-inline-flex align-items-center tw-gap-2 tw-mb-405 min-w-max common-shadow-twentyNine"
             data-aos="fade-up"
             data-aos-anchor-placement="top-bottom"
             data-aos-duration="600"
+            style={{
+              backgroundColor: "#FF4438",
+              color: "#FFFFFF",
+            }}
           >
-            what we offering
+            How It Works
           </div>
           {/* Headline */}
           <h2
@@ -32,15 +36,6 @@ const HowItWorks: FC = () => {
           <div className="tw-px-40-px d-flex tw-pt-14 gradient-bg-eight tw-rounded-28-px position-relative flex-md-nowrap flex-wrap tw-gap-6">
             <div className="max-w-780-px mx-auto">
               <div className="text-center">
-                {/* Inner Badge */}
-                <div
-                  className="bg-transparent border border-blue text-blue tw-py-2 tw-px-7 rounded-pill fw-bold text-capitalize tw-leading-none d-inline-flex align-items-center tw-gap-2 tw-mb-405 min-w-max common-shadow-twentyEight"
-                  data-aos="fade-up"
-                  data-aos-anchor-placement="top-bottom"
-                  data-aos-duration="600"
-                >
-                  what we offering
-                </div>
                 {/* Title */}
                 <h2
                   className="splitTextStyleOne text-heading text-capitalize tw-leading-none max-w-500-px mx-auto"

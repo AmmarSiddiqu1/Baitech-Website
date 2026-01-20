@@ -34,6 +34,37 @@
   font-family: 'Filson Pro';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  -webkit-text-stroke: 0.01em transparent;
+}
+
+/* Sharpen images and text */
+img {
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+  image-rendering: optimize-contrast;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+h1, h2, h3, h4, h5, h6, p, span, a, button {
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Increase contrast and sharpness */
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* Sharpen buttons and interactive elements */
+button, a, .btn {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
 /* Smooth Scroll */
@@ -871,6 +902,34 @@ section {
 .button--stroke:hover .button__flair,
 .button--stroke.group:hover .button__flair {
   transform: scale(1);
+}
+
+/* Navy button with red hover fill (WhatsApp) */
+.btn-navy {
+  background-color: #002B49 !important;
+  color: #FFFFFF !important;
+}
+.btn-navy.hover-style-one .button__flair::before {
+  background-color: #FF4438 !important;
+}
+
+/* Red button with navy hover fill (Download App Now) */
+.btn-red-navy {
+  background-color: #FF4438 !important;
+  color: #FFFFFF !important;
+}
+.btn-red-navy.hover-style-one .button__flair::before {
+  background-color: #002B49 !important;
+}
+
+/* Override active nav menu color to teal */
+.nav-menu__item.activePage > a,
+.nav-menu__item.activePage > a::before {
+  color: #1ECAD3 !important;
+}
+
+.nav-menu__item > a:hover {
+  color: #1ECAD3 !important;
 }
 
 /* Scroll Animation Utilities */

@@ -21,10 +21,21 @@ const Footer: FC = () => {
       const x = e.clientX - rect.left;
       const y = e.clientY - rect.top;
       
+      // Calculate cursor position as percentage
       const percentX = (x / rect.width) * 100;
       const percentY = (y / rect.height) * 100;
       
+      // Calculate opposite point for fill direction
+      const oppositeX = 100 - percentX;
+      const oppositeY = 100 - percentY;
+      
+      // Set transform origin to cursor position, fill expands to opposite
       flair.style.transformOrigin = `${percentX}% ${percentY}%`;
+      
+      // Ensure smooth transition
+      if (!flair.style.transition) {
+        flair.style.transition = 'transform 0.85s cubic-bezier(0.645, 0.045, 0.355, 1)';
+      }
     };
 
     const handleMouseEnter = () => {
@@ -106,8 +117,8 @@ const Footer: FC = () => {
   return (
     <section className="footer-five">
       <div className="tw-mx-48-px position-relative gradient-bg-70-top-bottom z-1 rounded-top-30-px">
-        {/* Top CTA Section */}
-        <div className="row justify-content-center">
+        {/* Top CTA Section - Contact */}
+        <div id="contact" className="row justify-content-center">
           <div className="col-xxl-11">
             <div
               ref={ctaSectionRef}
@@ -124,18 +135,19 @@ const Footer: FC = () => {
                   ref={badgeRef}
                   className="bg-white-13 tw-py-2 tw-px-7 rounded-pill text-white fw-semibold text-capitalize tw-leading-none d-inline-flex align-items-center tw-gap-2 tw-mb-405 min-w-max common-shadow-twentyNine"
                 >
-                  get started now
+                  Contact Us Now
                 </div>
                 {/* Headline */}
                 <h2
                   ref={headlineRef}
-                  className="text-56-px splitTextStyleOne text-white text-capitalize tw-leading-none fw-medium"
+                  className="text-56-px splitTextStyleOne text-capitalize tw-leading-none"
                   style={{
                     fontSize: "clamp(32px, 5vw, 56px)",
-                    fontWeight: 700,
-                    color: "#FFFFFF",
+                    fontWeight: 800,
+                    color: "#002B49",
                     lineHeight: 1.1,
                     marginTop: "1.5rem",
+                    fontFamily: "'Filson Pro', sans-serif",
                   }}
                 >
                   Transform Your Property Management Today
@@ -261,7 +273,7 @@ const Footer: FC = () => {
                   Quick Links
                 </h5>
                 <ul style={{ gap: "16px", listStyle: "none", padding: 0, display: "flex", flexDirection: "column" }}>
-                  {["Home", "Features", "How It Works", "FAQ", "Contact"].map((item) => (
+                  {["Home", "How It Works", "Features", "FAQ", "Contact"].map((item) => (
                     <li key={item}>
                       <a
                         href={`#${item.toLowerCase().replace(/ /g, "-")}`}

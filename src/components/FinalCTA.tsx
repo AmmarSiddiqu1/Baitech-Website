@@ -33,10 +33,21 @@ const FinalCTA: FC = () => {
       const x = e.clientX - rect.left;
       const y = e.clientY - rect.top;
       
+      // Calculate cursor position as percentage
       const percentX = (x / rect.width) * 100;
       const percentY = (y / rect.height) * 100;
       
+      // Calculate opposite point for fill direction
+      const oppositeX = 100 - percentX;
+      const oppositeY = 100 - percentY;
+      
+      // Set transform origin to cursor position, fill expands to opposite
       flair.style.transformOrigin = `${percentX}% ${percentY}%`;
+      
+      // Ensure smooth transition
+      if (!flair.style.transition) {
+        flair.style.transition = 'transform 0.85s cubic-bezier(0.645, 0.045, 0.355, 1)';
+      }
     };
 
     const handleMouseEnter = () => {
@@ -184,8 +195,12 @@ const FinalCTA: FC = () => {
                   href={downloadUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hover--translate-y-1 active--translate-y-scale-9 btn btn-main hover-style-one button--stroke d-sm-inline-flex d-none align-items-center justify-content-center tw-gap-5 group active--translate-y-2 tw-px-9 rounded-pill tw-py-505 fw-semibold common-shadow-inset-one"
+                  className="hover--translate-y-1 active--translate-y-scale-9 btn btn-main hover-style-one button--stroke d-sm-inline-flex d-none align-items-center justify-content-center tw-gap-5 group active--translate-y-2 tw-px-9 rounded-pill tw-py-505 fw-semibold common-shadow-inset-one btn-red-navy"
                   data-block="button"
+                  style={{
+                    backgroundColor: "#FF4438",
+                    color: "#FFFFFF",
+                  }}
                 >
                   <span ref={flairRef} className="button__flair"></span>
                   <span className="button__label">Download app now</span>

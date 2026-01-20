@@ -36,8 +36,8 @@ const Header: FC = () => {
           header.style.backgroundColor = 'rgba(255, 255, 255, 0.95)';
           header.style.transition = 'z-index 0.3s ease-out, backdrop-filter 0.3s ease-out, background-color 0.3s ease-out';
         } else {
-          // Initially, header is behind hero
-          header.style.zIndex = '1000';
+          // Initially, header is above hero for clickability but visually behind
+          header.style.zIndex = '10000';
           header.style.backdropFilter = 'none';
           header.style.backgroundColor = '#FFFFFF';
           header.style.transition = 'z-index 0.3s ease-out, backdrop-filter 0.3s ease-out, background-color 0.3s ease-out';
@@ -64,10 +64,21 @@ const Header: FC = () => {
       const x = e.clientX - rect.left;
       const y = e.clientY - rect.top;
       
+      // Calculate cursor position as percentage
       const percentX = (x / rect.width) * 100;
       const percentY = (y / rect.height) * 100;
       
+      // Calculate opposite point for fill direction
+      const oppositeX = 100 - percentX;
+      const oppositeY = 100 - percentY;
+      
+      // Set transform origin to cursor position, fill expands to opposite
       flair.style.transformOrigin = `${percentX}% ${percentY}%`;
+      
+      // Ensure smooth transition
+      if (!flair.style.transition) {
+        flair.style.transition = 'transform 0.85s cubic-bezier(0.645, 0.045, 0.355, 1)';
+      }
     };
 
     const handleMouseEnter = () => {
@@ -95,8 +106,8 @@ const Header: FC = () => {
 
   const navItems = [
     { label: "Home", href: "#home" },
-    { label: "Features", href: "#features" },
     { label: "How It Works", href: "#how-it-works" },
+    { label: "Features", href: "#features" },
     { label: "FAQ", href: "#faq" },
     { label: "Contact", href: "#contact" },
   ];
@@ -112,10 +123,11 @@ const Header: FC = () => {
           top: 0,
           left: 0,
           right: 0,
-          zIndex: 1000,
+          zIndex: 10000,
           boxShadow: scroll ? "0 2px 10px rgba(0,0,0,0.1)" : "none",
           transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
           transform: "translateY(0)",
+          pointerEvents: "auto",
         }}
       >
         <div className='container container-two'>
@@ -181,8 +193,12 @@ const Header: FC = () => {
                 href='https://wa.me/97312345678'
                 target='_blank'
                 rel='noopener noreferrer'
-                className="hover--translate-y-1 active--translate-y-scale-9 btn btn-main hover-style-one button--stroke d-sm-inline-flex d-none align-items-center justify-content-center tw-gap-5 group active--translate-y-2 tw-px-9 rounded-pill tw-py-4 fw-semibold common-shadow-inset-one"
+                className="hover--translate-y-1 active--translate-y-scale-9 btn btn-main hover-style-one button--stroke d-sm-inline-flex d-none align-items-center justify-content-center tw-gap-5 group active--translate-y-2 tw-px-9 rounded-pill tw-py-4 fw-semibold common-shadow-inset-one btn-navy"
                 data-block="button"
+                style={{
+                  backgroundColor: "#002B49",
+                  color: "#FFFFFF",
+                }}
               >
                 <span ref={whatsappFlairRef} className="button__flair"></span>
                 <span className="button__label">WhatsApp</span>
