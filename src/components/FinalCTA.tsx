@@ -1,6 +1,62 @@
 import type { FC } from "react";
+import { useEffect, useState, useRef } from "react";
 
 const FinalCTA: FC = () => {
+  const [downloadUrl, setDownloadUrl] = useState("https://play.google.com/store/apps");
+  const buttonRef = useRef<HTMLAnchorElement>(null);
+  const flairRef = useRef<HTMLSpanElement>(null);
+
+  useEffect(() => {
+    // Detect platform
+    const userAgent = navigator.userAgent || navigator.platform || "";
+    const isIOS = /iPad|iPhone|iPod/.test(userAgent) && !(window as any).MSStream;
+    const isAndroid = /Android/.test(userAgent);
+
+    if (isIOS) {
+      setDownloadUrl("https://www.apple.com/app-store");
+    } else if (isAndroid) {
+      setDownloadUrl("https://play.google.com/store/apps");
+    } else {
+      // Default to Google Play for other platforms
+      setDownloadUrl("https://play.google.com/store/apps");
+    }
+  }, []);
+
+  useEffect(() => {
+    const button = buttonRef.current;
+    const flair = flairRef.current;
+    
+    if (!button || !flair) return;
+
+    const handleMouseMove = (e: MouseEvent) => {
+      const rect = button.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      
+      const percentX = (x / rect.width) * 100;
+      const percentY = (y / rect.height) * 100;
+      
+      flair.style.transformOrigin = `${percentX}% ${percentY}%`;
+    };
+
+    const handleMouseEnter = () => {
+      button.addEventListener('mousemove', handleMouseMove);
+    };
+
+    const handleMouseLeave = () => {
+      button.removeEventListener('mousemove', handleMouseMove);
+      flair.style.transformOrigin = '50% 50%';
+    };
+
+    button.addEventListener('mouseenter', handleMouseEnter);
+    button.addEventListener('mouseleave', handleMouseLeave);
+
+    return () => {
+      button.removeEventListener('mouseenter', handleMouseEnter);
+      button.removeEventListener('mouseleave', handleMouseLeave);
+      button.removeEventListener('mousemove', handleMouseMove);
+    };
+  }, []);
   return (
     <section className="download-app py-120" style={{ background: "#FFFFFF" }}>
       <div className="container">
@@ -115,84 +171,24 @@ const FinalCTA: FC = () => {
                 ))}
               </div>
 
-              {/* App Store Buttons */}
+              {/* Download App Now Button */}
               <div
-                className="tw-mt-13 d-flex align-items-center tw-gap-3 flex-wrap"
+                className="tw-mt-13"
                 data-aos="fade-up"
                 data-aos-anchor-placement="top-bottom"
                 data-aos-duration="1200"
-                style={{ marginTop: "3rem", gap: "12px" }}
+                style={{ marginTop: "3rem" }}
               >
-                {/* Google Play */}
                 <a
-                  href="https://play.google.com/store/apps"
-                  style={{
-                    display: "inline-block",
-                    transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.transform = "translateY(-4px)";
-                    e.currentTarget.style.boxShadow = "0 12px 32px rgba(30, 202, 211, 0.3)";
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.transform = "translateY(0)";
-                    e.currentTarget.style.boxShadow = "none";
-                  }}
+                  ref={buttonRef}
+                  href={downloadUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover--translate-y-1 active--translate-y-scale-9 btn btn-main hover-style-one button--stroke d-sm-inline-flex d-none align-items-center justify-content-center tw-gap-5 group active--translate-y-2 tw-px-9 rounded-pill tw-py-505 fw-semibold common-shadow-inset-one"
+                  data-block="button"
                 >
-                  <div
-                    style={{
-                      background: "linear-gradient(135deg, #1ECAD3 0%, #0099A8 100%)",
-                      padding: "14px 28px",
-                      borderRadius: "12px",
-                      display: "flex",
-                      alignItems: "center",
-                      gap: "12px",
-                    }}
-                  >
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                      <path d="M3 20.5V3.5C3 2.91 3.34 2.39 3.84 2.15L13.69 12L3.84 21.85C3.34 21.6 3 21.09 3 20.5Z" fill="#FFFFFF" />
-                    </svg>
-                    <div style={{ textAlign: "left" }}>
-                      <div style={{ fontSize: "10px", color: "#FFFFFF" }}>GET IT ON</div>
-                      <div style={{ fontSize: "16px", color: "#FFFFFF", fontWeight: 600 }}>Google Play</div>
-                    </div>
-                  </div>
-                </a>
-
-                {/* App Store */}
-                <a
-                  href="https://www.apple.com/app-store"
-                  style={{
-                    display: "inline-block",
-                    transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.transform = "translateY(-4px)";
-                    e.currentTarget.style.boxShadow = "0 12px 32px rgba(0, 43, 73, 0.3)";
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.transform = "translateY(0)";
-                    e.currentTarget.style.boxShadow = "none";
-                  }}
-                >
-                  <div
-                    style={{
-                      background: "linear-gradient(135deg, #002B49 0%, #0099A8 100%)",
-                      padding: "14px 28px",
-                      borderRadius: "12px",
-                      display: "flex",
-                      alignItems: "center",
-                      gap: "12px",
-                    }}
-                  >
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                      <path d="M17.05 20.28c-.98.95-2.05.88-3.08.4-1.09-.5-2.08-.48-3.24 0-1.44.62-2.2.44-3.06-.4C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09l.01-.01zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z" fill="#FFFFFF" />
-                    </svg>
-                    <div style={{ textAlign: "left" }}>
-                      <div style={{ fontSize: "10px", color: "#FFFFFF" }}>Download on the</div>
-                      <div style={{ fontSize: "16px", color: "#FFFFFF", fontWeight: 600 }}>App Store</div>
-                    </div>
-                  </div>
+                  <span ref={flairRef} className="button__flair"></span>
+                  <span className="button__label">Download app now</span>
                 </a>
               </div>
             </div>

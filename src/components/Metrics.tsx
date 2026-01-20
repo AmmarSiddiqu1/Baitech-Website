@@ -1,8 +1,93 @@
 import type { FC } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const Metrics: FC = () => {
+  const sectionRef = useRef<HTMLElement>(null);
+  const [hasAnimated, setHasAnimated] = useState(false);
+  const [count1, setCount1] = useState(0);
+  const [count2, setCount2] = useState(0);
+  const [count3, setCount3] = useState(0);
+
+  useEffect(() => {
+    const section = sectionRef.current;
+    if (!section || hasAnimated) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && !hasAnimated) {
+            setHasAnimated(true);
+            
+            // Animate counter 1: 500
+            const duration = 2000; // 2 seconds
+            const startTime = Date.now();
+            const target1 = 500;
+            
+            const animate1 = () => {
+              const elapsed = Date.now() - startTime;
+              const progress = Math.min(elapsed / duration, 1);
+              
+              // Ease out cubic
+              const eased = 1 - Math.pow(1 - progress, 3);
+              setCount1(Math.floor(eased * target1));
+              
+              if (progress < 1) {
+                requestAnimationFrame(animate1);
+              } else {
+                setCount1(target1);
+              }
+            };
+            
+            // Animate counter 2: 98
+            const target2 = 98;
+            const animate2 = () => {
+              const elapsed = Date.now() - startTime;
+              const progress = Math.min(elapsed / duration, 1);
+              
+              const eased = 1 - Math.pow(1 - progress, 3);
+              setCount2(Math.floor(eased * target2));
+              
+              if (progress < 1) {
+                requestAnimationFrame(animate2);
+              } else {
+                setCount2(target2);
+              }
+            };
+            
+            // Animate counter 3: 24
+            const target3 = 24;
+            const animate3 = () => {
+              const elapsed = Date.now() - startTime;
+              const progress = Math.min(elapsed / duration, 1);
+              
+              const eased = 1 - Math.pow(1 - progress, 3);
+              setCount3(Math.floor(eased * target3));
+              
+              if (progress < 1) {
+                requestAnimationFrame(animate3);
+              } else {
+                setCount3(target3);
+              }
+            };
+            
+            requestAnimationFrame(animate1);
+            requestAnimationFrame(animate2);
+            requestAnimationFrame(animate3);
+          }
+        });
+      },
+      { threshold: 0.3 }
+    );
+
+    observer.observe(section);
+
+    return () => {
+      observer.disconnect();
+    };
+  }, [hasAnimated]);
+
   return (
-    <section className="pt-120" style={{ background: "linear-gradient(180deg, rgba(0, 153, 168, 0.05) 0%, rgba(132, 218, 222, 0.08) 100%)" }}>
+    <section ref={sectionRef} className="pt-120" style={{ background: "linear-gradient(180deg, rgba(0, 153, 168, 0.05) 0%, rgba(132, 218, 222, 0.08) 100%)" }}>
       <div className="container">
         <div className="text-center mx-auto tw-pb-15 max-w-548-px">
           {/* Badge */}
@@ -38,8 +123,8 @@ const Metrics: FC = () => {
         <div
           className="d-flex justify-content-center flex-sm-nowrap flex-wrap tw-gap-148-px"
           style={{
-            borderTop: "3px solid #1ECAD3",
-            borderBottom: "3px solid #1ECAD3",
+            borderTop: "1px solid #1ECAD3",
+            borderBottom: "1px solid #1ECAD3",
             gap: "80px",
             padding: "60px 0",
           }}
@@ -71,7 +156,7 @@ const Metrics: FC = () => {
                 marginBottom: "0.5rem",
               }}
             >
-              <span className="counter">500</span>
+              <span className="counter">{count1}</span>
               <span>+</span>
             </h2>
             <span
@@ -90,7 +175,7 @@ const Metrics: FC = () => {
 
           {/* Divider 1 */}
           <div className="d-flex">
-            <div style={{ width: "3px", height: "100%", background: "linear-gradient(180deg, #1ECAD3 0%, #0099A8 100%)" }} />
+            <div style={{ width: "1px", height: "100%", background: "linear-gradient(180deg, #1ECAD3 0%, #0099A8 100%)" }} />
           </div>
 
           {/* Stat 2 */}
@@ -120,7 +205,7 @@ const Metrics: FC = () => {
                 marginBottom: "0.5rem",
               }}
             >
-              <span className="counter">98</span>
+              <span className="counter">{count2}</span>
               <span>%</span>
             </h2>
             <span
@@ -139,7 +224,7 @@ const Metrics: FC = () => {
 
           {/* Divider 2 */}
           <div className="d-flex">
-            <div style={{ width: "3px", height: "100%", background: "linear-gradient(180deg, #FF4438 0%, #FF6B5E 100%)" }} />
+            <div style={{ width: "1px", height: "100%", background: "linear-gradient(180deg, #FF4438 0%, #FF6B5E 100%)" }} />
           </div>
 
           {/* Stat 3 */}
@@ -169,7 +254,7 @@ const Metrics: FC = () => {
                 marginBottom: "0.5rem",
               }}
             >
-              <span className="counter">24</span>
+              <span className="counter">{count3}</span>
               <span>/7</span>
             </h2>
             <span

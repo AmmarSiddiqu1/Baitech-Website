@@ -1,14 +1,59 @@
 import type { FC } from "react";
+import { useEffect, useRef } from "react";
 
 const Hero: FC = () => {
+  const heroRef = useRef<HTMLElement>(null);
+  const contentRef = useRef<HTMLDivElement>(null);
+  const imageRef = useRef<HTMLImageElement>(null);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!heroRef.current || !contentRef.current || !imageRef.current) return;
+
+      const scrollY = window.scrollY;
+      const heroRect = heroRef.current.getBoundingClientRect();
+      const heroTop = heroRect.top + scrollY;
+      const heroHeight = heroRect.height;
+      const windowHeight = window.innerHeight;
+
+      // Parallax effect for content
+      if (scrollY < heroTop + heroHeight) {
+        const progress = Math.max(0, Math.min(1, (scrollY - heroTop + windowHeight) / (heroHeight + windowHeight)));
+        const translateY = progress * 50; // Parallax distance
+        const opacity = 1 - progress * 0.3; // Fade out slightly
+        
+        if (contentRef.current) {
+          contentRef.current.style.transform = `translateY(${translateY}px)`;
+          contentRef.current.style.opacity = opacity.toString();
+          contentRef.current.style.transition = 'transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1)';
+        }
+
+        // Parallax effect for image (opposite direction for depth)
+        if (imageRef.current) {
+          const imageTranslateY = progress * -30;
+          imageRef.current.style.transform = `translateY(${imageTranslateY}px) scale(${1 - progress * 0.1})`;
+          imageRef.current.style.opacity = (1 - progress * 0.2).toString();
+          imageRef.current.style.transition = 'transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1)';
+        }
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll(); // Initial call
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   return (
-    <section id="home" className="banner-five" style={{ minHeight: "100vh", display: "flex", alignItems: "center" }}>
+    <section ref={heroRef} id="home" className="banner-five" style={{ minHeight: "100vh", display: "flex", alignItems: "center", position: "relative", zIndex: 1001 }}>
       <div className="tw-pt-100-px tw-mx-48-px position-relative gradient-bg-seven rounded-top-30-px z-1" style={{ width: "100%" }}>
         <img src="/assets/images/hero/wave-line-shadow.png" alt="Wave Line shape" className="position-absolute tw-start-0 w-100 bottom-0 z-n1 pb-120" />
         <div className="container">
           <div className="row justify-content-center">
             <div className="col-xxl-10">
-              <div className="text-center">
+              <div ref={contentRef} className="text-center" style={{ transition: "transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1)" }}>
                 <div className="max-w-780-px text-center mx-auto">
                   {/* Headline */}
                   <h1
@@ -31,63 +76,69 @@ const Hero: FC = () => {
                   
                   {/* App Store Buttons */}
                   <div className="d-flex align-items-center justify-content-center tw-gap-405 tw-mt-10">
-                    <div data-aos="fade-up" data-aos-anchor-placement="top-bottom" data-aos-duration="800">
-                      <a
-                        href="https://play.google.com/store/apps"
-                        className="hover--translate-y-1 active--translate-y-scale-9 tw-rounded-2xl common-shadow-twentyEight"
-                        style={{
-                          display: "inline-block",
-                        }}
-                      >
-                        <div
-                          style={{
-                            background: "#FFFFFF",
-                            padding: "12px 20px",
-                            borderRadius: "12px",
-                            display: "flex",
-                            alignItems: "center",
-                            gap: "12px",
-                            boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
-                          }}
-                        >
-                          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                            <path d="M3 20.5V3.5C3 2.91 3.34 2.39 3.84 2.15L13.69 12L3.84 21.85C3.34 21.6 3 21.09 3 20.5Z" fill="#4285F4"/>
-                            <path d="M16.81 15.12L6.05 21.34l-.07-14.47 10.83 8.25z" fill="#34A853"/>
-                            <path d="M6.05 6.87l10.76 8.25-10.76 6.22V6.87z" fill="#FBBC04"/>
-                            <path d="M18.36 2.64L6.05 6.87l10.76 8.25 2.55-12.48z" fill="#EA4335"/>
-                          </svg>
-                          <div style={{ textAlign: "left" }}>
-                            <div style={{ fontSize: "10px", color: "#000000" }}>GET IT ON</div>
-                            <div style={{ fontSize: "16px", color: "#000000", fontWeight: 600 }}>Google Play</div>
-                          </div>
-                        </div>
-                      </a>
-                    </div>
+                    {/* Apple App Store Button */}
                     <div data-aos="fade-up" data-aos-anchor-placement="top-bottom" data-aos-duration="800">
                       <a
                         href="https://www.apple.com/app-store"
                         className="hover--translate-y-1 active--translate-y-scale-9 tw-rounded-2xl common-shadow-twentyEight"
                         style={{
                           display: "inline-block",
+                          textDecoration: "none",
                         }}
                       >
                         <div
                           style={{
                             background: "#FFFFFF",
-                            padding: "12px 20px",
+                            padding: "14px 24px",
                             borderRadius: "12px",
                             display: "flex",
                             alignItems: "center",
-                            gap: "12px",
+                            gap: "14px",
                             boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
+                            transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
                           }}
                         >
-                          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" style={{ flexShrink: 0 }}>
                             <path d="M17.05 20.28c-.98.95-2.05.88-3.08.4-1.09-.5-2.08-.48-3.24 0-1.44.62-2.2.44-3.06-.4C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09l.01-.01zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z" fill="#000000"/>
                           </svg>
-                          <div style={{ textAlign: "left" }}>
-                            <div style={{ fontSize: "10px", color: "#000000" }}>Download on the</div>
-                            <div style={{ fontSize: "16px", color: "#000000", fontWeight: 600 }}>App Store</div>
+                          <div style={{ textAlign: "left", lineHeight: 1.2 }}>
+                            <div style={{ fontSize: "11px", color: "#000000", fontWeight: 400 }}>Download on the</div>
+                            <div style={{ fontSize: "17px", color: "#000000", fontWeight: 600 }}>App Store</div>
+                          </div>
+                        </div>
+                      </a>
+                    </div>
+                    {/* Google Play Button */}
+                    <div data-aos="fade-up" data-aos-anchor-placement="top-bottom" data-aos-duration="800">
+                      <a
+                        href="https://play.google.com/store/apps"
+                        className="hover--translate-y-1 active--translate-y-scale-9 tw-rounded-2xl common-shadow-twentyEight"
+                        style={{
+                          display: "inline-block",
+                          textDecoration: "none",
+                        }}
+                      >
+                        <div
+                          style={{
+                            background: "#FFFFFF",
+                            padding: "14px 24px",
+                            borderRadius: "12px",
+                            display: "flex",
+                            alignItems: "center",
+                            gap: "14px",
+                            boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
+                            transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
+                          }}
+                        >
+                          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" style={{ flexShrink: 0 }}>
+                            <path d="M1.571 23.664l10.531-10.501 3.712 3.701-12.519 6.3c-.223.12-.49.12-.724 0z" fill="#FBBC04"/>
+                            <path d="M15.726 12.84l-3.713-3.701L1.57 23.664c.224.12.49.12.724 0l13.432-10.824z" fill="#EA4335"/>
+                            <path d="M1.571 23.664l10.531-10.501L1.571 2.336c-.223.12-.39.32-.39.57v20.188c0 .25.167.45.39.57z" fill="#4285F4"/>
+                            <path d="M15.726 12.84L1.571 2.336c.224-.12.49-.12.724 0l12.519 6.3 3.712 3.701-2.8 2.503z" fill="#34A853"/>
+                          </svg>
+                          <div style={{ textAlign: "left", lineHeight: 1.2 }}>
+                            <div style={{ fontSize: "11px", color: "#000000", fontWeight: 400 }}>GET IT ON</div>
+                            <div style={{ fontSize: "17px", color: "#000000", fontWeight: 600 }}>Google Play</div>
                           </div>
                         </div>
                       </a>
@@ -98,11 +149,13 @@ const Hero: FC = () => {
                 {/* Hero Image */}
                 <div className="tw-mt-14 d-inline-flex">
                   <img
+                    ref={imageRef}
                     src="/assets/images/hero/hero_banner.png"
                     alt="Hero Banner"
                     data-aos="zoom-in"
                     data-aos-anchor-placement="top-bottom"
                     data-aos-duration="1200"
+                    style={{ transition: "transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1)" }}
                   />
                 </div>
               </div>

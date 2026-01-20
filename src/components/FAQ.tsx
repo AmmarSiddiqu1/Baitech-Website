@@ -42,7 +42,7 @@ const FAQ: FC = () => {
                 fontSize: "clamp(28px, 4vw, 48px)",
                 fontWeight: 700,
                 color: "#002B49",
-                fontFamily: "'Filson Pro', sans-serif",
+                fontFamily: "'Filson Pro'",
               }}
               data-aos='fade-up'
             >
@@ -93,7 +93,7 @@ const FAQ: FC = () => {
                         fontSize: "18px",
                         fontWeight: 600,
                         color: "#002B49",
-                        fontFamily: "'Filson Pro', sans-serif",
+                        fontFamily: "'Filson Pro'",
                         margin: 0,
                       }}
                     >
@@ -141,7 +141,7 @@ const FAQ: FC = () => {
                         style={{
                           fontSize: "16px",
                           color: "#666",
-                          fontFamily: "'Filson Pro', sans-serif",
+                          fontFamily: "'Filson Pro'",
                           lineHeight: "1.8",
                           margin: 0,
                         }}

@@ -1,7 +1,107 @@
 import type { FC } from "react";
+import { useEffect, useRef } from "react";
 
 const Footer: FC = () => {
   const currentYear = new Date().getFullYear();
+  const signupButtonRef = useRef<HTMLAnchorElement>(null);
+  const signupFlairRef = useRef<HTMLSpanElement>(null);
+  const ctaSectionRef = useRef<HTMLDivElement>(null);
+  const badgeRef = useRef<HTMLDivElement>(null);
+  const headlineRef = useRef<HTMLHeadingElement>(null);
+  const buttonContainerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const button = signupButtonRef.current;
+    const flair = signupFlairRef.current;
+    
+    if (!button || !flair) return;
+
+    const handleMouseMove = (e: MouseEvent) => {
+      const rect = button.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      
+      const percentX = (x / rect.width) * 100;
+      const percentY = (y / rect.height) * 100;
+      
+      flair.style.transformOrigin = `${percentX}% ${percentY}%`;
+    };
+
+    const handleMouseEnter = () => {
+      button.addEventListener('mousemove', handleMouseMove);
+    };
+
+    const handleMouseLeave = () => {
+      button.removeEventListener('mousemove', handleMouseMove);
+      flair.style.transformOrigin = '50% 50%';
+    };
+
+    button.addEventListener('mouseenter', handleMouseEnter);
+    button.addEventListener('mouseleave', handleMouseLeave);
+
+    return () => {
+      button.removeEventListener('mouseenter', handleMouseEnter);
+      button.removeEventListener('mouseleave', handleMouseLeave);
+      button.removeEventListener('mousemove', handleMouseMove);
+    };
+  }, []);
+
+  useEffect(() => {
+    const ctaSection = ctaSectionRef.current;
+    const badge = badgeRef.current;
+    const headline = headlineRef.current;
+    const buttonContainer = buttonContainerRef.current;
+
+    if (!ctaSection || !badge || !headline || !buttonContainer) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            // Animate badge
+            if (badge) {
+              badge.style.opacity = '0';
+              badge.style.transform = 'translateY(30px) scale(0.95)';
+              badge.style.transition = 'opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), transform 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
+              setTimeout(() => {
+                badge.style.opacity = '1';
+                badge.style.transform = 'translateY(0) scale(1)';
+              }, 100);
+            }
+
+            // Animate headline
+            if (headline) {
+              headline.style.opacity = '0';
+              headline.style.transform = 'translateY(30px) scale(0.95)';
+              headline.style.transition = 'opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), transform 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
+              setTimeout(() => {
+                headline.style.opacity = '1';
+                headline.style.transform = 'translateY(0) scale(1)';
+              }, 300);
+            }
+
+            // Animate button container
+            if (buttonContainer) {
+              buttonContainer.style.opacity = '0';
+              buttonContainer.style.transform = 'translateY(30px) scale(0.95)';
+              buttonContainer.style.transition = 'opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), transform 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
+              setTimeout(() => {
+                buttonContainer.style.opacity = '1';
+                buttonContainer.style.transform = 'translateY(0) scale(1)';
+              }, 500);
+            }
+          }
+        });
+      },
+      { threshold: 0.2 }
+    );
+
+    observer.observe(ctaSection);
+
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
 
   return (
     <section className="footer-five">
@@ -10,6 +110,7 @@ const Footer: FC = () => {
         <div className="row justify-content-center">
           <div className="col-xxl-11">
             <div
+              ref={ctaSectionRef}
               className="tw-rounded-28-px tw-py-100-px"
               style={{
                 background: "#1ECAD3",
@@ -20,15 +121,14 @@ const Footer: FC = () => {
               <div className="text-center mx-auto max-w-724-px">
                 {/* Badge */}
                 <div
+                  ref={badgeRef}
                   className="bg-white-13 tw-py-2 tw-px-7 rounded-pill text-white fw-semibold text-capitalize tw-leading-none d-inline-flex align-items-center tw-gap-2 tw-mb-405 min-w-max common-shadow-twentyNine"
-                  data-aos="fade-up"
-                  data-aos-anchor-placement="top-bottom"
-                  data-aos-duration="600"
                 >
                   get started now
                 </div>
                 {/* Headline */}
                 <h2
+                  ref={headlineRef}
                   className="text-56-px splitTextStyleOne text-white text-capitalize tw-leading-none fw-medium"
                   style={{
                     fontSize: "clamp(32px, 5vw, 56px)",
@@ -42,13 +142,12 @@ const Footer: FC = () => {
                 </h2>
                 {/* CTA Button */}
                 <div
+                  ref={buttonContainerRef}
                   className="tw-mt-9"
-                  data-aos="fade-up"
-                  data-aos-anchor-placement="top-bottom"
-                  data-aos-duration="1200"
                   style={{ marginTop: "2rem" }}
                 >
                   <a
+                    ref={signupButtonRef}
                     href="https://wa.me/97312345678"
                     className="hover--translate-y-1 active--translate-y-scale-9 btn btn-white hover-style-one button--stroke d-sm-inline-flex d-none align-items-center justify-content-center tw-gap-5 group active--translate-y-2 tw-px-14 rounded-pill tw-py-505 fw-semibold common-shadow-inset-one"
                     data-block="button"
@@ -58,7 +157,7 @@ const Footer: FC = () => {
                       textDecoration: "none",
                     }}
                   >
-                    <span className="button__flair"></span>
+                    <span ref={signupFlairRef} className="button__flair"></span>
                     <span className="button__label">Sign up Now</span>
                   </a>
                 </div>
@@ -310,14 +409,10 @@ const Footer: FC = () => {
                         onMouseEnter={(e) => {
                           e.currentTarget.style.background = social.color;
                           e.currentTarget.style.color = "#FFFFFF";
-                          e.currentTarget.style.transform = "translateY(-4px) rotate(360deg)";
-                          e.currentTarget.style.boxShadow = `0 8px 24px ${social.color}40`;
                         }}
                         onMouseLeave={(e) => {
                           e.currentTarget.style.background = "#FFFFFF";
                           e.currentTarget.style.color = social.color;
-                          e.currentTarget.style.transform = "translateY(0) rotate(0deg)";
-                          e.currentTarget.style.boxShadow = "none";
                         }}
                       >
                         <i className={`ph-fill ${social.icon}`} />

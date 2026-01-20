@@ -82,35 +82,21 @@ const Features: FC = () => {
                         style={{
                           borderRadius: "24px",
                           background: "linear-gradient(135deg, rgba(132, 218, 222, 0.15) 0%, rgba(30, 202, 211, 0.1) 100%)",
-                          padding: "32px 36px",
+                          padding: "24px 36px",
                           transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
                           cursor: "pointer",
                         }}
                         onMouseEnter={(e) => {
-                          e.currentTarget.style.background = "linear-gradient(135deg, #84DADE 0%, #1ECAD3 100%)";
-                          e.currentTarget.style.boxShadow = "0 16px 48px rgba(30, 202, 211, 0.3)";
                           const icon = e.currentTarget.querySelector('.feature-icon') as HTMLElement;
                           if (icon) {
-                            icon.style.background = "#FFFFFF";
                             icon.style.transform = "scale(1.15)";
-                            const iconElement = icon.querySelector('i') as HTMLElement;
-                            if (iconElement) iconElement.style.color = "#1ECAD3";
                           }
-                          const texts = e.currentTarget.querySelectorAll('.feature-text');
-                          texts.forEach(text => (text as HTMLElement).style.color = "#FFFFFF");
                         }}
                         onMouseLeave={(e) => {
-                          e.currentTarget.style.background = "linear-gradient(135deg, rgba(132, 218, 222, 0.15) 0%, rgba(30, 202, 211, 0.1) 100%)";
-                          e.currentTarget.style.boxShadow = "none";
                           const icon = e.currentTarget.querySelector('.feature-icon') as HTMLElement;
                           if (icon) {
-                            icon.style.background = "linear-gradient(135deg, #84DADE 0%, #1ECAD3 100%)";
                             icon.style.transform = "scale(1)";
-                            const iconElement = icon.querySelector('i') as HTMLElement;
-                            if (iconElement) iconElement.style.color = "#FFFFFF";
                           }
-                          const texts = e.currentTarget.querySelectorAll('.feature-text');
-                          texts.forEach(text => (text as HTMLElement).style.color = "#002B49");
                         }}
                       >
                         <div className="">
@@ -127,7 +113,7 @@ const Features: FC = () => {
                               transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
                             }}
                           >
-                            <i className="ph-bold ph-check-circle" style={{ fontSize: "28px", color: "#FFFFFF" }} />
+                            <i className="ph ph-list-checks" style={{ fontSize: "28px", color: "#FFFFFF", fontWeight: 400 }} />
                           </div>
                         </div>
                         <div className="">
@@ -137,7 +123,8 @@ const Features: FC = () => {
                               fontSize: "20px",
                               fontWeight: 700,
                               color: "#002B49",
-                              marginBottom: "0.5rem",
+                              marginBottom: "0.25rem",
+                              marginTop: "-0.5rem",
                               transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
                             }}
                           >
@@ -150,6 +137,7 @@ const Features: FC = () => {
                               color: "#002B49",
                               lineHeight: 1.5,
                               opacity: 0.8,
+                              marginTop: "0",
                               transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
                             }}
                           >
@@ -171,30 +159,16 @@ const Features: FC = () => {
                           cursor: "pointer",
                         }}
                         onMouseEnter={(e) => {
-                          e.currentTarget.style.background = "linear-gradient(135deg, #FF4438 0%, #FF6B5E 100%)";
-                          e.currentTarget.style.boxShadow = "0 16px 48px rgba(255, 68, 56, 0.3)";
                           const icon = e.currentTarget.querySelector('.feature-icon') as HTMLElement;
                           if (icon) {
-                            icon.style.background = "#FFFFFF";
                             icon.style.transform = "scale(1.15)";
-                            const iconElement = icon.querySelector('i') as HTMLElement;
-                            if (iconElement) iconElement.style.color = "#FF4438";
                           }
-                          const texts = e.currentTarget.querySelectorAll('.feature-text');
-                          texts.forEach(text => (text as HTMLElement).style.color = "#FFFFFF");
                         }}
                         onMouseLeave={(e) => {
-                          e.currentTarget.style.background = "linear-gradient(135deg, rgba(255, 68, 56, 0.12) 0%, rgba(255, 68, 56, 0.08) 100%)";
-                          e.currentTarget.style.boxShadow = "none";
                           const icon = e.currentTarget.querySelector('.feature-icon') as HTMLElement;
                           if (icon) {
-                            icon.style.background = "linear-gradient(135deg, #FF4438 0%, #FF6B5E 100%)";
                             icon.style.transform = "scale(1)";
-                            const iconElement = icon.querySelector('i') as HTMLElement;
-                            if (iconElement) iconElement.style.color = "#FFFFFF";
                           }
-                          const texts = e.currentTarget.querySelectorAll('.feature-text');
-                          texts.forEach(text => (text as HTMLElement).style.color = "#002B49");
                         }}
                       >
                         <div className="">
@@ -211,7 +185,7 @@ const Features: FC = () => {
                               transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
                             }}
                           >
-                            <i className="ph-bold ph-star" style={{ fontSize: "28px", color: "#FFFFFF" }} />
+                            <i className="ph ph-wallet" style={{ fontSize: "28px", color: "#FFFFFF", fontWeight: 400 }} />
                           </div>
                         </div>
                         <div className="">
@@ -221,7 +195,8 @@ const Features: FC = () => {
                               fontSize: "20px",
                               fontWeight: 700,
                               color: "#002B49",
-                              marginBottom: "0.5rem",
+                              marginBottom: "0.25rem",
+                              marginTop: "-0.5rem",
                               transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
                             }}
                           >
@@ -234,6 +209,7 @@ const Features: FC = () => {
                               color: "#002B49",
                               lineHeight: 1.5,
                               opacity: 0.8,
+                              marginTop: "0",
                               transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
                             }}
                           >

@@ -1,15 +1,18 @@
-import { useEffect, useState, type FC } from "react";
+import { useEffect, useState, useRef, type FC } from "react";
 import { throttle } from "lodash";
 
 const Header: FC = () => {
   const [mobileMenu, setMobileMenu] = useState<boolean>(false);
   const [scroll, setScroll] = useState<boolean>(false);
   const [activeSection, setActiveSection] = useState<string>("home");
+  const whatsappButtonRef = useRef<HTMLAnchorElement>(null);
+  const whatsappFlairRef = useRef<HTMLSpanElement>(null);
 
   useEffect(() => {
     const handleScroll = throttle(() => {
       const y = window.scrollY;
-      setScroll(y >= 150);
+      const shouldBeFixed = y >= 100;
+      setScroll(shouldBeFixed);
 
       // Update active section based on scroll position
       const sections = ["home", "features", "how-it-works", "faq", "contact"];
@@ -22,12 +25,67 @@ const Header: FC = () => {
         return false;
       });
       if (current) setActiveSection(current);
-    }, 150);
 
-    window.addEventListener("scroll", handleScroll);
+      // Header styling on scroll with smooth z-index transitions
+      const header = document.querySelector('header') as HTMLElement;
+      if (header) {
+        if (shouldBeFixed) {
+          // When scrolled, header comes to front
+          header.style.zIndex = '9999';
+          header.style.backdropFilter = 'blur(24px)';
+          header.style.backgroundColor = 'rgba(255, 255, 255, 0.95)';
+          header.style.transition = 'z-index 0.3s ease-out, backdrop-filter 0.3s ease-out, background-color 0.3s ease-out';
+        } else {
+          // Initially, header is behind hero
+          header.style.zIndex = '1000';
+          header.style.backdropFilter = 'none';
+          header.style.backgroundColor = '#FFFFFF';
+          header.style.transition = 'z-index 0.3s ease-out, backdrop-filter 0.3s ease-out, background-color 0.3s ease-out';
+        }
+      }
+    }, 16); // ~60fps
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll(); // Initial call to set correct z-index
     return () => {
       window.removeEventListener("scroll", handleScroll);
       handleScroll.cancel();
+    };
+  }, []);
+
+  useEffect(() => {
+    const button = whatsappButtonRef.current;
+    const flair = whatsappFlairRef.current;
+    
+    if (!button || !flair) return;
+
+    const handleMouseMove = (e: MouseEvent) => {
+      const rect = button.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      
+      const percentX = (x / rect.width) * 100;
+      const percentY = (y / rect.height) * 100;
+      
+      flair.style.transformOrigin = `${percentX}% ${percentY}%`;
+    };
+
+    const handleMouseEnter = () => {
+      button.addEventListener('mousemove', handleMouseMove);
+    };
+
+    const handleMouseLeave = () => {
+      button.removeEventListener('mousemove', handleMouseMove);
+      flair.style.transformOrigin = '50% 50%';
+    };
+
+    button.addEventListener('mouseenter', handleMouseEnter);
+    button.addEventListener('mouseleave', handleMouseLeave);
+
+    return () => {
+      button.removeEventListener('mouseenter', handleMouseEnter);
+      button.removeEventListener('mouseleave', handleMouseLeave);
+      button.removeEventListener('mousemove', handleMouseMove);
     };
   }, []);
 
@@ -57,6 +115,7 @@ const Header: FC = () => {
           zIndex: 1000,
           boxShadow: scroll ? "0 2px 10px rgba(0,0,0,0.1)" : "none",
           transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
+          transform: "translateY(0)",
         }}
       >
         <div className='container container-two'>
@@ -118,13 +177,14 @@ const Header: FC = () => {
             {/* Header Right start */}
             <div className='d-flex align-items-center tw-gap-6'>
               <a
+                ref={whatsappButtonRef}
                 href='https://wa.me/97312345678'
                 target='_blank'
                 rel='noopener noreferrer'
                 className="hover--translate-y-1 active--translate-y-scale-9 btn btn-main hover-style-one button--stroke d-sm-inline-flex d-none align-items-center justify-content-center tw-gap-5 group active--translate-y-2 tw-px-9 rounded-pill tw-py-4 fw-semibold common-shadow-inset-one"
                 data-block="button"
               >
-                <span className="button__flair"></span>
+                <span ref={whatsappFlairRef} className="button__flair"></span>
                 <span className="button__label">WhatsApp</span>
               </a>
               <button

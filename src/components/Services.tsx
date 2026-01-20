@@ -40,7 +40,7 @@ const Services: FC = () => {
                 fontSize: "clamp(28px, 4vw, 48px)",
                 fontWeight: 700,
                 color: "#002B49",
-                fontFamily: "'Filson Pro', sans-serif",
+                fontFamily: "'Filson Pro'",
               }}
               data-aos='fade-up'
             >
@@ -85,7 +85,7 @@ const Services: FC = () => {
                       fontSize: "20px",
                       fontWeight: 700,
                       color: "#002B49",
-                      fontFamily: "'Filson Pro', sans-serif",
+                      fontFamily: "'Filson Pro'",
                     }}
                   >
                     {service.title}
@@ -94,7 +94,7 @@ const Services: FC = () => {
                     style={{
                       fontSize: "16px",
                       color: "#666",
-                      fontFamily: "'Filson Pro', sans-serif",
+                      fontFamily: "'Filson Pro'",
                       lineHeight: "1.6",
                     }}
                   >

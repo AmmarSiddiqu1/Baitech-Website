@@ -18,7 +18,7 @@ const About: FC = () => {
                 fontSize: "clamp(28px, 4vw, 48px)",
                 fontWeight: 700,
                 color: "#002B49",
-                fontFamily: "'Filson Pro', sans-serif",
+                fontFamily: "'Filson Pro'",
               }}
             >
               Built in Bahrain. Made for the GCC.
@@ -28,7 +28,7 @@ const About: FC = () => {
               style={{
                 fontSize: "18px",
                 color: "#666",
-                fontFamily: "'Filson Pro', sans-serif",
+                fontFamily: "'Filson Pro'",
                 lineHeight: "1.8",
               }}
             >
@@ -66,7 +66,7 @@ const About: FC = () => {
                     style={{
                       fontSize: "16px",
                       color: "#002B49",
-                      fontFamily: "'Filson Pro', sans-serif",
+                      fontFamily: "'Filson Pro'",
                     }}
                   >
                     {point}
@@ -97,7 +97,7 @@ const About: FC = () => {
                   fontSize: "32px",
                   color: "white",
                   fontWeight: 700,
-                  fontFamily: "'Filson Pro', sans-serif",
+                  fontFamily: "'Filson Pro'",
                 }}
               >
                 About Image
