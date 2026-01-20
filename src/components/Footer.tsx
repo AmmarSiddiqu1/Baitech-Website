@@ -5,61 +5,31 @@ const Footer: FC = () => {
 
   return (
     <section className="footer-five">
-      <div className="tw-mx-48-px position-relative z-1 rounded-top-30-px" style={{ background: "linear-gradient(180deg, rgba(0, 153, 168, 0.05) 0%, rgba(30, 202, 211, 0.08) 50%, rgba(132, 218, 222, 0.05) 100%)" }}>
+      <div className="tw-mx-48-px position-relative gradient-bg-70-top-bottom z-1 rounded-top-30-px">
         {/* Top CTA Section */}
         <div className="row justify-content-center">
           <div className="col-xxl-11">
             <div
+              className="tw-rounded-28-px tw-py-100-px"
               style={{
-                background: "linear-gradient(135deg, #002B49 0%, #0099A8 50%, #1ECAD3 100%)",
+                background: "#1ECAD3",
                 borderRadius: "28px",
                 padding: "100px 60px",
-                position: "relative",
-                overflow: "hidden",
               }}
             >
-              {/* Decorative elements */}
-              <div
-                style={{
-                  position: "absolute",
-                  width: "300px",
-                  height: "300px",
-                  borderRadius: "50%",
-                  background: "rgba(132, 218, 222, 0.2)",
-                  top: "-100px",
-                  right: "-100px",
-                }}
-              />
-              <div
-                style={{
-                  position: "absolute",
-                  width: "200px",
-                  height: "200px",
-                  borderRadius: "50%",
-                  background: "rgba(255, 68, 56, 0.2)",
-                  bottom: "-50px",
-                  left: "-50px",
-                }}
-              />
-              <div className="text-center mx-auto" style={{ maxWidth: "724px", margin: "0 auto", position: "relative", zIndex: 1 }}>
+              <div className="text-center mx-auto max-w-724-px">
                 {/* Badge */}
                 <div
-                  className="tw-py-2 tw-px-7 rounded-pill fw-semibold text-capitalize tw-leading-none d-inline-flex align-items-center tw-gap-2 tw-mb-405 min-w-max"
+                  className="bg-white-13 tw-py-2 tw-px-7 rounded-pill text-white fw-semibold text-capitalize tw-leading-none d-inline-flex align-items-center tw-gap-2 tw-mb-405 min-w-max common-shadow-twentyNine"
                   data-aos="fade-up"
                   data-aos-anchor-placement="top-bottom"
                   data-aos-duration="600"
-                  style={{
-                    background: "rgba(255, 255, 255, 0.2)",
-                    color: "#FFFFFF",
-                    boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
-                    backdropFilter: "blur(10px)",
-                  }}
                 >
                   get started now
                 </div>
                 {/* Headline */}
                 <h2
-                  className="splitTextStyleOne text-capitalize tw-leading-none fw-medium"
+                  className="text-56-px splitTextStyleOne text-white text-capitalize tw-leading-none fw-medium"
                   style={{
                     fontSize: "clamp(32px, 5vw, 56px)",
                     fontWeight: 700,
@@ -80,35 +50,16 @@ const Footer: FC = () => {
                 >
                   <a
                     href="https://wa.me/97312345678"
+                    className="hover--translate-y-1 active--translate-y-scale-9 btn btn-white hover-style-one button--stroke d-sm-inline-flex d-none align-items-center justify-content-center tw-gap-5 group active--translate-y-2 tw-px-14 rounded-pill tw-py-505 fw-semibold common-shadow-inset-one"
+                    data-block="button"
                     style={{
                       backgroundColor: "#FFFFFF",
                       color: "#002B49",
-                      padding: "18px 64px",
-                      borderRadius: "50px",
-                      fontWeight: 700,
-                      fontSize: "18px",
                       textDecoration: "none",
-                      display: "inline-flex",
-                      alignItems: "center",
-                      gap: "12px",
-                      transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
-                      boxShadow: "0 8px 24px rgba(0, 0, 0, 0.2)",
-                    }}
-                    onMouseEnter={(e) => {
-                      e.currentTarget.style.transform = "translateY(-4px) scale(1.05)";
-                      e.currentTarget.style.boxShadow = "0 16px 48px rgba(0, 0, 0, 0.3)";
-                      e.currentTarget.style.background = "linear-gradient(135deg, #FF4438 0%, #FF6B5E 100%)";
-                      e.currentTarget.style.color = "#FFFFFF";
-                    }}
-                    onMouseLeave={(e) => {
-                      e.currentTarget.style.transform = "translateY(0) scale(1)";
-                      e.currentTarget.style.boxShadow = "0 8px 24px rgba(0, 0, 0, 0.2)";
-                      e.currentTarget.style.background = "#FFFFFF";
-                      e.currentTarget.style.color = "#002B49";
                     }}
                   >
-                    <i className="ph-bold ph-whatsapp-logo" style={{ fontSize: "24px" }} />
-                    <span>Contact Us on WhatsApp</span>
+                    <span className="button__flair"></span>
+                    <span className="button__label">Sign up Now</span>
                   </a>
                 </div>
               </div>
