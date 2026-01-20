@@ -321,10 +321,11 @@ const Features: FC = () => {
                     texts.forEach(text => (text as HTMLElement).style.color = "#FFFFFF");
                     const icon = e.currentTarget.querySelector('.card-icon') as HTMLElement;
                     if (icon) {
-                      icon.style.background = "#FFFFFF";
+                      icon.style.background = feature.color;
+                      icon.style.border = `2px solid ${feature.color}`;
                       icon.style.transform = "scale(1.2)";
                       const iconElement = icon.querySelector('i') as HTMLElement;
-                      if (iconElement) iconElement.style.color = feature.color;
+                      if (iconElement) iconElement.style.color = "#FFFFFF";
                     }
                   }}
                   onMouseLeave={(e) => {
@@ -334,10 +335,11 @@ const Features: FC = () => {
                     texts.forEach(text => (text as HTMLElement).style.color = "#002B49");
                     const icon = e.currentTarget.querySelector('.card-icon') as HTMLElement;
                     if (icon) {
-                      icon.style.background = feature.color;
+                      icon.style.background = "#FFFFFF";
+                      icon.style.border = `2px solid ${feature.color}`;
                       icon.style.transform = "scale(1)";
                       const iconElement = icon.querySelector('i') as HTMLElement;
-                      if (iconElement) iconElement.style.color = "#FFFFFF";
+                      if (iconElement) iconElement.style.color = feature.color;
                     }
                   }}
                 >
@@ -347,8 +349,9 @@ const Features: FC = () => {
                       width: "76px",
                       height: "76px",
                       borderRadius: "50%",
-                      background: feature.color,
-                      boxShadow: `0 8px 24px ${feature.color}40`,
+                      background: "#FFFFFF",
+                      border: `2px solid ${feature.color}`,
+                      boxShadow: `0 8px 24px rgba(0, 0, 0, 0.1)`,
                       display: "flex",
                       alignItems: "center",
                       justifyContent: "center",
@@ -356,7 +359,7 @@ const Features: FC = () => {
                       transition: "all 0.4s cubic-bezier(0.4, 0, 0.2, 1)",
                     }}
                   >
-                    <i className={`ph-bold ${feature.icon}`} style={{ fontSize: "38px", color: "#FFFFFF", transition: "all 0.4s cubic-bezier(0.4, 0, 0.2, 1)" }} />
+                    <i className={`ph-bold ${feature.icon}`} style={{ fontSize: "38px", color: feature.color, transition: "all 0.4s cubic-bezier(0.4, 0, 0.2, 1)" }} />
                   </span>
                   <h4
                     className="card-text splitTextStyleOne tw-mb-7"
