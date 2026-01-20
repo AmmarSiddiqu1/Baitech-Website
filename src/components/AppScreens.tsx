@@ -2,7 +2,7 @@ import type { FC } from "react";
 
 const AppScreens: FC = () => {
   return (
-    <section className="app-screenshot position-relative z-1 overflow-hidden" style={{ background: "linear-gradient(180deg, #ffffff 0%, #f5f5fd 25.08%, #d7f2ff 100%)", height: "100vh", display: "flex", flexDirection: "column", padding: "80px 0 0 0" }}>
+    <section className="app-screenshot position-relative z-1 overflow-hidden" style={{ background: "linear-gradient(180deg, #ffffff 0%, #f5f5fd 25.08%, #d7f2ff 100%)", minHeight: "100vh", height: "auto", display: "flex", flexDirection: "column", padding: "clamp(40px, 6vw, 80px) clamp(1rem, 3vw, 0) 0 clamp(1rem, 3vw, 0)" }}>
       <div className="container" style={{ flex: "0 0 auto" }}>
         <div className="text-center mx-auto tw-pb-15 max-w-910-px">
           {/* Headline */}
@@ -41,7 +41,7 @@ const AppScreens: FC = () => {
           data-aos-duration="1200"
           style={{
             width: "100%",
-            maxWidth: "70%",
+            maxWidth: "clamp(85%, 70%, 100%)",
             height: "auto",
             display: "block",
             objectFit: "contain",

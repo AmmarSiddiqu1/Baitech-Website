@@ -32,8 +32,8 @@ const HowItWorks: FC = () => {
           </h2>
         </div>
 
-        <div className="position-relative tw-mt-17 stair-bg tw-rounded-28-px">
-          <div className="tw-px-40-px d-flex tw-pt-14 gradient-bg-eight tw-rounded-28-px position-relative flex-md-nowrap flex-wrap tw-gap-6">
+        <div className="position-relative tw-mt-17 stair-bg tw-rounded-28-px" style={{ marginTop: "clamp(2rem, 4vw, 4rem)" }}>
+          <div className="tw-px-40-px d-flex tw-pt-14 gradient-bg-eight tw-rounded-28-px position-relative flex-md-nowrap flex-wrap tw-gap-6" style={{ padding: "clamp(2rem, 4vw, 3.5rem) clamp(1rem, 2.5vw, 2.5rem)" }}>
             <div className="max-w-780-px mx-auto">
               <div className="text-center">
                 {/* Title */}

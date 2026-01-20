@@ -116,7 +116,7 @@ const Footer: FC = () => {
 
   return (
     <section className="footer-five">
-      <div className="tw-mx-48-px position-relative gradient-bg-70-top-bottom z-1 rounded-top-30-px">
+      <div className="tw-mx-48-px position-relative gradient-bg-70-top-bottom z-1 rounded-top-30-px" style={{ marginLeft: "clamp(1rem, 3vw, 3rem)", marginRight: "clamp(1rem, 3vw, 3rem)" }}>
         {/* Top CTA Section - Contact */}
         <div id="contact" className="row justify-content-center">
           <div className="col-xxl-11">
@@ -126,7 +126,7 @@ const Footer: FC = () => {
               style={{
                 background: "#1ECAD3",
                 borderRadius: "28px",
-                padding: "100px 60px",
+                padding: "clamp(40px, 8vw, 100px) clamp(1.5rem, 4vw, 60px)",
               }}
             >
               <div className="text-center mx-auto max-w-724-px">
@@ -161,12 +161,13 @@ const Footer: FC = () => {
                   <a
                     ref={signupButtonRef}
                     href="https://wa.me/97312345678"
-                    className="hover--translate-y-1 active--translate-y-scale-9 btn btn-white hover-style-one button--stroke d-sm-inline-flex d-none align-items-center justify-content-center tw-gap-5 group active--translate-y-2 tw-px-14 rounded-pill tw-py-505 fw-semibold common-shadow-inset-one"
+                    className="hover--translate-y-1 active--translate-y-scale-9 btn btn-white hover-style-one button--stroke d-inline-flex align-items-center justify-content-center tw-gap-5 group active--translate-y-2 tw-px-14 rounded-pill tw-py-505 fw-semibold common-shadow-inset-one"
                     data-block="button"
                     style={{
                       backgroundColor: "#FFFFFF",
                       color: "#002B49",
                       textDecoration: "none",
+                      padding: "clamp(0.75rem, 2vw, 1rem) clamp(1.5rem, 3vw, 2.5rem)",
                     }}
                   >
                     <span ref={signupFlairRef} className="button__flair"></span>

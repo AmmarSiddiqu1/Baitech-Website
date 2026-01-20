@@ -7,6 +7,23 @@ const Hero: FC = () => {
   const imageRef = useRef<HTMLImageElement>(null);
 
   useEffect(() => {
+    // Set responsive z-index for hero section
+    const updateHeroZIndex = () => {
+      if (heroRef.current) {
+        const isMobile = window.innerWidth < 992;
+        heroRef.current.style.zIndex = isMobile ? '1' : '1001';
+      }
+    };
+    
+    updateHeroZIndex();
+    window.addEventListener('resize', updateHeroZIndex);
+    
+    return () => {
+      window.removeEventListener('resize', updateHeroZIndex);
+    };
+  }, []);
+
+  useEffect(() => {
     let ticking = false;
 
     const handleScroll = () => {
@@ -57,8 +74,8 @@ const Hero: FC = () => {
   }, []);
 
   return (
-    <section ref={heroRef} id="home" className="banner-five" style={{ minHeight: "100vh", display: "flex", alignItems: "center", position: "relative", zIndex: 1001 }}>
-      <div className="tw-pt-100-px tw-mx-48-px position-relative gradient-bg-seven rounded-top-30-px z-1" style={{ width: "100%", isolation: "isolate" }}>
+    <section ref={heroRef} id="home" className="banner-five" style={{ minHeight: "100vh", display: "flex", alignItems: "center", position: "relative" }}>
+      <div className="tw-pt-100-px tw-mx-48-px position-relative gradient-bg-seven rounded-top-30-px z-1" style={{ width: "100%", isolation: "isolate", paddingTop: "clamp(60px, 8vw, 100px)", paddingLeft: "clamp(1rem, 3vw, 3rem)", paddingRight: "clamp(1rem, 3vw, 3rem)" }}>
         <img src="/assets/images/hero/wave-line-shadow.png" alt="Wave Line shape" className="position-absolute tw-start-0 w-100 bottom-0 pb-120" style={{ zIndex: -1 }} />
         <div className="container">
           <div className="row justify-content-center">
@@ -85,7 +102,7 @@ const Hero: FC = () => {
                   </p>
                   
                   {/* App Store Buttons */}
-                  <div className="d-flex align-items-center justify-content-center tw-gap-405 tw-mt-10">
+                  <div className="d-flex align-items-center justify-content-center tw-gap-405 tw-mt-10 flex-wrap" style={{ gap: "1rem" }}>
                     {/* Apple App Store Button */}
                     <div data-aos="fade-up" data-aos-anchor-placement="top-bottom" data-aos-duration="800">
                       <a

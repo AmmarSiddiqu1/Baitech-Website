@@ -71,9 +71,9 @@ const FinalCTA: FC = () => {
   return (
     <section className="download-app py-120" style={{ background: "#FFFFFF" }}>
       <div className="container">
-        <div className="row gy-4 align-items-center">
-          {/* Left Image */}
-          <div className="col-md-6" style={{ paddingRight: "2rem" }}>
+              <div className="row gy-4 align-items-center">
+                {/* Left Image */}
+                <div className="col-md-6" style={{ paddingRight: "clamp(0, 2vw, 2rem)", paddingBottom: "clamp(1rem, 3vw, 0)" }}>
             <div
               data-aos="fade-right"
               data-aos-duration="1000"
@@ -96,8 +96,8 @@ const FinalCTA: FC = () => {
             </div>
           </div>
 
-          {/* Right Content */}
-          <div className="col-md-6" style={{ paddingLeft: "2rem" }}>
+                {/* Right Content */}
+                <div className="col-md-6" style={{ paddingLeft: "clamp(0, 2vw, 2rem)" }}>
             <div className="">
               <div className="max-w-780-px text-start mx-auto">
                 {/* Badge */}

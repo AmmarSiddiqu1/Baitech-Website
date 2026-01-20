@@ -932,6 +932,92 @@ section {
   color: #1ECAD3 !important;
 }
 
+/* Responsive Utilities */
+@media (max-width: 575px) {
+  /* Mobile styles */
+  .tw-mx-48-px {
+    margin-left: 1rem !important;
+    margin-right: 1rem !important;
+  }
+  
+  .tw-py-100-px {
+    padding-top: 2rem !important;
+    padding-bottom: 2rem !important;
+  }
+  
+  .tw-px-40-px {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+  
+  section {
+    padding: 40px 0 !important;
+  }
+  
+  /* Mobile button adjustments */
+  .btn {
+    padding: 0.75rem 1.5rem !important;
+    font-size: 0.875rem !important;
+  }
+  
+  /* Mobile image adjustments */
+  img {
+    max-width: 100% !important;
+    height: auto !important;
+  }
+  
+  /* Mobile text adjustments */
+  h1 {
+    font-size: clamp(24px, 8vw, 36px) !important;
+  }
+  
+  h2 {
+    font-size: clamp(20px, 6vw, 32px) !important;
+  }
+}
+
+@media (min-width: 576px) and (max-width: 991px) {
+  /* Tablet styles */
+  .tw-mx-48-px {
+    margin-left: 2rem !important;
+    margin-right: 2rem !important;
+  }
+  
+  .tw-py-100-px {
+    padding-top: 3rem !important;
+    padding-bottom: 3rem !important;
+  }
+  
+  section {
+    padding: 60px 0 !important;
+  }
+}
+
+@media (min-width: 992px) {
+  /* Desktop styles - already handled by default */
+}
+
+/* Mobile z-index overrides */
+@media (max-width: 991px) {
+  /* Mobile: Header always on top */
+  header {
+    z-index: 9999 !important;
+  }
+  
+  .banner-five {
+    z-index: 1 !important;
+  }
+  
+  .mobile-menu {
+    z-index: 10000 !important;
+  }
+}
+
+/* Z-index utility for mobile menu */
+.tw-z-10000 {
+  z-index: 10000;
+}
+
 /* Scroll Animation Utilities */
 .scroll-fade-in {
   opacity: 0;

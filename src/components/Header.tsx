@@ -7,6 +7,7 @@ const Header: FC = () => {
   const [activeSection, setActiveSection] = useState<string>("home");
   const whatsappButtonRef = useRef<HTMLAnchorElement>(null);
   const whatsappFlairRef = useRef<HTMLSpanElement>(null);
+  const headerOverlayRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handleScroll = throttle(() => {
@@ -27,20 +28,43 @@ const Header: FC = () => {
       if (current) setActiveSection(current);
 
       // Header styling on scroll with smooth z-index transitions
+      const isMobile = window.innerWidth < 992;
       const header = document.querySelector('header') as HTMLElement;
       if (header) {
-        if (shouldBeFixed) {
-          // When scrolled, header comes to front
+        if (isMobile) {
+          // On mobile: header always on top (no overlap)
           header.style.zIndex = '9999';
-          header.style.backdropFilter = 'blur(24px)';
-          header.style.backgroundColor = 'rgba(255, 255, 255, 0.95)';
+          header.style.backdropFilter = shouldBeFixed ? 'blur(24px)' : 'none';
+          header.style.backgroundColor = shouldBeFixed ? 'rgba(255, 255, 255, 0.95)' : '#FFFFFF';
           header.style.transition = 'z-index 0.3s ease-out, backdrop-filter 0.3s ease-out, background-color 0.3s ease-out';
+          
+          // Hide overlay on mobile
+          if (headerOverlayRef.current) {
+            headerOverlayRef.current.style.display = 'none';
+          }
         } else {
-          // Initially, header is above hero for clickability but visually behind
-          header.style.zIndex = '10000';
-          header.style.backdropFilter = 'none';
-          header.style.backgroundColor = '#FFFFFF';
-          header.style.transition = 'z-index 0.3s ease-out, backdrop-filter 0.3s ease-out, background-color 0.3s ease-out';
+          // Desktop: overlap behavior
+          if (shouldBeFixed) {
+            // When scrolled, header comes to front
+            header.style.zIndex = '9999';
+            header.style.backdropFilter = 'blur(24px)';
+            header.style.backgroundColor = 'rgba(255, 255, 255, 0.95)';
+            header.style.transition = 'z-index 0.3s ease-out, backdrop-filter 0.3s ease-out, background-color 0.3s ease-out';
+            // Hide overlay when scrolled (header handles clicks)
+            if (headerOverlayRef.current) {
+              headerOverlayRef.current.style.display = 'none';
+            }
+          } else {
+            // Initially, header is behind hero for visual overlap
+            header.style.zIndex = '1000';
+            header.style.backdropFilter = 'none';
+            header.style.backgroundColor = '#FFFFFF';
+            header.style.transition = 'z-index 0.3s ease-out, backdrop-filter 0.3s ease-out, background-color 0.3s ease-out';
+            // Show transparent overlay for clickability
+            if (headerOverlayRef.current) {
+              headerOverlayRef.current.style.display = 'block';
+            }
+          }
         }
       }
     }, 16); // ~60fps
@@ -67,10 +91,6 @@ const Header: FC = () => {
       // Calculate cursor position as percentage
       const percentX = (x / rect.width) * 100;
       const percentY = (y / rect.height) * 100;
-      
-      // Calculate opposite point for fill direction
-      const oppositeX = 100 - percentX;
-      const oppositeY = 100 - percentY;
       
       // Set transform origin to cursor position, fill expands to opposite
       flair.style.transformOrigin = `${percentX}% ${percentY}%`;
@@ -123,7 +143,7 @@ const Header: FC = () => {
           top: 0,
           left: 0,
           right: 0,
-          zIndex: 10000,
+          zIndex: 1000,
           boxShadow: scroll ? "0 2px 10px rgba(0,0,0,0.1)" : "none",
           transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
           transform: "translateY(0)",
@@ -142,7 +162,7 @@ const Header: FC = () => {
                 <img
                   src='/assets/images/logo/Logo.svg'
                   alt='Baitech Logo'
-                  style={{ height: "60px", width: "auto" }}
+                  style={{ height: "clamp(40px, 8vw, 60px)", width: "auto" }}
                 />
               </a>
             </div>
@@ -223,7 +243,7 @@ const Header: FC = () => {
 
       {/* Mobile menu */}
       <div
-        className={`mobile-menu d-lg-none d-block scroll-sm position-fixed bg-white tw-w-300-px tw-h-screen overflow-y-auto tw-p-6 tw-z-999 tw--translate-x-full tw-pb-68 ${
+        className={`mobile-menu d-lg-none d-block scroll-sm position-fixed bg-white tw-w-300-px tw-h-screen overflow-y-auto tw-p-6 tw-z-10000 tw--translate-x-full tw-pb-68 ${
           mobileMenu && "active"
         }`}
         style={{
@@ -307,6 +327,47 @@ const Header: FC = () => {
           </a>
         </div>
       </div>
+      
+      {/* Transparent clickable overlay for header buttons before scroll (Desktop only) */}
+      <div
+        ref={headerOverlayRef}
+        className="d-lg-block d-none"
+        style={{
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          right: 0,
+          height: 'clamp(60px, 8vw, 80px)',
+          zIndex: 10001,
+          pointerEvents: 'auto',
+          backgroundColor: 'transparent',
+          display: scroll ? 'none' : 'block',
+        }}
+        onClick={(e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          
+          const overlay = headerOverlayRef.current;
+          if (overlay) {
+            // Hide overlay temporarily
+            overlay.style.visibility = 'hidden';
+            
+            // Get element at click position
+            const elementBelow = document.elementFromPoint(e.clientX, e.clientY);
+            
+            // Restore overlay
+            overlay.style.visibility = 'visible';
+            
+            // Trigger click on the actual element
+            if (elementBelow) {
+              const clickableElement = elementBelow.closest('a, button');
+              if (clickableElement) {
+                (clickableElement as HTMLElement).click();
+              }
+            }
+          }
+        }}
+      />
     </>
   );
 };

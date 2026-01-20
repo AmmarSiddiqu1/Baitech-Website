@@ -10,8 +10,8 @@ const Features: FC = () => {
             <div className="col-xl-10">
               <div className="row gy-5 flex-wrap-reverse align-items-center">
                 {/* Left Image */}
-                <div className="col-md-6">
-                  <div className="pe-lg-5 d-flex h-100">
+                <div className="col-md-6" style={{ marginBottom: "clamp(1rem, 3vw, 0)" }}>
+                  <div className="pe-lg-5 d-flex h-100" style={{ paddingRight: "clamp(0, 2vw, 3rem)" }}>
                     <img
                       src="/assets/images/why_choose_us/transactions.png"
                       alt="Why choose Baitech"
@@ -28,7 +28,7 @@ const Features: FC = () => {
                 </div>
 
                 {/* Right Content */}
-                <div className="col-md-6">
+                <div className="col-md-6" style={{ paddingLeft: "clamp(0, 2vw, 3rem)" }}>
                   <div className="">
                     <div className="max-w-780-px text-start mx-auto">
                       {/* Badge */}
@@ -272,7 +272,7 @@ const Features: FC = () => {
           </div>
 
           {/* 4 Feature Cards */}
-          <div className="row gy-4">
+          <div className="row gy-4 g-3">
             {[
               { icon: "ph-users", title: "User-friendly Interface", desc: "Designed for everyone, from tech-savvy users to elderly tenants and landlords.", color: "#1ECAD3" },
               { icon: "ph-wallet", title: "Payment Solutions", desc: "Integrated with BenefitPay and Tap for seamless GCC-wide transactions.", color: "#0099A8" },

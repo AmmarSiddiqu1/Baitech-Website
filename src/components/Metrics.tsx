@@ -121,12 +121,12 @@ const Metrics: FC = () => {
 
         {/* Stats with Dividers */}
         <div
-          className="d-flex justify-content-center flex-sm-nowrap flex-wrap tw-gap-148-px"
+          className="d-flex justify-content-center flex-md-row flex-column tw-gap-148-px"
           style={{
             borderTop: "1px solid #1ECAD3",
             borderBottom: "1px solid #1ECAD3",
-            gap: "80px",
-            padding: "60px 0",
+            gap: "clamp(20px, 5vw, 80px)",
+            padding: "clamp(30px, 5vw, 60px) 0",
           }}
         >
           {/* Stat 1 */}
@@ -173,8 +173,13 @@ const Metrics: FC = () => {
             </span>
           </div>
 
-          {/* Divider 1 */}
-          <div className="d-flex">
+          {/* Horizontal Divider 1 (Mobile) */}
+          <div className="d-md-none d-block w-100 my-4">
+            <div style={{ height: "1px", width: "100%", background: "linear-gradient(90deg, transparent 0%, #1ECAD3 20%, #1ECAD3 80%, transparent 100%)" }} />
+          </div>
+
+          {/* Divider 1 (Desktop) */}
+          <div className="d-md-flex d-none">
             <div style={{ width: "1px", height: "100%", background: "linear-gradient(180deg, #1ECAD3 0%, #0099A8 100%)" }} />
           </div>
 
@@ -222,8 +227,13 @@ const Metrics: FC = () => {
             </span>
           </div>
 
-          {/* Divider 2 */}
-          <div className="d-flex">
+          {/* Horizontal Divider 2 (Mobile) */}
+          <div className="d-md-none d-block w-100 my-4">
+            <div style={{ height: "1px", width: "100%", background: "linear-gradient(90deg, transparent 0%, #FF4438 20%, #FF4438 80%, transparent 100%)" }} />
+          </div>
+
+          {/* Divider 2 (Desktop) */}
+          <div className="d-md-flex d-none">
             <div style={{ width: "1px", height: "100%", background: "linear-gradient(180deg, #FF4438 0%, #FF6B5E 100%)" }} />
           </div>
 
