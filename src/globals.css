@@ -290,6 +290,23 @@ section {
   background-color: #0a8a22 !important;
 }
 
+/* How It Works - Connecting Line Color */
+.how-it-works-connecting-line {
+  background: linear-gradient(90deg, #84DADE 0%, #1ECAD3 50%, #0099A8 100%) !important;
+  height: 2px !important;
+}
+
+/* How It Works - Step 2 Circle Color */
+#how-it-works .bg-white.common-shadow-twentyEight {
+  background-color: #84DADE !important;
+  border: 2px solid #1ECAD3;
+}
+
+/* How It Works - Step 3 Circle Color */
+.how-it-works-step3-circle {
+  background-color: #FF4438 !important;
+}
+
 .border-blue {
   border-color: #1ECAD3 !important;
 }
