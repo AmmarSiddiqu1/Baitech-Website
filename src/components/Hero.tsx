@@ -75,7 +75,7 @@ const Hero: FC = () => {
 
   return (
     <section ref={heroRef} id="home" className="banner-five" style={{ minHeight: "100vh", display: "flex", alignItems: "center", position: "relative" }}>
-      <div className="tw-pt-100-px tw-mx-48-px position-relative gradient-bg-seven rounded-top-30-px z-1" style={{ width: "100%", isolation: "isolate", paddingTop: "clamp(60px, 8vw, 100px)", paddingLeft: "clamp(1rem, 3vw, 3rem)", paddingRight: "clamp(1rem, 3vw, 3rem)" }}>
+      <div className="tw-pt-100-px tw-mx-48-px position-relative gradient-bg-seven rounded-top-30-px z-1" style={{ width: "100%", isolation: "isolate", marginTop: "clamp(40px, 6vw, 60px)", paddingTop: "clamp(60px, 8vw, 100px)", paddingLeft: "clamp(1rem, 3vw, 3.5rem)", paddingRight: "clamp(1rem, 3vw, 3.5rem)" }}>
         <img src="/assets/images/hero/wave-line-shadow.png" alt="Wave Line shape" className="position-absolute tw-start-0 w-100 bottom-0 pb-120" style={{ zIndex: -1 }} />
         <div className="container">
           <div className="row justify-content-center">

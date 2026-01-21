@@ -211,6 +211,19 @@ const Header: FC = () => {
 
             {/* Header Right start */}
             <div className='d-flex align-items-center tw-gap-4' style={{ gap: "clamp(0.5rem, 2vw, 1.5rem)" }}>
+              {/* Register On Text - Desktop Only */}
+              <span 
+                className="d-lg-block d-none"
+                style={{
+                  fontSize: "clamp(0.875rem, 1.5vw, 1rem)",
+                  fontWeight: 400,
+                  color: "#002B49",
+                  letterSpacing: "0.5px",
+                  whiteSpace: "nowrap",
+                }}
+              >
+                Register on
+              </span>
               <a
                 ref={whatsappButtonRef}
                 href='https://wa.me/97312345678'
