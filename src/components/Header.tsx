@@ -124,6 +124,22 @@ const Header: FC = () => {
     setMobileMenu(!mobileMenu);
   };
 
+  // Ensure Phosphor icons are loaded for mobile menu
+  useEffect(() => {
+    // Preload Phosphor icons CSS if not already loaded
+    const iconWeights = ["regular", "bold"];
+    iconWeights.forEach((weight) => {
+      const linkId = `phosphor-${weight}`;
+      if (!document.getElementById(linkId)) {
+        const link = document.createElement("link");
+        link.id = linkId;
+        link.rel = "stylesheet";
+        link.href = `https://unpkg.com/@phosphor-icons/web@2.1.1/src/${weight}/style.css`;
+        document.head.appendChild(link);
+      }
+    });
+  }, []);
+
   const navItems = [
     { label: "Home", href: "#home" },
     { label: "How It Works", href: "#how-it-works" },
@@ -164,6 +180,7 @@ const Header: FC = () => {
                 <img
                   src='/assets/images/logo/Logo.svg'
                   alt='Baitech Logo'
+                  className="header-logo"
                   style={{ height: "clamp(32px, 6vw, 60px)", width: "auto", maxHeight: "clamp(32px, 6vw, 60px)" }}
                 />
               </a>
@@ -210,7 +227,7 @@ const Header: FC = () => {
             </div>
 
             {/* Header Right start */}
-            <div className='d-flex align-items-center tw-gap-4' style={{ gap: "clamp(0.5rem, 2vw, 1.5rem)" }}>
+            <div className='d-flex align-items-center tw-gap-4 header-right-mobile' style={{ gap: "clamp(0.5rem, 2vw, 1.5rem)" }}>
               {/* Register On Text - Desktop Only */}
               <span 
                 className="d-lg-block d-none"
@@ -293,7 +310,8 @@ const Header: FC = () => {
             <img
               src='/assets/images/logo/Logo.svg'
               alt='Baitech Logo'
-              style={{ height: "clamp(32px, 8vw, 40px)", width: "auto", maxHeight: "clamp(32px, 8vw, 40px)" }}
+              className="mobile-menu-logo"
+              style={{ height: "clamp(55px, 11vw, 60px)", width: "auto", maxHeight: "clamp(55px, 11vw, 60px)" }}
             />
           </a>
 

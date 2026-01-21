@@ -260,7 +260,7 @@ section {
 }
 
 .gradient-bg-eight {
-  background: linear-gradient(0deg, #daf2ff 0%, #daf2ff 100%);
+  background: linear-gradient(0deg, #002B49 0%, #daf2ff 100%);
 }
 
 .stair-bg {
@@ -288,16 +288,6 @@ section {
 
 .bg-deep-green {
   background-color: #0a8a22 !important;
-}
-
-/* How It Works - Connecting Line Color */
-#how-it-works .how-it-works-connecting-line {
-  background-color: #FFFFFF !important;
-}
-
-/* How It Works - Step 3 Circle Color */
-#how-it-works .how-it-works-step3-circle {
-  background-color: #1ECAD3 !important;
 }
 
 .border-blue {
@@ -1021,87 +1011,11 @@ section {
   .mobile-menu {
     z-index: 10000 !important;
   }
-  
-  /* Mobile header logo size */
-  header .logo img {
-    height: clamp(28px, 6vw, 40px) !important;
-    max-height: clamp(28px, 6vw, 40px) !important;
-  }
-  
-  /* Mobile header spacing */
-  header .container {
-    padding-left: 1rem !important;
-    padding-right: 1rem !important;
-  }
-  
-  /* Mobile menu button size */
-  .toggle-mobileMenu {
-    font-size: 20px !important;
-    padding: 8px !important;
-  }
-  
-  /* Mobile header nav spacing */
-  header nav {
-    min-height: 50px !important;
-  }
-  
-  /* Mobile header container padding */
-  header .container-two {
-    padding-left: 1rem !important;
-    padding-right: 1rem !important;
-  }
-  
-  /* Mobile menu improvements */
-  .mobile-menu {
-    width: 85% !important;
-    max-width: 320px !important;
-  }
-  
-  .mobile-menu__menu .nav-menu__link {
-    font-size: 16px !important;
-    padding: 12px 0 !important;
-  }
-  
-  /* Mobile menu buttons */
-  .mobile-menu a[style*="background"] {
-    font-size: 14px !important;
-    padding: 14px 16px !important;
-  }
-}
-
-/* Tablet responsive */
-@media (min-width: 576px) and (max-width: 991px) {
-  header .logo img {
-    height: clamp(36px, 5vw, 50px) !important;
-    max-height: clamp(36px, 5vw, 50px) !important;
-  }
-  
-  header .container-two {
-    padding-left: 1.5rem !important;
-    padding-right: 1.5rem !important;
-  }
 }
 
 /* Z-index utility for mobile menu */
 .tw-z-10000 {
   z-index: 10000;
-}
-
-/* Sticky WhatsApp Floating Button - Mobile Only */
-.floating-whatsapp-btn {
-  display: none !important;
-}
-
-@media (max-width: 991px) {
-  .floating-whatsapp-btn {
-    display: flex !important;
-  }
-}
-
-@media (min-width: 992px) {
-  .floating-whatsapp-btn {
-    display: none !important;
-  }
 }
 
 /* Scroll Animation Utilities */
@@ -1137,4 +1051,93 @@ section {
 
 .parallax-fast {
   transition: transform 0.1s ease-out;
+}
+
+/* Mobile Logo Size Overrides - Only on Mobile View */
+@media (max-width: 991px) {
+  /* Increase header logo size on mobile */
+  .header-logo {
+    height: clamp(55px, 11vw, 70px) !important;
+    max-height: clamp(55px, 11vw, 70px) !important;
+  }
+  
+  /* Mobile menu logo is already set in component, but ensure it's applied */
+  .mobile-menu-logo {
+    height: clamp(55px, 11vw, 60px) !important;
+    max-height: clamp(55px, 11vw, 60px) !important;
+  }
+  
+  /* Fix burger menu positioning - prevent overflow and keep close to logo */
+  /* Apply to header in all states (before and after scroll) */
+  header {
+    overflow-x: hidden !important;
+    width: 100% !important;
+    max-width: 100vw !important;
+    box-sizing: border-box !important;
+  }
+  
+  header .container-two {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+    max-width: 100% !important;
+    width: 100% !important;
+    overflow: hidden !important;
+    box-sizing: border-box !important;
+  }
+  
+  header nav {
+    gap: 0.5rem !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    justify-content: space-between !important;
+    box-sizing: border-box !important;
+  }
+  
+  header .logo {
+    flex-shrink: 0 !important;
+    max-width: calc(100% - 60px) !important;
+  }
+  
+  .toggle-mobileMenu {
+    margin-right: 0 !important;
+    padding: 8px !important;
+    flex-shrink: 0 !important;
+    min-width: 40px !important;
+    max-width: 40px !important;
+  }
+  
+  /* Reduce gap in header right section on mobile */
+  header .header-right-mobile {
+    gap: 0.25rem !important;
+    flex-shrink: 0 !important;
+    min-width: 40px !important;
+  }
+}
+
+/* Ensure Phosphor icons are visible in mobile menu */
+@media (max-width: 991px) {
+  .toggle-mobileMenu i.ph,
+  .close-button i.ph {
+    display: inline-block !important;
+    font-style: normal;
+    font-weight: normal;
+    opacity: 1 !important;
+    visibility: visible !important;
+  }
+  
+  .toggle-mobileMenu .ph-list {
+    display: block !important;
+    width: 24px;
+    height: 24px;
+    min-width: 24px;
+    min-height: 24px;
+  }
+  
+  .close-button .ph-x {
+    display: block !important;
+    width: 20px;
+    height: 20px;
+    min-width: 20px;
+    min-height: 20px;
+  }
 }
