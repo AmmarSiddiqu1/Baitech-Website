@@ -57,7 +57,7 @@ const HowItWorks: FC = () => {
               {/* 3 Steps */}
               <div className="tw-mt-80-px d-flex justify-content-between position-relative z-1 tw-gap-2 tw-pb-6">
                 {/* Connecting Line */}
-                <span className="tw-w-100--40-px tw-h-px bg-white position-absolute tw-start-50 translate-middle-x top-0 z-n1 tw-mt-2"></span>
+                <span className="tw-w-100--40-px tw-h-px how-it-works-connecting-line position-absolute tw-start-50 translate-middle-x top-0 z-n1 tw-mt-2"></span>
 
                 {/* Step 1 */}
                 <div className="text-center">
@@ -73,7 +73,7 @@ const HowItWorks: FC = () => {
 
                 {/* Step 3 */}
                 <div className="text-center">
-                  <span className="tw-w-405 tw-h-405 rounded-circle bg-main-600"></span>
+                  <span className="tw-w-405 tw-h-405 rounded-circle how-it-works-step3-circle"></span>
                   <span className="text-heading fw-semibold d-block tw-mt-4 text-capitalize">Start managing</span>
                 </div>
               </div>

@@ -290,6 +290,16 @@ section {
   background-color: #0a8a22 !important;
 }
 
+/* How It Works - Connecting Line Color */
+#how-it-works .how-it-works-connecting-line {
+  background-color: #FFFFFF !important;
+}
+
+/* How It Works - Step 3 Circle Color */
+#how-it-works .how-it-works-step3-circle {
+  background-color: #1ECAD3 !important;
+}
+
 .border-blue {
   border-color: #1ECAD3 !important;
 }
