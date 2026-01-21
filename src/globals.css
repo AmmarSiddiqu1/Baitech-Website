@@ -1021,11 +1021,87 @@ section {
   .mobile-menu {
     z-index: 10000 !important;
   }
+  
+  /* Mobile header logo size */
+  header .logo img {
+    height: clamp(28px, 6vw, 40px) !important;
+    max-height: clamp(28px, 6vw, 40px) !important;
+  }
+  
+  /* Mobile header spacing */
+  header .container {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+  
+  /* Mobile menu button size */
+  .toggle-mobileMenu {
+    font-size: 20px !important;
+    padding: 8px !important;
+  }
+  
+  /* Mobile header nav spacing */
+  header nav {
+    min-height: 50px !important;
+  }
+  
+  /* Mobile header container padding */
+  header .container-two {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+  
+  /* Mobile menu improvements */
+  .mobile-menu {
+    width: 85% !important;
+    max-width: 320px !important;
+  }
+  
+  .mobile-menu__menu .nav-menu__link {
+    font-size: 16px !important;
+    padding: 12px 0 !important;
+  }
+  
+  /* Mobile menu buttons */
+  .mobile-menu a[style*="background"] {
+    font-size: 14px !important;
+    padding: 14px 16px !important;
+  }
+}
+
+/* Tablet responsive */
+@media (min-width: 576px) and (max-width: 991px) {
+  header .logo img {
+    height: clamp(36px, 5vw, 50px) !important;
+    max-height: clamp(36px, 5vw, 50px) !important;
+  }
+  
+  header .container-two {
+    padding-left: 1.5rem !important;
+    padding-right: 1.5rem !important;
+  }
 }
 
 /* Z-index utility for mobile menu */
 .tw-z-10000 {
   z-index: 10000;
+}
+
+/* Sticky WhatsApp Floating Button - Mobile Only */
+.floating-whatsapp-btn {
+  display: none !important;
+}
+
+@media (max-width: 991px) {
+  .floating-whatsapp-btn {
+    display: flex !important;
+  }
+}
+
+@media (min-width: 992px) {
+  .floating-whatsapp-btn {
+    display: none !important;
+  }
 }
 
 /* Scroll Animation Utilities */

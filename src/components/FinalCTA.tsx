@@ -195,11 +195,13 @@ const FinalCTA: FC = () => {
                   href={downloadUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hover--translate-y-1 active--translate-y-scale-9 btn btn-main hover-style-one button--stroke d-sm-inline-flex d-none align-items-center justify-content-center tw-gap-5 group active--translate-y-2 tw-px-9 rounded-pill tw-py-505 fw-semibold common-shadow-inset-one btn-red-navy"
+                  className="hover--translate-y-1 active--translate-y-scale-9 btn btn-main hover-style-one button--stroke d-inline-flex align-items-center justify-content-center tw-gap-5 group active--translate-y-2 tw-px-9 rounded-pill tw-py-505 fw-semibold common-shadow-inset-one btn-red-navy"
                   data-block="button"
                   style={{
                     backgroundColor: "#FF4438",
                     color: "#FFFFFF",
+                    width: "100%",
+                    maxWidth: "100%",
                   }}
                 >
                   <span ref={flairRef} className="button__flair"></span>
