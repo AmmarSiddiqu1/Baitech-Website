@@ -33,7 +33,7 @@ const HowItWorks: FC = () => {
         </div>
 
         <div className="position-relative tw-mt-17 stair-bg tw-rounded-28-px" style={{ marginTop: "clamp(2rem, 4vw, 4rem)" }}>
-          <div className="tw-px-40-px d-flex tw-pt-14 gradient-bg-eight tw-rounded-28-px position-relative flex-md-nowrap flex-wrap tw-gap-6" style={{ padding: "clamp(2rem, 4vw, 3.5rem) clamp(1rem, 2.5vw, 2.5rem)" }}>
+          <div className="tw-px-40-px d-flex tw-pt-14 gradient-bg-eight tw-rounded-28-px position-relative flex-md-nowrap flex-wrap tw-gap-6" style={{ paddingTop: "clamp(2rem, 4vw, 3.5rem)", paddingLeft: "clamp(1rem, 2.5vw, 2.5rem)", paddingRight: "clamp(1rem, 2.5vw, 2.5rem)", paddingBottom: 0 }}>
             <div className="max-w-780-px mx-auto">
               <div className="text-center">
                 {/* Title */}
@@ -55,7 +55,7 @@ const HowItWorks: FC = () => {
               </div>
 
               {/* 3 Steps */}
-              <div className="tw-mt-80-px d-flex justify-content-between position-relative z-1 tw-gap-2 tw-pb-10">
+              <div className="tw-mt-80-px d-flex justify-content-between position-relative z-1 tw-gap-2 tw-pb-6">
                 {/* Connecting Line */}
                 <span className="tw-w-100--40-px tw-h-px bg-white position-absolute tw-start-50 translate-middle-x top-0 z-n1 tw-mt-2"></span>
 
@@ -80,13 +80,14 @@ const HowItWorks: FC = () => {
             </div>
 
             {/* Right Side Image */}
-            <div className="d-flex flex-column justify-content-end">
+            <div className="d-flex flex-column justify-content-end" style={{ alignSelf: "flex-end" }}>
               <img
                 src="/assets/images/work_process/work-process-five-thumb.png"
                 alt="How It Works"
                 data-aos="fade-up"
                 data-aos-anchor-placement="top-bottom"
                 data-aos-duration="1200"
+                style={{ display: "block", marginBottom: 0 }}
               />
             </div>
           </div>

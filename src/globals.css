@@ -260,7 +260,7 @@ section {
 }
 
 .gradient-bg-eight {
-  background: linear-gradient(0deg, #daf2ff 0%, #daf2ff 100%);
+  background: linear-gradient(0deg, #002B49 0%, #daf2ff 100%);
 }
 
 .stair-bg {
@@ -275,13 +275,13 @@ section {
   height: 100%;
   top: -35px;
   left: 0;
-  background: linear-gradient(0deg, #ffe3da 0%, #ffe3da 100%);
+  background: linear-gradient(0deg, #002B49 0%, #0099A8 100%);
   z-index: -1;
   border-radius: inherit;
 }
 
 .stair-bg::after {
-  background: #1ECAD3;
+  background: #002B49;
   top: -70px;
   z-index: -2;
 }
