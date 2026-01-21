@@ -157,7 +157,7 @@ const Header: FC = () => {
               <a
                 href='#home'
                 className='link hover--translate-y-1 active--translate-y-scale-9'
-                style={{ textDecoration: "none" }}
+                style={{ textDecoration: "none", cursor: "pointer" }}
               >
                 <img
                   src='/assets/images/logo/Logo.svg'
@@ -188,6 +188,7 @@ const Header: FC = () => {
                           textDecoration: "none",
                           transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
                           position: "relative",
+                          cursor: "pointer",
                         }}
                         onMouseEnter={(e) => {
                           e.currentTarget.style.transform = "translateY(-2px)";
@@ -218,6 +219,7 @@ const Header: FC = () => {
                 style={{
                   backgroundColor: "#002B49",
                   color: "#FFFFFF",
+                  cursor: "pointer",
                 }}
               >
                 <span ref={whatsappFlairRef} className="button__flair"></span>
@@ -343,28 +345,125 @@ const Header: FC = () => {
           backgroundColor: 'transparent',
           display: scroll ? 'none' : 'block',
         }}
+        onMouseMove={(e) => {
+          // Find which header menu item is below cursor
+          const header = document.querySelector('header');
+          if (!header) return;
+          
+          // Handle nav links
+          const navLinks = header.querySelectorAll('.nav-menu__link') as NodeListOf<HTMLElement>;
+          navLinks.forEach((link) => {
+            const rect = link.getBoundingClientRect();
+            if (
+              e.clientX >= rect.left &&
+              e.clientX <= rect.right &&
+              e.clientY >= rect.top &&
+              e.clientY <= rect.bottom
+            ) {
+              // Apply hover style
+              link.style.color = '#1ECAD3';
+              link.style.transform = 'translateY(-2px)';
+            } else {
+              // Remove hover style
+              const isActive = link.closest('.nav-menu__item')?.classList.contains('activePage');
+              link.style.color = isActive ? '#1ECAD3' : '#002B49';
+              link.style.transform = 'translateY(0)';
+            }
+          });
+          
+          // Handle WhatsApp button hover
+          const whatsappButton = whatsappButtonRef.current;
+          const whatsappFlair = whatsappFlairRef.current;
+          if (whatsappButton && whatsappFlair) {
+            const rect = whatsappButton.getBoundingClientRect();
+            if (
+              e.clientX >= rect.left &&
+              e.clientX <= rect.right &&
+              e.clientY >= rect.top &&
+              e.clientY <= rect.bottom
+            ) {
+              // Manually trigger hover effect
+              const x = e.clientX - rect.left;
+              const y = e.clientY - rect.top;
+              const percentX = (x / rect.width) * 100;
+              const percentY = (y / rect.height) * 100;
+              whatsappFlair.style.transformOrigin = `${percentX}% ${percentY}%`;
+              whatsappFlair.style.transform = 'scale(1)';
+              if (!whatsappFlair.style.transition) {
+                whatsappFlair.style.transition = 'transform 0.85s cubic-bezier(0.645, 0.045, 0.355, 1)';
+              }
+              // Trigger the CSS hover state by adding a class
+              whatsappButton.classList.add('group');
+            } else {
+              whatsappButton.classList.remove('group');
+            }
+          }
+        }}
+        onMouseLeave={() => {
+          // Reset all header menu items
+          const header = document.querySelector('header');
+          if (!header) return;
+          
+          const navLinks = header.querySelectorAll('.nav-menu__link') as NodeListOf<HTMLElement>;
+          navLinks.forEach((link) => {
+            const isActive = link.closest('.nav-menu__item')?.classList.contains('activePage');
+            link.style.color = isActive ? '#1ECAD3' : '#002B49';
+            link.style.transform = 'translateY(0)';
+          });
+          
+          // Reset WhatsApp button
+          const whatsappButton = whatsappButtonRef.current;
+          const whatsappFlair = whatsappFlairRef.current;
+          if (whatsappButton && whatsappFlair) {
+            whatsappButton.classList.remove('group');
+            whatsappFlair.style.transformOrigin = '50% 50%';
+            whatsappFlair.style.transform = 'scale(0)';
+          }
+        }}
         onClick={(e) => {
           e.preventDefault();
           e.stopPropagation();
           
-          const overlay = headerOverlayRef.current;
-          if (overlay) {
-            // Hide overlay temporarily
-            overlay.style.visibility = 'hidden';
+          // Get the header element
+          const header = document.querySelector('header');
+          if (!header) return;
+          
+          // Find all clickable elements in header (nav links, buttons)
+          const clickableElements = header.querySelectorAll('a, button') as NodeListOf<HTMLElement>;
+          
+          // Find which element is at/near the click position
+          let targetElement: HTMLElement | null = null;
+          let minDistance = Infinity;
+          
+          clickableElements.forEach((el) => {
+            const rect = el.getBoundingClientRect();
+            const clickX = e.clientX;
+            const clickY = e.clientY;
             
-            // Get element at click position
-            const elementBelow = document.elementFromPoint(e.clientX, e.clientY);
-            
-            // Restore overlay
-            overlay.style.visibility = 'visible';
-            
-            // Trigger click on the actual element
-            if (elementBelow) {
-              const clickableElement = elementBelow.closest('a, button');
-              if (clickableElement) {
-                (clickableElement as HTMLElement).click();
+            // Check if click is within element bounds
+            if (
+              clickX >= rect.left &&
+              clickX <= rect.right &&
+              clickY >= rect.top &&
+              clickY <= rect.bottom
+            ) {
+              // Calculate center distance for preference
+              const centerX = rect.left + rect.width / 2;
+              const centerY = rect.top + rect.height / 2;
+              const distance = Math.sqrt(
+                Math.pow(clickX - centerX, 2) + Math.pow(clickY - centerY, 2)
+              );
+              
+              if (distance < minDistance) {
+                minDistance = distance;
+                targetElement = el;
               }
             }
+          });
+          
+          // Trigger click on the found element
+          if (targetElement) {
+            (targetElement as HTMLElement).click();
           }
         }}
       />
