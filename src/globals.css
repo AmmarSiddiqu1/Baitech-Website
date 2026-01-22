@@ -288,6 +288,16 @@ section {
 
 .bg-deep-green {
   background-color: #0a8a22 !important;
+  animation: 2s ease infinite pulse-green;
+}
+
+@keyframes pulse-green {
+  0% {
+    box-shadow: 0 0 0 0 rgba(10, 138, 34, 1);
+  }
+  100% {
+    box-shadow: 0 0 0 24px rgba(10, 138, 34, 0);
+  }
 }
 
 /* How It Works - Connecting Line Color */
@@ -298,13 +308,33 @@ section {
 
 /* How It Works - Step 2 Circle Color */
 #how-it-works .bg-white.common-shadow-twentyEight {
-  background-color: #84DADE !important;
-  border: 2px solid #1ECAD3;
+  background-color: #1ECAD3 !important;
+  border: 2px solid #0099A8;
+  animation: 2s ease infinite pulse-teal;
+}
+
+@keyframes pulse-teal {
+  0% {
+    box-shadow: 0 0 0 0 rgba(30, 202, 211, 1);
+  }
+  100% {
+    box-shadow: 0 0 0 24px rgba(30, 202, 211, 0);
+  }
 }
 
 /* How It Works - Step 3 Circle Color */
 .how-it-works-step3-circle {
   background-color: #FF4438 !important;
+  animation: 2s ease infinite pulse-red;
+}
+
+@keyframes pulse-red {
+  0% {
+    box-shadow: 0 0 0 0 rgba(255, 68, 56, 1);
+  }
+  100% {
+    box-shadow: 0 0 0 24px rgba(255, 68, 56, 0);
+  }
 }
 
 .border-blue {

@@ -55,9 +55,9 @@ const HowItWorks: FC = () => {
               </div>
 
               {/* 3 Steps */}
-              <div className="tw-mt-80-px d-flex justify-content-between position-relative z-1 tw-gap-2 tw-pb-6">
+              <div className="tw-mt-80-px d-flex justify-content-center position-relative z-1 tw-gap-2 tw-pb-6" style={{ gap: "clamp(3rem, 10vw, 6rem)" }}>
                 {/* Connecting Line */}
-                <span className="tw-w-100--40-px tw-h-px how-it-works-connecting-line position-absolute tw-start-50 translate-middle-x top-0 z-n1 tw-mt-2"></span>
+                <span className="tw-h-px how-it-works-connecting-line position-absolute z-n1" style={{ top: "12px", left: "47%", transform: "translateX(-50%)", width: "calc(80% - 12px)" }}></span>
 
                 {/* Step 1 */}
                 <div className="text-center">
@@ -66,7 +66,7 @@ const HowItWorks: FC = () => {
                 </div>
 
                 {/* Step 2 */}
-                <div className="text-center">
+                <div className="text-center" style={{ marginLeft: "1rem" }}>
                   <span className="tw-w-405 tw-h-405 rounded-circle bg-white common-shadow-twentyEight"></span>
                   <span className="text-heading fw-semibold d-block tw-mt-4 text-capitalize">Set preferences</span>
                 </div>
