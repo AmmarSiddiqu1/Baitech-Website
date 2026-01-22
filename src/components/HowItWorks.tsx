@@ -1,6 +1,46 @@
 import type { FC } from "react";
+import { useState } from "react";
 
 const HowItWorks: FC = () => {
+  const [activeStep, setActiveStep] = useState<number>(0); // 0 = Sign Up, 1 = Set Preferences, 2 = Start Managing
+  const [isTransitioning, setIsTransitioning] = useState<boolean>(false);
+
+  // Content configuration with state-specific text and images
+  const content = [
+    {
+      heading: "Sign up and secure your account",
+      description: "In today's competitive business, the demand for efficient and cost-effective property management solutions has never been more critical.",
+      image: "/assets/images/work_process/work-process-five-thumb.png",
+    },
+    {
+      heading: "Set your preferences",
+      description: "Customize your property management experience by setting your preferences. Tailor the platform to match your unique business needs and workflow requirements.",
+      image: "/assets/images/work_process/preferences.png",
+    },
+    {
+      heading: "Start managing",
+      description: "Begin managing your properties with ease. Access powerful tools and features designed to streamline your operations and maximize efficiency.",
+      image: "/assets/images/work_process/modification.png",
+    },
+  ];
+
+  const handleCircleClick = (step: number) => {
+    if (step === activeStep || isTransitioning) return;
+    
+    // Prevent rapid clicking
+    setIsTransitioning(true);
+    
+    // Use requestAnimationFrame for smoother transitions
+    requestAnimationFrame(() => {
+      setActiveStep(step);
+    });
+    
+    // Reset transition state after animation completes (slightly longer for smoother feel)
+    setTimeout(() => {
+      setIsTransitioning(false);
+    }, 700);
+  };
+
   return (
     <section id="how-it-works" className="work-process-five py-120">
       <div className="container">
@@ -35,59 +75,103 @@ const HowItWorks: FC = () => {
         <div className="position-relative tw-mt-17 stair-bg tw-rounded-28-px" style={{ marginTop: "clamp(2rem, 4vw, 4rem)" }}>
           <div className="tw-px-40-px d-flex tw-pt-14 gradient-bg-seven tw-rounded-28-px position-relative flex-md-nowrap flex-wrap tw-gap-6" style={{ paddingTop: "clamp(2rem, 4vw, 3.5rem)", paddingLeft: "clamp(1rem, 2.5vw, 2.5rem)", paddingRight: "clamp(1rem, 2.5vw, 2.5rem)", paddingBottom: 0 }}>
             <div className="max-w-780-px mx-auto">
-              <div className="text-center">
+              <div className="text-center" style={{ minHeight: "clamp(120px, 15vw, 180px)" }}>
                 {/* Title */}
                 <h2
-                  className="splitTextStyleOne text-heading text-capitalize tw-leading-none max-w-500-px mx-auto"
+                  key={`heading-${activeStep}`}
+                  className="splitTextStyleOne text-heading text-capitalize tw-leading-none max-w-500-px mx-auto how-it-works-text"
                   style={{
                     fontSize: "clamp(24px, 3vw, 36px)",
                     fontWeight: 700,
                     color: "#002B49",
                     marginBottom: "1rem",
+                    minHeight: "clamp(60px, 8vw, 90px)",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
                   }}
                 >
-                  Sign up and secure your account
+                  {content[activeStep].heading}
                 </h2>
                 {/* Description */}
-                <p className="text-neutral-600 tw-text-xl tw-mt-605 splitTextStyleOne max-w-5 mx-auto fw-medium tw-leading-145 max-w-548-px">
-                  In today's competitive business, the demand for efficient and cost-effective property management solutions has never been more critical.
+                <p 
+                  key={`description-${activeStep}`}
+                  className="text-neutral-600 tw-text-xl tw-mt-605 splitTextStyleOne max-w-5 mx-auto fw-medium tw-leading-145 max-w-548-px how-it-works-text"
+                  style={{
+                    minHeight: "clamp(64px, 8vw, 96px)",
+                  }}
+                >
+                  {content[activeStep].description}
                 </p>
               </div>
 
               {/* 3 Steps */}
-              <div className="tw-mt-80-px d-flex justify-content-center position-relative z-1 tw-gap-2 tw-pb-6" style={{ gap: "clamp(3rem, 10vw, 6rem)" }}>
+              <div className="d-flex justify-content-center position-relative z-1 tw-gap-2 tw-pb-6" style={{ marginTop: "clamp(3rem, 6vw, 5rem)", gap: "clamp(3rem, 10vw, 6rem)" }}>
                 {/* Connecting Line */}
                 <span className="tw-h-px how-it-works-connecting-line position-absolute z-n1" style={{ top: "12px", left: "47%", transform: "translateX(-50%)", width: "calc(80% - 12px)" }}></span>
 
                 {/* Step 1 */}
-                <div className="text-center">
-                  <span className="tw-w-405 tw-h-405 bg-deep-green rounded-circle"></span>
+                <div 
+                  className="text-center how-it-works-circle-container"
+                  onClick={() => handleCircleClick(0)}
+                  style={{ 
+                    cursor: "pointer",
+                    transition: "transform 0.3s ease-in-out, opacity 0.3s ease-in-out",
+                    transform: activeStep === 0 ? "scale(1.1)" : "scale(1)",
+                    opacity: activeStep === 0 ? 1 : 0.7,
+                  }}
+                >
+                  <span className={`tw-w-405 tw-h-405 bg-deep-green rounded-circle ${activeStep === 0 ? 'how-it-works-active-circle' : ''}`}></span>
                   <span className="text-heading fw-semibold d-block tw-mt-4 text-capitalize">Sign up</span>
                 </div>
 
                 {/* Step 2 */}
-                <div className="text-center" style={{ marginLeft: "1rem" }}>
-                  <span className="tw-w-405 tw-h-405 rounded-circle bg-white common-shadow-twentyEight"></span>
+                <div 
+                  className="text-center how-it-works-circle-container"
+                  onClick={() => handleCircleClick(1)}
+                  style={{ 
+                    marginLeft: "1rem",
+                    cursor: "pointer",
+                    transition: "transform 0.3s ease-in-out, opacity 0.3s ease-in-out",
+                    transform: activeStep === 1 ? "scale(1.1)" : "scale(1)",
+                    opacity: activeStep === 1 ? 1 : 0.7,
+                  }}
+                >
+                  <span className={`tw-w-405 tw-h-405 rounded-circle bg-white common-shadow-twentyEight ${activeStep === 1 ? 'how-it-works-active-circle' : ''}`}></span>
                   <span className="text-heading fw-semibold d-block tw-mt-4 text-capitalize">Set preferences</span>
                 </div>
 
                 {/* Step 3 */}
-                <div className="text-center">
-                  <span className="tw-w-405 tw-h-405 rounded-circle how-it-works-step3-circle"></span>
+                <div 
+                  className="text-center how-it-works-circle-container"
+                  onClick={() => handleCircleClick(2)}
+                  style={{ 
+                    cursor: "pointer",
+                    transition: "transform 0.3s ease-in-out, opacity 0.3s ease-in-out",
+                    transform: activeStep === 2 ? "scale(1.1)" : "scale(1)",
+                    opacity: activeStep === 2 ? 1 : 0.7,
+                  }}
+                >
+                  <span className={`tw-w-405 tw-h-405 rounded-circle how-it-works-step3-circle ${activeStep === 2 ? 'how-it-works-active-circle' : ''}`}></span>
                   <span className="text-heading fw-semibold d-block tw-mt-4 text-capitalize">Start managing</span>
                 </div>
               </div>
             </div>
 
             {/* Right Side Image */}
-            <div className="d-flex flex-column justify-content-end" style={{ alignSelf: "flex-end" }}>
+            <div className="d-flex flex-column justify-content-end how-it-works-image-container" style={{ alignSelf: "flex-end", position: "relative", minHeight: "300px", willChange: "contents" }}>
               <img
-                src="/assets/images/work_process/work-process-five-thumb.png"
+                key={activeStep}
+                src={content[activeStep].image}
                 alt="How It Works"
-                data-aos="fade-up"
-                data-aos-anchor-placement="top-bottom"
-                data-aos-duration="1200"
-                style={{ display: "block", marginBottom: 0 }}
+                className="how-it-works-image"
+                style={{ 
+                  display: "block", 
+                  marginBottom: 0,
+                  width: "100%",
+                  height: "auto",
+                  willChange: "transform, opacity",
+                }}
               />
             </div>
           </div>

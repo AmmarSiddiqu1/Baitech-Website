@@ -337,6 +337,204 @@ section {
   }
 }
 
+/* How It Works - Active Circle State */
+.how-it-works-active-circle {
+  animation-duration: 1.5s !important;
+  box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.3) !important;
+}
+
+.how-it-works-circle-container {
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.how-it-works-circle-container:hover {
+  transform: scale(1.05) !important;
+  transition: transform 0.2s ease-in-out, opacity 0.2s ease-in-out !important;
+}
+
+.how-it-works-circle-container:active {
+  transform: scale(0.95) !important;
+  transition: transform 0.1s ease-in-out !important;
+}
+
+/* Smooth transition for circle state changes */
+.how-it-works-circle-container {
+  transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+  will-change: transform, opacity;
+  transform: translate3d(0, 0, 0);
+  -webkit-transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+/* Prevent click during transitions */
+.how-it-works-circle-container[style*="opacity: 0.7"] {
+  pointer-events: auto;
+}
+
+/* Enhanced visual feedback during transition */
+.how-it-works-circle-container:not([style*="opacity: 1"]) {
+  filter: brightness(0.9);
+  transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94), filter 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+}
+
+/* How It Works - Image Transitions */
+.how-it-works-image-container {
+  overflow: hidden;
+  will-change: contents;
+  position: relative;
+  contain: layout style paint;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+}
+
+.how-it-works-image {
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  animation: fadeInScale 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: opacity 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transform: translate3d(0, 0, 0);
+  -webkit-transform: translate3d(0, 0, 0);
+}
+
+@keyframes fadeInScale {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 12px, 0) scale(0.96);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+/* How It Works - Text Transitions with Staggered Timing */
+.how-it-works-text {
+  animation: fadeInUp 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.1s both;
+  will-change: opacity, transform;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transform: translate3d(0, 0, 0);
+  -webkit-transform: translate3d(0, 0, 0);
+  contain: layout style;
+}
+
+/* How It Works - Consistent Spacing */
+#how-it-works .max-w-780-px > div:first-child {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+#how-it-works .max-w-548-px {
+  min-height: 4rem;
+  display: block;
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 20px, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+/* Staggered animation for description (slightly delayed after heading) */
+.how-it-works-text:last-of-type {
+  animation-delay: 0.15s;
+}
+
+/* Enhanced pulse for active circles */
+.how-it-works-active-circle.bg-deep-green {
+  animation: 1.5s ease infinite pulse-green-active;
+  transform: scale(1.08);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 2;
+  position: relative;
+}
+
+.how-it-works-active-circle.common-shadow-twentyEight {
+  animation: 1.5s ease infinite pulse-blue-active;
+  transform: scale(1.08);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 2;
+  position: relative;
+}
+
+.how-it-works-active-circle.how-it-works-step3-circle {
+  animation: 1.5s ease infinite pulse-red-active;
+  transform: scale(1.08);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 2;
+  position: relative;
+}
+
+@keyframes pulse-green-active {
+  0% {
+    box-shadow: 0 0 0 0 rgba(10, 138, 34, 1), 0 0 0 0 rgba(255, 255, 255, 0.4), 0 4px 12px rgba(10, 138, 34, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 0 14px rgba(10, 138, 34, 0.4), 0 0 0 5px rgba(255, 255, 255, 0.6), 0 6px 16px rgba(10, 138, 34, 0.3);
+  }
+  100% {
+    box-shadow: 0 0 0 28px rgba(10, 138, 34, 0), 0 0 0 10px rgba(255, 255, 255, 0), 0 4px 12px rgba(10, 138, 34, 0.2);
+  }
+}
+
+@keyframes pulse-blue-active {
+  0% {
+    box-shadow: 0 0 0 0 rgba(30, 202, 211, 1), 0 0 0 0 rgba(255, 255, 255, 0.4), 0 4px 12px rgba(30, 202, 211, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 0 14px rgba(30, 202, 211, 0.4), 0 0 0 5px rgba(255, 255, 255, 0.6), 0 6px 16px rgba(30, 202, 211, 0.3);
+  }
+  100% {
+    box-shadow: 0 0 0 28px rgba(30, 202, 211, 0), 0 0 0 10px rgba(255, 255, 255, 0), 0 4px 12px rgba(30, 202, 211, 0.2);
+  }
+}
+
+@keyframes pulse-red-active {
+  0% {
+    box-shadow: 0 0 0 0 rgba(255, 68, 56, 1), 0 0 0 0 rgba(255, 255, 255, 0.4), 0 4px 12px rgba(255, 68, 56, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 0 14px rgba(255, 68, 56, 0.4), 0 0 0 5px rgba(255, 255, 255, 0.6), 0 6px 16px rgba(255, 68, 56, 0.3);
+  }
+  100% {
+    box-shadow: 0 0 0 28px rgba(255, 68, 56, 0), 0 0 0 10px rgba(255, 255, 255, 0), 0 4px 12px rgba(255, 68, 56, 0.2);
+  }
+}
+
+/* How It Works - Responsive and Touch-Friendly */
+@media (max-width: 991px) {
+  .how-it-works-circle-container {
+    min-width: 60px;
+    min-height: 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem;
+  }
+  
+  .how-it-works-image {
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+@media (max-width: 575px) {
+  .how-it-works-circle-container {
+    min-width: 50px;
+    min-height: 50px;
+  }
+}
+
 .border-blue {
   border-color: #1ECAD3 !important;
 }
