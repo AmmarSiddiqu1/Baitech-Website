@@ -33,7 +33,7 @@ const HowItWorks: FC = () => {
         </div>
 
         <div className="position-relative tw-mt-17 stair-bg tw-rounded-28-px" style={{ marginTop: "clamp(2rem, 4vw, 4rem)" }}>
-          <div className="tw-px-40-px d-flex tw-pt-14 gradient-bg-eight tw-rounded-28-px position-relative flex-md-nowrap flex-wrap tw-gap-6" style={{ paddingTop: "clamp(2rem, 4vw, 3.5rem)", paddingLeft: "clamp(1rem, 2.5vw, 2.5rem)", paddingRight: "clamp(1rem, 2.5vw, 2.5rem)", paddingBottom: 0 }}>
+          <div className="tw-px-40-px d-flex tw-pt-14 gradient-bg-seven tw-rounded-28-px position-relative flex-md-nowrap flex-wrap tw-gap-6" style={{ paddingTop: "clamp(2rem, 4vw, 3.5rem)", paddingLeft: "clamp(1rem, 2.5vw, 2.5rem)", paddingRight: "clamp(1rem, 2.5vw, 2.5rem)", paddingBottom: 0 }}>
             <div className="max-w-780-px mx-auto">
               <div className="text-center">
                 {/* Title */}
