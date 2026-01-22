@@ -16,16 +16,23 @@ const Header: FC = () => {
       setScroll(shouldBeFixed);
 
       // Update active section based on scroll position
-      const sections = ["home", "features", "how-it-works", "faq", "contact"];
-      const current = sections.find((section) => {
-        const element = document.getElementById(section);
-        if (element) {
-          const rect = element.getBoundingClientRect();
-          return rect.top <= 150 && rect.bottom >= 150;
-        }
-        return false;
-      });
-      if (current) setActiveSection(current);
+      // Don't set active section if we're on privacy-policy or terms-and-conditions pages
+      const currentPath = window.location.pathname;
+      if (currentPath !== "/privacy-policy" && currentPath !== "/terms-and-conditions") {
+        const sections = ["home", "features", "how-it-works", "faq", "contact"];
+        const current = sections.find((section) => {
+          const element = document.getElementById(section);
+          if (element) {
+            const rect = element.getBoundingClientRect();
+            return rect.top <= 150 && rect.bottom >= 150;
+          }
+          return false;
+        });
+        if (current) setActiveSection(current);
+      } else {
+        // Clear active section on policy pages
+        setActiveSection("");
+      }
 
       // Header styling on scroll with smooth z-index transitions
       const isMobile = window.innerWidth < 992;
@@ -164,8 +171,8 @@ const Header: FC = () => {
           transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
           transform: "translateY(0)",
           pointerEvents: "auto",
-          paddingTop: "clamp(0.5rem, 2vw, 1rem)",
-          paddingBottom: "clamp(0.5rem, 2vw, 1rem)",
+          paddingTop: scroll ? "clamp(0.25rem, 1vw, 0.5rem)" : "clamp(0.4rem, 1.5vw, 0.8rem)",
+          paddingBottom: scroll ? "clamp(0.25rem, 1vw, 0.5rem)" : "clamp(0.4rem, 1.5vw, 0.8rem)",
         }}
       >
         <div className='container container-two'>
@@ -176,12 +183,37 @@ const Header: FC = () => {
                 href='#home'
                 className='link hover--translate-y-1 active--translate-y-scale-9'
                 style={{ textDecoration: "none", cursor: "pointer" }}
+                onClick={(e) => {
+                  const currentPath = window.location.pathname;
+                  // If we're on policy pages, navigate to home first
+                  if (currentPath === "/privacy-policy" || currentPath === "/terms-and-conditions") {
+                    e.preventDefault();
+                    // Navigate to home page
+                    window.history.pushState({}, "", "/");
+                    window.dispatchEvent(new PopStateEvent("popstate"));
+                    // Wait for page to render, then scroll to home
+                    setTimeout(() => {
+                      const element = document.getElementById("home");
+                      if (element) {
+                        element.scrollIntoView({ behavior: "smooth", block: "start" });
+                      } else {
+                        window.scrollTo({ top: 0, behavior: "smooth" });
+                      }
+                    }, 100);
+                  }
+                }}
               >
                 <img
                   src='/assets/images/logo/Logo.svg'
                   alt='Baitech Logo'
                   className="header-logo"
-                  style={{ height: "clamp(32px, 6vw, 60px)", width: "auto", maxHeight: "clamp(32px, 6vw, 60px)" }}
+                  style={{ 
+                    height: scroll ? "clamp(28px, 5vw, 50px)" : "clamp(32px, 6vw, 60px)", 
+                    width: scroll ? "clamp(140px, 18vw, 220px)" : "clamp(160px, 22vw, 260px)", 
+                    maxHeight: scroll ? "clamp(28px, 5vw, 50px)" : "clamp(32px, 6vw, 60px)",
+                    objectFit: "contain",
+                    transition: "height 0.3s cubic-bezier(0.4, 0, 0.2, 1), width 0.3s cubic-bezier(0.4, 0, 0.2, 1)"
+                  }}
                 />
               </a>
             </div>
@@ -208,6 +240,26 @@ const Header: FC = () => {
                           transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
                           position: "relative",
                           cursor: "pointer",
+                        }}
+                        onClick={(e) => {
+                          const currentPath = window.location.pathname;
+                          // If we're on policy pages, navigate to home first
+                          if (currentPath === "/privacy-policy" || currentPath === "/terms-and-conditions") {
+                            e.preventDefault();
+                            // Navigate to home page
+                            window.history.pushState({}, "", "/");
+                            window.dispatchEvent(new PopStateEvent("popstate"));
+                            // Wait for page to render, then scroll to target section
+                            setTimeout(() => {
+                              const targetId = item.href.substring(1);
+                              const element = document.getElementById(targetId);
+                              if (element) {
+                                element.scrollIntoView({ behavior: "smooth", block: "start" });
+                              } else {
+                                window.scrollTo({ top: 0, behavior: "smooth" });
+                              }
+                            }, 100);
+                          }
                         }}
                         onMouseEnter={(e) => {
                           e.currentTarget.style.transform = "translateY(-2px)";
@@ -306,7 +358,28 @@ const Header: FC = () => {
           <i className='ph ph-x' />
         </button>
         <div className='mobile-menu__inner'>
-          <a href='#home' className='mobile-menu__logo' onClick={handleMobileMenu}>
+          <a 
+            href='#home' 
+            className='mobile-menu__logo' 
+            onClick={(e) => {
+              const currentPath = window.location.pathname;
+              // If we're on policy pages, navigate to home first
+              if (currentPath === "/privacy-policy" || currentPath === "/terms-and-conditions") {
+                e.preventDefault();
+                window.history.pushState({}, "", "/");
+                window.dispatchEvent(new PopStateEvent("popstate"));
+                setTimeout(() => {
+                  const element = document.getElementById("home");
+                  if (element) {
+                    element.scrollIntoView({ behavior: "smooth", block: "start" });
+                  } else {
+                    window.scrollTo({ top: 0, behavior: "smooth" });
+                  }
+                }, 100);
+              }
+              handleMobileMenu();
+            }}
+          >
             <img
               src='/assets/images/logo/Logo.svg'
               alt='Baitech Logo'
@@ -321,7 +394,27 @@ const Header: FC = () => {
                 <li key={item.label} className='nav-menu__item'>
                   <a
                     href={item.href}
-                    onClick={handleMobileMenu}
+                    onClick={(e) => {
+                      const currentPath = window.location.pathname;
+                      // If we're on policy pages, navigate to home first
+                      if (currentPath === "/privacy-policy" || currentPath === "/terms-and-conditions") {
+                        e.preventDefault();
+                        // Navigate to home page
+                        window.history.pushState({}, "", "/");
+                        window.dispatchEvent(new PopStateEvent("popstate"));
+                        // Wait for page to render, then scroll to target section
+                        setTimeout(() => {
+                          const targetId = item.href.substring(1);
+                          const element = document.getElementById(targetId);
+                          if (element) {
+                            element.scrollIntoView({ behavior: "smooth", block: "start" });
+                          } else {
+                            window.scrollTo({ top: 0, behavior: "smooth" });
+                          }
+                        }, 100);
+                      }
+                      handleMobileMenu();
+                    }}
                     className='nav-menu__link text-heading tw-py-9 fw-semibold w-100'
                     style={{
                       color: "#002B49",

@@ -385,6 +385,46 @@ const Footer: FC = () => {
                     <i className="ph-bold ph-arrow-up-right" />
                   </button>
                 </form>
+                {/* Terms and Conditions Links */}
+                <div style={{ marginTop: "1.5rem", display: "flex", gap: "1rem", flexWrap: "wrap" }}>
+                  <a
+                    href="/terms-and-conditions"
+                    style={{
+                      color: "#1ECAD3",
+                      textDecoration: "none",
+                      fontSize: "14px",
+                      fontWeight: 600,
+                      transition: "color 0.3s ease",
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.color = "#FF4438";
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.color = "#1ECAD3";
+                    }}
+                  >
+                    Terms and Conditions
+                  </a>
+                  <span style={{ color: "#84DADE" }}>|</span>
+                  <a
+                    href="/privacy-policy"
+                    style={{
+                      color: "#1ECAD3",
+                      textDecoration: "none",
+                      fontSize: "14px",
+                      fontWeight: 600,
+                      transition: "color 0.3s ease",
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.color = "#FF4438";
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.color = "#1ECAD3";
+                    }}
+                  >
+                    Privacy Policy
+                  </a>
+                </div>
               </div>
             </div>
 
