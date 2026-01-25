@@ -25,10 +25,6 @@ const Footer: FC = () => {
       const percentX = (x / rect.width) * 100;
       const percentY = (y / rect.height) * 100;
       
-      // Calculate opposite point for fill direction
-      const oppositeX = 100 - percentX;
-      const oppositeY = 100 - percentY;
-      
       // Set transform origin to cursor position, fill expands to opposite
       flair.style.transformOrigin = `${percentX}% ${percentY}%`;
       

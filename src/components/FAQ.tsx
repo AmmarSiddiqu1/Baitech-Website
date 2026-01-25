@@ -1,4 +1,6 @@
 import { useState, type FC } from "react";
+import { headingStyles, bodyStyles } from "../utils/styles";
+import { COLORS, TRANSITIONS } from "../constants";
 
 const FAQ: FC = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
@@ -31,21 +33,28 @@ const FAQ: FC = () => {
     },
   ];
 
+  const cardStyle = {
+    background: COLORS.white,
+    borderRadius: "12px",
+    border: "1px solid #E9ECEF",
+    overflow: "hidden" as const,
+    transition: TRANSITIONS.smooth,
+  };
+
+  const buttonStyle = {
+    background: "none",
+    border: "none",
+    cursor: "pointer" as const,
+    textAlign: "left" as const,
+    transition: TRANSITIONS.smoothFast,
+  };
+
   return (
     <section id='faq' className='tw-py-80-px'>
       <div className='container'>
         <div className='row'>
           <div className='col-12 text-center tw-mb-12'>
-            <h2
-              className='tw-mb-4'
-              style={{
-                fontSize: "clamp(28px, 4vw, 48px)",
-                fontWeight: 700,
-                color: "#002B49",
-                fontFamily: "'Filson Pro'",
-              }}
-              data-aos='fade-up'
-            >
+            <h2 className='tw-mb-4' style={headingStyles.h2} data-aos='fade-up'>
               Frequently Asked Questions
             </h2>
           </div>
@@ -54,20 +63,9 @@ const FAQ: FC = () => {
         <div className='row'>
           <div className='col-lg-8 mx-auto'>
             {faqs.map((faq, index) => (
-              <div
-                key={index}
-                className='tw-mb-3'
-                data-aos='fade-up'
-                data-aos-delay={index * 100}
-              >
+              <div key={index} className='tw-mb-3' data-aos='fade-up' data-aos-delay={index * 100}>
                 <div
-                  style={{
-                    background: "#FFFFFF",
-                    borderRadius: "12px",
-                    border: "1px solid #E9ECEF",
-                    overflow: "hidden",
-                    transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
-                  }}
+                  style={cardStyle}
                   onMouseEnter={(e) => {
                     e.currentTarget.style.boxShadow = "0 4px 12px rgba(0, 43, 73, 0.08)";
                   }}
@@ -76,27 +74,11 @@ const FAQ: FC = () => {
                   }}
                 >
                   <button
-                    onClick={() =>
-                      setOpenIndex(openIndex === index ? null : index)
-                    }
+                    onClick={() => setOpenIndex(openIndex === index ? null : index)}
                     className='w-100 p-4 d-flex align-items-center justify-content-between'
-                    style={{
-                      background: "none",
-                      border: "none",
-                      cursor: "pointer",
-                      textAlign: "left",
-                      transition: "all 0.2s ease",
-                    }}
+                    style={buttonStyle}
                   >
-                    <h3
-                      style={{
-                        fontSize: "18px",
-                        fontWeight: 600,
-                        color: "#002B49",
-                        fontFamily: "'Filson Pro'",
-                        margin: 0,
-                      }}
-                    >
+                    <h3 style={{ ...headingStyles.h4, fontSize: "18px", margin: 0 }}>
                       {faq.question}
                     </h3>
                     <div
@@ -114,11 +96,7 @@ const FAQ: FC = () => {
                     >
                       <i
                         className={`ph ph-${openIndex === index ? "minus" : "plus"}`}
-                        style={{
-                          fontSize: "24px",
-                          color: "#1ECAD3",
-                          transition: "opacity 0.2s ease",
-                        }}
+                        style={{ fontSize: "24px", color: COLORS.mediumBlue, transition: "opacity 0.2s ease" }}
                       />
                     </div>
                   </button>
@@ -130,22 +108,8 @@ const FAQ: FC = () => {
                       opacity: openIndex === index ? 1 : 0,
                     }}
                   >
-                    <div
-                      className='p-4'
-                      style={{
-                        borderTop: "1px solid #E9ECEF",
-                        background: "#F8F9FA",
-                      }}
-                    >
-                      <p
-                        style={{
-                          fontSize: "16px",
-                          color: "#666",
-                          fontFamily: "'Filson Pro'",
-                          lineHeight: "1.8",
-                          margin: 0,
-                        }}
-                      >
+                    <div className='p-4' style={{ borderTop: "1px solid #E9ECEF", background: "#F8F9FA" }}>
+                      <p style={{ ...bodyStyles.medium, color: COLORS.neutral500, lineHeight: "1.8", margin: 0 }}>
                         {faq.answer}
                       </p>
                     </div>

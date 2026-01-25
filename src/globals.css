@@ -87,103 +87,7 @@ a:hover, button:hover {
   transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Brand Color Overrides */
-.bg-baitech-light-blue {
-  background-color: var(--baitech-light-blue) !important;
-}
-
-.bg-baitech-medium-blue {
-  background-color: var(--baitech-medium-blue) !important;
-}
-
-.bg-baitech-darker-blue {
-  background-color: var(--baitech-darker-blue) !important;
-}
-
-.bg-baitech-warm-red {
-  background-color: var(--baitech-warm-red) !important;
-}
-
-.bg-baitech-dark-navy {
-  background-color: var(--baitech-dark-navy) !important;
-}
-
-.text-baitech-light-blue {
-  color: var(--baitech-light-blue) !important;
-}
-
-.text-baitech-medium-blue {
-  color: var(--baitech-medium-blue) !important;
-}
-
-.text-baitech-darker-blue {
-  color: var(--baitech-darker-blue) !important;
-}
-
-.text-baitech-warm-red {
-  color: var(--baitech-warm-red) !important;
-}
-
-.text-baitech-dark-navy {
-  color: var(--baitech-dark-navy) !important;
-}
-
-/* Button Styles */
-.btn-baitech-primary {
-  background-color: var(--baitech-warm-red);
-  color: var(--baitech-white);
-  border: none;
-  padding: 12px 32px;
-  border-radius: 50px;
-  font-weight: 600;
-  transition: all 0.3s ease;
-}
-
-.btn-baitech-primary:hover {
-  background-color: var(--baitech-darker-blue);
-  color: var(--baitech-white);
-  transform: translateY(-2px);
-}
-
-.btn-baitech-secondary {
-  background-color: transparent;
-  color: var(--baitech-dark-navy);
-  border: 2px solid var(--baitech-dark-navy);
-  padding: 12px 32px;
-  border-radius: 50px;
-  font-weight: 600;
-  transition: all 0.3s ease;
-}
-
-.btn-baitech-secondary:hover {
-  background-color: var(--baitech-dark-navy);
-  color: var(--baitech-white);
-  transform: translateY(-2px);
-}
-
-/* Geometric Pattern Background */
-.geometric-pattern {
-  position: relative;
-  overflow: hidden;
-}
-
-.geometric-pattern::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  opacity: 0.1;
-  background-image: 
-    linear-gradient(45deg, var(--baitech-light-blue) 25%, transparent 25%),
-    linear-gradient(-45deg, var(--baitech-medium-blue) 25%, transparent 25%),
-    linear-gradient(45deg, transparent 75%, var(--baitech-warm-red) 75%),
-    linear-gradient(-45deg, transparent 75%, var(--baitech-darker-blue) 75%);
-  background-size: 60px 60px;
-  background-position: 0 0, 0 30px, 30px -30px, -30px 0px;
-  pointer-events: none;
-}
+/* Brand Color Overrides - Removed unused classes, kept CSS variables for reference */
 
 /* RTL Support */
 [dir="rtl"] {
@@ -210,25 +114,6 @@ section {
   }
 }
 
-/* App Screens Carousel - Custom Navigation Arrows */
-.app-screens-swiper .swiper-button-next,
-.app-screens-swiper .swiper-button-prev {
-  display: none !important;
-}
-
-/* Hide default Swiper navigation */
-.app-screens-swiper .swiper-button-next::after,
-.app-screens-swiper .swiper-button-prev::after {
-  display: none;
-}
-
-/* Custom arrow buttons - responsive */
-@media (max-width: 1024px) {
-  .app-screens-prev,
-  .app-screens-next {
-    display: none !important;
-  }
-}
 
 /* Template Gradient Backgrounds - VIBRANT BRAND COLORS */
 .gradient-bg-hero {
@@ -570,33 +455,6 @@ section {
 }
 
 /* Padding utilities */
-.tw-pt-100-px {
-  padding-top: 100px;
-}
-
-.tw-pb-80-px {
-  padding-bottom: 80px;
-}
-
-.tw-py-80-px {
-  padding-top: 80px;
-  padding-bottom: 80px;
-}
-
-.tw-py-100-px {
-  padding-top: 100px;
-  padding-bottom: 100px;
-}
-
-.tw-px-40-px {
-  padding-left: 40px;
-  padding-right: 40px;
-}
-
-.tw-mx-48-px {
-  margin-left: 48px;
-  margin-right: 48px;
-}
 
 .py-120 {
   padding-top: 120px;
@@ -608,24 +466,13 @@ section {
 }
 
 /* Text utilities */
-.text-56-px {
-  font-size: clamp(32px, 5vw, 56px);
-}
-
-.max-w-724-px {
-  max-width: 724px;
-}
-
+/* Max width utilities - Keep only used ones */
 .max-w-780-px {
   max-width: 780px;
 }
 
 .max-w-548-px {
   max-width: 548px;
-}
-
-.max-w-570-px {
-  max-width: 570px;
 }
 
 .max-w-602-px {
@@ -636,71 +483,11 @@ section {
   max-width: 910px;
 }
 
-.max-w-250-px {
-  max-width: 250px;
-}
-
-.max-w-278-px {
-  max-width: 278px;
-}
-
 .max-w-500-px {
   max-width: 500px;
 }
 
-/* Shadows - COLORFUL BRAND SHADOWS */
-.common-shadow-brand {
-  box-shadow: 0 8px 24px rgba(30, 202, 211, 0.25);
-}
-
-.common-shadow-brand-light {
-  box-shadow: 0 4px 16px rgba(132, 218, 222, 0.2);
-}
-
-.common-shadow-brand-dark {
-  box-shadow: 0 12px 32px rgba(0, 153, 168, 0.3);
-}
-
-.common-shadow-accent {
-  box-shadow: 0 8px 24px rgba(255, 68, 56, 0.25);
-}
-
-/* Background utilities - VIBRANT BRAND COLORS */
-.bg-white-13 {
-  background-color: rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(10px);
-}
-
-.bg-brand-light {
-  background: linear-gradient(135deg, rgba(132, 218, 222, 0.15) 0%, rgba(30, 202, 211, 0.1) 100%);
-}
-
-.bg-brand-medium {
-  background: linear-gradient(135deg, #84DADE 0%, #1ECAD3 100%);
-}
-
-.bg-brand-dark {
-  background: linear-gradient(135deg, #0099A8 0%, #002B49 100%);
-}
-
-.bg-brand-accent {
-  background: linear-gradient(135deg, #FF4438 0%, #FF6B5E 100%);
-}
-
-/* Border utilities - BRAND COLORS */
-.border-brand {
-  border-color: #1ECAD3 !important;
-}
-
-.border-brand-light {
-  border-color: #84DADE !important;
-}
-
-.border-brand-dark {
-  border-color: #0099A8 !important;
-}
-
-/* Text color utilities */
+/* Text color utilities - Keep only used ones */
 .text-neutral-500 {
   color: #666666;
 }
@@ -717,25 +504,7 @@ section {
   color: #1ECAD3;
 }
 
-.hover-underline:hover {
-  text-decoration: underline;
-}
-
-/* Button hover effects */
-.hover-bg-main-600:hover {
-  background-color: #1ECAD3 !important;
-  color: #FFFFFF !important;
-}
-
-.hover-border-main-600:hover {
-  border-color: #1ECAD3 !important;
-}
-
-/* Spacing utilities */
-.tw-gap-148-px {
-  gap: 148px;
-}
-
+/* Spacing utilities - Keep only used ones */
 .tw-gap-2 {
   gap: 8px;
 }
@@ -758,14 +527,6 @@ section {
 
 .tw-gap-7 {
   gap: 28px;
-}
-
-.tw-gap-205 {
-  gap: 12px;
-}
-
-.tw-gap-305 {
-  gap: 12px;
 }
 
 .tw-gap-405 {
@@ -820,9 +581,6 @@ section {
   margin-top: 80px;
 }
 
-.tw-mt-160-px {
-  margin-top: 160px;
-}
 
 .tw-mt-405 {
   margin-top: 16px;
@@ -864,9 +622,6 @@ section {
   padding-bottom: 60px;
 }
 
-.tw-pb-68 {
-  padding-bottom: 272px;
-}
 
 .tw-pt-13 {
   padding-top: 52px;

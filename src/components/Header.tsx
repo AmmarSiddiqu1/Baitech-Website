@@ -1,5 +1,41 @@
 import { useEffect, useState, useRef, type FC } from "react";
-import { throttle } from "lodash";
+
+// Custom throttle function to avoid lodash dependency
+const throttle = <T extends (...args: any[]) => any>(
+  func: T,
+  wait: number
+): ((...args: Parameters<T>) => void) & { cancel: () => void } => {
+  let timeout: NodeJS.Timeout | null = null;
+  let previous = 0;
+  
+  const throttled = function (this: any, ...args: Parameters<T>) {
+    const now = Date.now();
+    const remaining = wait - (now - previous);
+    if (remaining <= 0 || remaining > wait) {
+      if (timeout) {
+        clearTimeout(timeout);
+        timeout = null;
+      }
+      previous = now;
+      func.apply(this, args);
+    } else if (!timeout) {
+      timeout = setTimeout(() => {
+        previous = Date.now();
+        timeout = null;
+        func.apply(this, args);
+      }, remaining);
+    }
+  } as ((...args: Parameters<T>) => void) & { cancel: () => void };
+  
+  throttled.cancel = () => {
+    if (timeout) {
+      clearTimeout(timeout);
+      timeout = null;
+    }
+  };
+  
+  return throttled;
+};
 
 const Header: FC = () => {
   const [mobileMenu, setMobileMenu] = useState<boolean>(false);
@@ -38,6 +74,29 @@ const Header: FC = () => {
       const isMobile = window.innerWidth < 992;
       const header = document.querySelector('header') as HTMLElement;
       if (header) {
+        // Update header padding based on scroll state
+        if (shouldBeFixed) {
+          header.style.paddingTop = 'clamp(0.25rem, 1vw, 0.5rem)';
+          header.style.paddingBottom = 'clamp(0.25rem, 1vw, 0.5rem)';
+        } else {
+          header.style.paddingTop = 'clamp(0.4rem, 1.5vw, 0.8rem)';
+          header.style.paddingBottom = 'clamp(0.4rem, 1.5vw, 0.8rem)';
+        }
+        
+        // Update logo size based on scroll state
+        const logoImg = header.querySelector('.header-logo') as HTMLElement;
+        if (logoImg) {
+          if (shouldBeFixed) {
+            logoImg.style.height = 'clamp(28px, 5vw, 50px)';
+            logoImg.style.width = 'clamp(140px, 18vw, 220px)';
+            logoImg.style.maxHeight = 'clamp(28px, 5vw, 50px)';
+          } else {
+            logoImg.style.height = 'clamp(32px, 6vw, 60px)';
+            logoImg.style.width = 'clamp(160px, 22vw, 260px)';
+            logoImg.style.maxHeight = 'clamp(32px, 6vw, 60px)';
+          }
+        }
+        
         if (isMobile) {
           // On mobile: header always on top (no overlap)
           header.style.zIndex = '9999';
@@ -72,6 +131,9 @@ const Header: FC = () => {
             // Show transparent overlay for clickability
             if (headerOverlayRef.current) {
               headerOverlayRef.current.style.display = 'block';
+              // Update overlay height to match actual header height
+              const headerRect = header.getBoundingClientRect();
+              headerOverlayRef.current.style.height = `${headerRect.height}px`;
             }
           }
         }
@@ -149,6 +211,30 @@ const Header: FC = () => {
     });
   }, []);
 
+  // Update overlay height to match header height
+  useEffect(() => {
+    if (!scroll && headerOverlayRef.current) {
+      const header = document.querySelector('header') as HTMLElement;
+      if (header) {
+        const updateOverlayHeight = () => {
+          if (headerOverlayRef.current && !scroll) {
+            const headerRect = header.getBoundingClientRect();
+            headerOverlayRef.current.style.height = `${headerRect.height}px`;
+          }
+        };
+        
+        // Update on mount and when scroll state changes
+        updateOverlayHeight();
+        
+        // Use ResizeObserver to update when header size changes
+        const resizeObserver = new ResizeObserver(updateOverlayHeight);
+        resizeObserver.observe(header);
+        
+        return () => resizeObserver.disconnect();
+      }
+    }
+  }, [scroll]);
+
   const navItems = [
     { label: "Home", href: "#home" },
     { label: "How It Works", href: "#how-it-works" },
@@ -173,18 +259,23 @@ const Header: FC = () => {
           transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
           transform: "translateY(0)",
           pointerEvents: "auto",
-          paddingTop: "clamp(0.4rem, 1.5vw, 0.8rem)",
-          paddingBottom: "clamp(0.4rem, 1.5vw, 0.8rem)",
+          paddingTop: scroll ? "clamp(0.25rem, 1vw, 0.5rem)" : "clamp(0.4rem, 1.5vw, 0.8rem)",
+          paddingBottom: scroll ? "clamp(0.25rem, 1vw, 0.5rem)" : "clamp(0.4rem, 1.5vw, 0.8rem)",
         }}
       >
-        <div className='container container-two'>
-          <nav className='d-flex align-items-center justify-content-between' style={{ gap: "clamp(0.5rem, 2vw, 1rem)" }}>
+        <div className='container container-two' style={{ paddingLeft: "clamp(1rem, 3vw, 2rem)", paddingRight: "clamp(1rem, 3vw, 2rem)" }}>
+          <nav className='d-flex align-items-center justify-content-between' style={{ gap: "clamp(0.5rem, 2vw, 1rem)", width: "100%" }}>
             {/* Logo Start */}
-            <div className='logo'>
+            <div className='logo' style={{ 
+              minWidth: "clamp(160px, 22vw, 260px)",
+              display: "flex",
+              alignItems: "center",
+              flexShrink: 0,
+            }}>
               <a
                 href='#home'
                 className='link hover--translate-y-1 active--translate-y-scale-9'
-                style={{ textDecoration: "none", cursor: "pointer" }}
+                style={{ textDecoration: "none", cursor: "pointer", display: "flex", alignItems: "center" }}
                 onClick={(e) => {
                   const currentPath = window.location.pathname;
                   // If we're on policy pages, navigate to home first
@@ -210,18 +301,19 @@ const Header: FC = () => {
                   alt='Baitech Logo'
                   className="header-logo"
                   style={{ 
-                    height: "clamp(32px, 6vw, 60px)", 
-                    width: "clamp(160px, 22vw, 260px)", 
-                    maxHeight: "clamp(32px, 6vw, 60px)",
+                    height: scroll ? "clamp(28px, 5vw, 50px)" : "clamp(32px, 6vw, 60px)", 
+                    width: scroll ? "clamp(140px, 18vw, 220px)" : "clamp(160px, 22vw, 260px)", 
+                    maxHeight: scroll ? "clamp(28px, 5vw, 50px)" : "clamp(32px, 6vw, 60px)",
                     objectFit: "contain",
+                    transition: "height 0.3s cubic-bezier(0.4, 0, 0.2, 1), width 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
                   }}
                 />
               </a>
             </div>
 
             {/* Menu Start */}
-            <div className='header-menu d-lg-block d-none'>
-              <ul className='nav-menu d-lg-flex align-items-center tw-gap-7'>
+            <div className='header-menu d-lg-block d-none' style={{ flex: "1 1 auto", display: "flex", justifyContent: "center" }}>
+              <ul className='nav-menu d-lg-flex align-items-center tw-gap-7' style={{ margin: 0, padding: 0 }}>
                 {navItems.map((item) => {
                   const sectionId = item.href.substring(1);
                   const isActive = activeSection === sectionId;
@@ -443,14 +535,40 @@ const Header: FC = () => {
           right: 0,
           height: 'clamp(60px, 8vw, 80px)',
           zIndex: 10001,
-          pointerEvents: 'auto',
+          pointerEvents: scroll ? 'none' : 'auto',
           backgroundColor: 'transparent',
           display: scroll ? 'none' : 'block',
+          cursor: 'default',
         }}
         onMouseMove={(e) => {
           // Find which header menu item is below cursor
           const header = document.querySelector('header');
           if (!header) return;
+          
+          // Check if cursor is over any clickable element
+          const clickableElements = header.querySelectorAll('a, button') as NodeListOf<HTMLElement>;
+          let isOverClickable = false;
+          
+          clickableElements.forEach((el) => {
+            const rect = el.getBoundingClientRect();
+            if (
+              e.clientX >= rect.left &&
+              e.clientX <= rect.right &&
+              e.clientY >= rect.top &&
+              e.clientY <= rect.bottom
+            ) {
+              isOverClickable = true;
+              // Update cursor style on the overlay
+              if (headerOverlayRef.current) {
+                headerOverlayRef.current.style.cursor = 'pointer';
+              }
+            }
+          });
+          
+          // If not over clickable element, reset cursor
+          if (!isOverClickable && headerOverlayRef.current) {
+            headerOverlayRef.current.style.cursor = 'default';
+          }
           
           // Handle nav links
           const navLinks = header.querySelectorAll('.nav-menu__link') as NodeListOf<HTMLElement>;
@@ -500,8 +618,29 @@ const Header: FC = () => {
               whatsappButton.classList.remove('group');
             }
           }
+          
+          // Handle logo hover
+          const logoLink = header.querySelector('.logo a') as HTMLElement;
+          if (logoLink) {
+            const rect = logoLink.getBoundingClientRect();
+            if (
+              e.clientX >= rect.left &&
+              e.clientX <= rect.right &&
+              e.clientY >= rect.top &&
+              e.clientY <= rect.bottom
+            ) {
+              if (headerOverlayRef.current) {
+                headerOverlayRef.current.style.cursor = 'pointer';
+              }
+            }
+          }
         }}
         onMouseLeave={() => {
+          // Reset cursor
+          if (headerOverlayRef.current) {
+            headerOverlayRef.current.style.cursor = 'default';
+          }
+          
           // Reset all header menu items
           const header = document.querySelector('header');
           if (!header) return;

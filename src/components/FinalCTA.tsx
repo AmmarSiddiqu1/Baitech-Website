@@ -37,10 +37,6 @@ const FinalCTA: FC = () => {
       const percentX = (x / rect.width) * 100;
       const percentY = (y / rect.height) * 100;
       
-      // Calculate opposite point for fill direction
-      const oppositeX = 100 - percentX;
-      const oppositeY = 100 - percentY;
-      
       // Set transform origin to cursor position, fill expands to opposite
       flair.style.transformOrigin = `${percentX}% ${percentY}%`;
       
@@ -99,7 +95,7 @@ const FinalCTA: FC = () => {
                 {/* Right Content */}
                 <div className="col-md-6" style={{ paddingLeft: "clamp(0, 2vw, 2rem)" }}>
             <div className="">
-              <div className="max-w-780-px text-start mx-auto">
+              <div className="max-w-780-px text-lg-start text-center mx-auto">
                 {/* Badge */}
                 <div
                   className="tw-py-2 tw-px-7 rounded-pill fw-bold text-capitalize tw-leading-none d-inline-flex align-items-center tw-gap-2 tw-mb-6 min-w-max"

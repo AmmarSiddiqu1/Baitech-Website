@@ -15,10 +15,21 @@ import SmoothScroll from "./helper/SmoothScroll";
 import InitializeAOS from "./helper/InitializeAOS";
 
 const App: FC = () => {
-  const [currentPage, setCurrentPage] = useState<string>("home");
+  // Initialize state based on current pathname to avoid initial render issue
+  const getInitialPage = (): string => {
+    const path = window.location.pathname;
+    if (path === "/privacy-policy") {
+      return "privacy-policy";
+    } else if (path === "/terms-and-conditions") {
+      return "terms-and-conditions";
+    }
+    return "home";
+  };
+
+  const [currentPage, setCurrentPage] = useState<string>(getInitialPage());
 
   useEffect(() => {
-    // Check current pathname
+    // Check current pathname on mount and updates
     const path = window.location.pathname;
     if (path === "/privacy-policy") {
       setCurrentPage("privacy-policy");
@@ -28,7 +39,7 @@ const App: FC = () => {
       setCurrentPage("home");
     }
 
-    // Listen for popstate events (back/forward buttons)
+    // Listen for popstate events (back/forward buttons and programmatic navigation)
     const handlePopState = () => {
       const path = window.location.pathname;
       if (path === "/privacy-policy") {
@@ -63,16 +74,18 @@ const App: FC = () => {
         const href = link.getAttribute("href");
         if (href === "/privacy-policy" || href === "/terms-and-conditions") {
           e.preventDefault();
-          window.history.pushState({}, "", href);
-          setCurrentPage(href === "/privacy-policy" ? "privacy-policy" : "terms-and-conditions");
+          e.stopPropagation();
+          const newPage = href === "/privacy-policy" ? "privacy-policy" : "terms-and-conditions";
+          window.history.pushState({ page: newPage }, "", href);
+          setCurrentPage(newPage);
           // Scroll to top
           window.scrollTo({ top: 0, behavior: "smooth" });
         }
       }
     };
 
-    document.addEventListener("click", handleClick);
-    return () => document.removeEventListener("click", handleClick);
+    document.addEventListener("click", handleClick, true); // Use capture phase
+    return () => document.removeEventListener("click", handleClick, true);
   }, []);
 
   // Scroll to top when page changes
