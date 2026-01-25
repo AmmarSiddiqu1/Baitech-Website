@@ -123,15 +123,15 @@ const FinalCTA: FC = () => {
                   Ready to transform your property management?
                 </h2>
                 {/* Description */}
-                <p
-                  className="tw-text-lg tw-mt-605 splitTextStyleOne max-w-5 fw-medium tw-leading-145 max-w-570-px"
-                  style={{
-                    fontSize: "18px",
-                    color: "#002B49",
-                    marginTop: "1rem",
-                    opacity: 0.8,
-                  }}
-                >
+                  <p
+                    className="tw-text-lg tw-mt-605 splitTextStyleOne max-w-5 fw-medium tw-leading-145 max-w-570-px"
+                    style={{
+                      fontSize: "clamp(14px, 2vw, 18px)",
+                      color: "#002B49",
+                      marginTop: "1rem",
+                      opacity: 0.8,
+                    }}
+                  >
                   Join hundreds of property managers in Bahrain and across the GCC who trust Baitech for their daily operations.
                 </p>
               </div>
@@ -167,7 +167,7 @@ const FinalCTA: FC = () => {
                     </span>
                     <span
                       style={{
-                        fontSize: "19px",
+                        fontSize: "clamp(15px, 2vw, 19px)",
                         fontWeight: 600,
                         color: "#002B49",
                       }}

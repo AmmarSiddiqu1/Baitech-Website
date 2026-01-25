@@ -125,12 +125,12 @@ const Hero: FC = () => {
                             transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
                           }}
                         >
-                          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" style={{ flexShrink: 0 }}>
+                          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" style={{ flexShrink: 0, width: "28px", height: "28px" }}>
                             <path d="M17.05 20.28c-.98.95-2.05.88-3.08.4-1.09-.5-2.08-.48-3.24 0-1.44.62-2.2.44-3.06-.4C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09l.01-.01zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z" fill="#000000"/>
                           </svg>
-                          <div style={{ textAlign: "left", lineHeight: 1.2 }}>
-                            <div style={{ fontSize: "11px", color: "#000000", fontWeight: 400 }}>Download on the</div>
-                            <div style={{ fontSize: "17px", color: "#000000", fontWeight: 600 }}>App Store</div>
+                          <div style={{ textAlign: "left", lineHeight: 1.2, minWidth: "120px" }}>
+                            <div style={{ fontSize: "clamp(9px, 1.2vw, 11px)", color: "#000000", fontWeight: 400 }}>Download on the</div>
+                            <div style={{ fontSize: "clamp(14px, 2vw, 17px)", color: "#000000", fontWeight: 600 }}>App Store</div>
                           </div>
                         </div>
                       </a>
@@ -157,15 +157,15 @@ const Hero: FC = () => {
                             transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
                           }}
                         >
-                          <svg width="28" height="28" viewBox="0 0 512 512" fill="none" style={{ flexShrink: 0 }}>
+                          <svg width="28" height="28" viewBox="0 0 512 512" fill="none" style={{ flexShrink: 0, width: "28px", height: "28px" }}>
                             <path d="M48 59.49v393a4.33 4.33 0 007.37 3.07L260 256 55.37 56.42A4.33 4.33 0 0048 59.49z" fill="#4285F4"/>
                             <path d="M345.8 174L89.22 32.64l-.16-.09c-4.42-2.4-8.62 3.58-5 7.06l201.13 192.32z" fill="#34A853"/>
                             <path d="M84.08 472.39c-3.64 3.48.56 9.46 5 7.06l.16-.09L345.8 338l-60.61-57.95z" fill="#FBBC04"/>
                             <path d="M457.67 256c0-16.2-8.85-31.18-23.16-39.15l-52.84-31.26-60.61 57.95 60.61 57.95 52.84-31.26c14.31-7.97 23.16-22.95 23.16-39.15z" fill="#EA4335"/>
                           </svg>
-                          <div style={{ textAlign: "left", lineHeight: 1.2 }}>
-                            <div style={{ fontSize: "11px", color: "#000000", fontWeight: 400 }}>GET IT ON</div>
-                            <div style={{ fontSize: "17px", color: "#000000", fontWeight: 600 }}>Google Play</div>
+                          <div style={{ textAlign: "left", lineHeight: 1.2, minWidth: "120px" }}>
+                            <div style={{ fontSize: "clamp(9px, 1.2vw, 11px)", color: "#000000", fontWeight: 400 }}>GET IT ON</div>
+                            <div style={{ fontSize: "clamp(14px, 2vw, 17px)", color: "#000000", fontWeight: 600 }}>Google Play</div>
                           </div>
                         </div>
                       </a>

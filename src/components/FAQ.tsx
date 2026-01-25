@@ -78,7 +78,7 @@ const FAQ: FC = () => {
                     className='w-100 p-4 d-flex align-items-center justify-content-between'
                     style={buttonStyle}
                   >
-                    <h3 style={{ ...headingStyles.h4, fontSize: "18px", margin: 0 }}>
+                    <h3 style={{ ...headingStyles.h4, fontSize: "clamp(14px, 2vw, 18px)", margin: 0 }}>
                       {faq.question}
                     </h3>
                     <div
@@ -96,7 +96,7 @@ const FAQ: FC = () => {
                     >
                       <i
                         className={`ph ph-${openIndex === index ? "minus" : "plus"}`}
-                        style={{ fontSize: "24px", color: COLORS.mediumBlue, transition: "opacity 0.2s ease" }}
+                        style={{ fontSize: "clamp(20px, 3vw, 24px)", color: COLORS.mediumBlue, transition: "opacity 0.2s ease" }}
                       />
                     </div>
                   </button>

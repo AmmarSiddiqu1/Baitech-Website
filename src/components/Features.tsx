@@ -62,7 +62,7 @@ const Features: FC = () => {
                       <p
                         className="tw-text-lg tw-mt-605 splitTextStyleOne max-w-5 fw-medium tw-leading-145 max-w-570-px"
                         style={{
-                          fontSize: "18px",
+                          fontSize: "clamp(14px, 2vw, 18px)",
                           color: "#002B49",
                           marginTop: "1rem",
                           opacity: 0.8,
@@ -120,7 +120,7 @@ const Features: FC = () => {
                           <h6
                             className="feature-text tw-mb-405 splitTextStyleOne"
                             style={{
-                              fontSize: "20px",
+                              fontSize: "clamp(16px, 2.5vw, 20px)",
                               fontWeight: 700,
                               color: "#002B49",
                               marginBottom: "0.25rem",
@@ -133,7 +133,7 @@ const Features: FC = () => {
                           <p
                             className="feature-text tw-text-lg max-w-278-px tw-leading-153 splitTextStyleOne"
                             style={{
-                              fontSize: "16px",
+                              fontSize: "clamp(14px, 1.5vw, 16px)",
                               color: "#002B49",
                               lineHeight: 1.5,
                               opacity: 0.8,
@@ -192,7 +192,7 @@ const Features: FC = () => {
                           <h6
                             className="feature-text tw-mb-405 splitTextStyleOne"
                             style={{
-                              fontSize: "20px",
+                              fontSize: "clamp(16px, 2.5vw, 20px)",
                               fontWeight: 700,
                               color: "#002B49",
                               marginBottom: "0.25rem",
@@ -205,7 +205,7 @@ const Features: FC = () => {
                           <p
                             className="feature-text tw-text-lg max-w-278-px tw-leading-153 splitTextStyleOne"
                             style={{
-                              fontSize: "16px",
+                              fontSize: "clamp(14px, 1.5vw, 16px)",
                               color: "#002B49",
                               lineHeight: 1.5,
                               opacity: 0.8,
@@ -330,7 +330,7 @@ const Features: FC = () => {
                   <h4
                     className="card-text splitTextStyleOne tw-mb-7"
                     style={{
-                      fontSize: "22px",
+                      fontSize: "clamp(18px, 2.5vw, 22px)",
                       fontWeight: 700,
                       color: "#002B49",
                       marginBottom: "1rem",

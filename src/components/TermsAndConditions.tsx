@@ -6,7 +6,8 @@ import { COLORS } from "../constants";
 
 const TermsAndConditions: FC = () => {
   const sectionStyle = {
-    padding: "120px 0",
+    paddingTop: "clamp(100px, 14vw, 160px)",
+    paddingBottom: "120px",
     minHeight: "80vh",
     background: "#F5F8FC",
   };
@@ -25,7 +26,7 @@ const TermsAndConditions: FC = () => {
 
   const h2Style = {
     ...headingStyles.h3,
-    fontSize: "24px",
+    fontSize: "clamp(20px, 3vw, 24px)",
     marginTop: "2rem",
     marginBottom: "1rem",
   };
@@ -45,7 +46,14 @@ const TermsAndConditions: FC = () => {
   return (
     <div>
       <Header />
-      <section style={sectionStyle}>
+      <style>{`
+        @media (max-width: 991px) {
+          .policy-page-section {
+            padding-top: clamp(100px, 20vw, 180px) !important;
+          }
+        }
+      `}</style>
+      <section className="policy-page-section" style={sectionStyle}>
         <div className="container">
           <div style={contentStyle}>
             <h1 style={{ ...headingStyles.h1, marginBottom: "2rem", textAlign: "center" as const }}>

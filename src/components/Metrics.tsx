@@ -161,7 +161,7 @@ const Metrics: FC = () => {
             </h2>
             <span
               style={{
-                fontSize: "16px",
+                fontSize: "clamp(14px, 1.5vw, 16px)",
                 fontWeight: 700,
                 color: "#002B49",
                 textTransform: "uppercase",
@@ -215,7 +215,7 @@ const Metrics: FC = () => {
             </h2>
             <span
               style={{
-                fontSize: "16px",
+                fontSize: "clamp(14px, 1.5vw, 16px)",
                 fontWeight: 700,
                 color: "#002B49",
                 textTransform: "uppercase",
@@ -269,7 +269,7 @@ const Metrics: FC = () => {
             </h2>
             <span
               style={{
-                fontSize: "16px",
+                fontSize: "clamp(14px, 1.5vw, 16px)",
                 fontWeight: 700,
                 color: "#002B49",
                 textTransform: "uppercase",

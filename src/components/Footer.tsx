@@ -202,7 +202,7 @@ const Footer: FC = () => {
                 <p
                   style={{
                     maxWidth: "250px",
-                    fontSize: "18px",
+                    fontSize: "clamp(14px, 2vw, 18px)",
                     color: "#002B49",
                     marginBottom: "1.5rem",
                     opacity: 0.8,
@@ -223,9 +223,9 @@ const Footer: FC = () => {
                         justifyContent: "center",
                       }}
                     >
-                      <i className="ph-bold ph-phone" style={{ fontSize: "20px", color: "#FFFFFF" }} />
+                      <i className="ph-bold ph-phone" style={{ fontSize: "clamp(16px, 2.5vw, 20px)", color: "#FFFFFF" }} />
                     </span>
-                    <span style={{ fontWeight: 600, color: "#002B49", fontSize: "16px" }}>
+                    <span style={{ fontWeight: 600, color: "#002B49", fontSize: "clamp(14px, 1.5vw, 16px)" }}>
                       +973 1234 5678
                     </span>
                   </div>
@@ -241,9 +241,9 @@ const Footer: FC = () => {
                         justifyContent: "center",
                       }}
                     >
-                      <i className="ph-bold ph-envelope-simple" style={{ fontSize: "20px", color: "#FFFFFF" }} />
+                      <i className="ph-bold ph-envelope-simple" style={{ fontSize: "clamp(16px, 2.5vw, 20px)", color: "#FFFFFF" }} />
                     </span>
-                    <span style={{ fontWeight: 600, color: "#002B49", fontSize: "16px" }}>
+                    <span style={{ fontWeight: 600, color: "#002B49", fontSize: "clamp(14px, 1.5vw, 16px)" }}>
                       contact@baitech.app
                     </span>
                   </div>
@@ -262,7 +262,7 @@ const Footer: FC = () => {
                     fontWeight: 700,
                     color: "#002B49",
                     marginBottom: "2rem",
-                    fontSize: "18px",
+                    fontSize: "clamp(14px, 2vw, 18px)",
                     textTransform: "uppercase",
                     letterSpacing: "1px",
                   }}
@@ -309,7 +309,7 @@ const Footer: FC = () => {
                     fontWeight: 700,
                     color: "#002B49",
                     marginBottom: "2rem",
-                    fontSize: "18px",
+                    fontSize: "clamp(14px, 2vw, 18px)",
                     textTransform: "uppercase",
                     letterSpacing: "1px",
                   }}
@@ -343,7 +343,7 @@ const Footer: FC = () => {
                       left: "20px",
                       top: "50%",
                       transform: "translateY(-50%)",
-                      fontSize: "20px",
+                      fontSize: "clamp(16px, 2.5vw, 20px)",
                       color: "#1ECAD3",
                     }}
                   >
@@ -365,7 +365,7 @@ const Footer: FC = () => {
                       display: "flex",
                       alignItems: "center",
                       justifyContent: "center",
-                      fontSize: "20px",
+                      fontSize: "clamp(16px, 2.5vw, 20px)",
                       color: "#FFFFFF",
                       transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
                     }}
@@ -388,7 +388,7 @@ const Footer: FC = () => {
                     style={{
                       color: "#1ECAD3",
                       textDecoration: "none",
-                      fontSize: "14px",
+                      fontSize: "clamp(12px, 1.2vw, 14px)",
                       fontWeight: 600,
                       transition: "color 0.3s ease",
                     }}
@@ -407,7 +407,7 @@ const Footer: FC = () => {
                     style={{
                       color: "#1ECAD3",
                       textDecoration: "none",
-                      fontSize: "14px",
+                      fontSize: "clamp(12px, 1.2vw, 14px)",
                       fontWeight: 600,
                       transition: "color 0.3s ease",
                     }}
@@ -450,7 +450,7 @@ const Footer: FC = () => {
                           border: `2px solid ${social.color}`,
                           background: "#FFFFFF",
                           borderRadius: "50%",
-                          fontSize: "22px",
+                          fontSize: "clamp(18px, 2.5vw, 22px)",
                           color: social.color,
                           cursor: "pointer",
                           transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
