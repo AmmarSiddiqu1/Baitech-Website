@@ -133,7 +133,7 @@ const HowItWorks: FC = () => {
                   style={{ 
                     cursor: "pointer",
                     transform: activeStep === 0 ? "scale(1.1)" : "scale(1)",
-                    opacity: activeStep === 0 ? 1 : 0.7,
+                    opacity: activeStep === 0 ? 1 : 1,
                   }}
                 >
                   <span className={`tw-w-405 tw-h-405 bg-deep-green rounded-circle ${activeStep === 0 ? 'how-it-works-active-circle' : ''}`}></span>
@@ -148,7 +148,7 @@ const HowItWorks: FC = () => {
                     marginLeft: "1rem",
                     cursor: "pointer",
                     transform: activeStep === 1 ? "scale(1.1)" : "scale(1)",
-                    opacity: activeStep === 1 ? 1 : 0.7,
+                    opacity: activeStep === 1 ? 1 : 1,
                   }}
                 >
                   <span className={`tw-w-405 tw-h-405 rounded-circle bg-white common-shadow-twentyEight ${activeStep === 1 ? 'how-it-works-active-circle' : ''}`}></span>
@@ -162,7 +162,7 @@ const HowItWorks: FC = () => {
                   style={{ 
                     cursor: "pointer",
                     transform: activeStep === 2 ? "scale(1.1)" : "scale(1)",
-                    opacity: activeStep === 2 ? 1 : 0.7,
+                    opacity: activeStep === 2 ? 1 : 1,
                   }}
                 >
                   <span className={`tw-w-405 tw-h-405 rounded-circle how-it-works-step3-circle ${activeStep === 2 ? 'how-it-works-active-circle' : ''}`}></span>

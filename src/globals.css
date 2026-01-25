@@ -388,26 +388,27 @@ section {
   /* Vertical layout for steps container on mobile */
   .how-it-works-steps-container {
     flex-direction: column !important;
-    align-items: center !important;
-    gap: 2rem !important;
+    align-items: flex-start !important;
+    gap: 1.5rem !important;
     margin-top: clamp(3rem, 6vw, 5rem) !important;
-    padding-left: 0 !important;
+    padding-left: clamp(3.5rem, 5vw, 3rem) !important;
     padding-right: 0 !important;
     position: relative;
+    overflow: visible !important;
   }
 
   /* Vertical connecting line on mobile - centered through circles */
   .how-it-works-connecting-line {
     width: 2px !important;
     height: calc(100% - 3.5rem) !important;
-    top: 12px !important;
-    left: 50% !important;
-    transform: translateX(-50%) !important;
+    top: 13px !important;
+    left: calc(clamp(3.4rem, 5vw, 3rem) + 0.5rem + 12px) !important;
+    transform: none !important;
     background: linear-gradient(180deg, #84DADE 0%, #1ECAD3 50%, #0099A8 100%) !important;
     display: block !important;
   }
 
-  /* Step containers - circles centered, text on right */
+  /* Step containers - circles on left, text on right */
   .how-it-works-circle-container {
     min-width: 60px;
     min-height: 60px;
@@ -416,11 +417,13 @@ section {
     align-items: center;
     justify-content: flex-start;
     padding: 0.5rem 0;
+    padding-left: 0.5rem !important;
     width: 100%;
     max-width: 100%;
     margin-left: 0 !important;
     position: relative;
-    gap: 1rem;
+    gap: 0 !important;
+    overflow: visible !important;
   }
 
   /* Hide text below circles on mobile, will show beside */
@@ -428,13 +431,14 @@ section {
     display: none;
   }
 
-  /* Center circles - position them at 50% to align with vertical line */
+  /* Position circles on left - align with vertical line */
   .how-it-works-circle-container > span:first-child {
     flex-shrink: 0;
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
+    position: relative;
+    left: 0 !important;
+    transform: none !important;
     margin-left: 0;
+    overflow: visible !important;
   }
 
   /* Step 1 - Text on right side of green circle */
@@ -446,7 +450,7 @@ section {
   .how-it-works-step-1 .how-it-works-step-text {
     display: block !important;
     margin-top: 0 !important;
-    margin-left: calc(50% + 12px + 1rem);
+    margin-left: 1.5rem !important;
     text-align: left;
     flex: 0 0 auto;
   }
@@ -460,7 +464,7 @@ section {
   .how-it-works-step-2 .how-it-works-step-text {
     display: block !important;
     margin-top: 0 !important;
-    margin-left: calc(50% + 12px + 1rem);
+    margin-left: 1.5rem !important;
     text-align: left;
     flex: 0 0 auto;
   }
@@ -474,9 +478,22 @@ section {
   .how-it-works-step-3 .how-it-works-step-text {
     display: block !important;
     margin-top: 0 !important;
-    margin-left: calc(50% + 12px + 1rem);
+    margin-left: 1.5rem !important;
     text-align: left;
     flex: 0 0 auto;
+  }
+  
+  /* Prevent active circle overflow on mobile */
+  .how-it-works-circle-container.how-it-works-step-1,
+  .how-it-works-circle-container.how-it-works-step-2,
+  .how-it-works-circle-container.how-it-works-step-3 {
+    transform: scale(1) !important;
+  }
+  
+  .how-it-works-active-circle.bg-deep-green,
+  .how-it-works-active-circle.common-shadow-twentyEight,
+  .how-it-works-active-circle.how-it-works-step3-circle {
+    transform: scale(1.05) !important;
   }
   
   .how-it-works-image {
