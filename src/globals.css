@@ -385,14 +385,87 @@ section {
 
 /* How It Works - Responsive and Touch-Friendly */
 @media (max-width: 991px) {
+  /* Vertical layout for steps container on mobile */
+  .how-it-works-steps-container {
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 2rem !important;
+    margin-top: clamp(3rem, 6vw, 5rem) !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+  /* Hide connecting line on mobile */
+  .how-it-works-connecting-line {
+    display: none !important;
+  }
+
+  /* Step containers - flex row to position text beside circles, circles centered */
   .how-it-works-circle-container {
     min-width: 60px;
     min-height: 60px;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
     justify-content: center;
     padding: 0.5rem;
+    width: 100%;
+    max-width: 100%;
+    margin-left: 0 !important;
+    position: relative;
+    gap: 1rem;
+  }
+
+  /* Hide text below circles on mobile, will show beside */
+  .how-it-works-circle-container .how-it-works-step-text {
+    display: none;
+  }
+
+  /* Ensure circles stay centered */
+  .how-it-works-circle-container > span:first-child {
+    flex-shrink: 0;
+  }
+
+  /* Step 1 - Text on right side of green circle */
+  .how-it-works-step-1 {
+    flex-direction: row !important;
+    justify-content: center !important;
+  }
+
+  .how-it-works-step-1 .how-it-works-step-text {
+    display: block !important;
+    margin-top: 0 !important;
+    margin-left: 1rem;
+    text-align: left;
+    flex: 0 0 auto;
+  }
+
+  /* Step 2 - Text on left side of blue circle */
+  .how-it-works-step-2 {
+    flex-direction: row-reverse !important;
+    justify-content: center !important;
+  }
+
+  .how-it-works-step-2 .how-it-works-step-text {
+    display: block !important;
+    margin-top: 0 !important;
+    margin-right: 1rem;
+    text-align: right;
+    flex: 0 0 auto;
+  }
+
+  /* Step 3 - Text on right side of red circle */
+  .how-it-works-step-3 {
+    flex-direction: row !important;
+    justify-content: center !important;
+  }
+
+  .how-it-works-step-3 .how-it-works-step-text {
+    display: block !important;
+    margin-top: 0 !important;
+    margin-left: 1rem;
+    text-align: left;
+    flex: 0 0 auto;
   }
   
   .how-it-works-image {

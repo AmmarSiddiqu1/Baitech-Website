@@ -113,8 +113,8 @@
 
 :root {
   /* Font Family Variable */
-  --heading-font: "Satoshi", sans-serif;
-  --body-font: "Satoshi", sans-serif;
+  --heading-font: "Filson Pro", sans-serif;
+  --body-font: "Filson Pro", sans-serif;
   /* Font Size Variable Start */
   --heading-one: clamp(2.125rem, -0.0733rem + 5.5vw, 4.4375rem);
   --heading-two: clamp(1.875rem, 0.7133rem + 2.8846vw, 3.75rem);
@@ -154,8 +154,8 @@
   --blue-color: #1351d8;
   --translate-x-50: translateX(-50%);
   --translate-y-50: translateY(-50%);
-  --urbanist_home-two: "Urbanist", serif;
-  --dm-serif_home-two: "DM Serif Display", serif;
+  --urbanist_home-two: "Filson Pro", sans-serif;
+  --dm-serif_home-two: "Filson Pro", sans-serif;
   --heading-one_home-two: clamp(2.125rem, -0.0733rem + 5.5vw, 4.375rem);
   --heading-two_home-two: clamp(1.875rem, 0.7133rem + 2.8846vw, 3.125rem);
   --heading-three_home-two: clamp(1.75rem, 0.3353rem + 2.1661vw, 1.875rem);
@@ -197,8 +197,8 @@
   --heading-color_home-crm: #072032;
   --crm-color_home-crm: #256bfe;
   --blue-color_home-crm: #1351d8;
-  --font-caveat_home-crm: "Caveat", cursive;
-  --font-montserrat-alternates_home-crm: "Montserrat Alternates", sans-serif;
+  --font-caveat_home-crm: "Filson Pro", sans-serif;
+  --font-montserrat-alternates_home-crm: "Filson Pro", sans-serif;
   --heading-one_home-five: clamp(2.125rem, -0.0733rem + 5.5vw, 4.375rem);
   --heading-two_home-five: clamp(2rem, 0.3353rem + 2.1661vw, 3.5rem);
   --heading-three_home-five: clamp(1.5rem, 0.7133rem + 2.8846vw, 1.75rem);
@@ -7025,7 +7025,7 @@ svg.radial-progress text {
   font-size: var(--heading-six_home-three);
 }
 .home-three .font-dm-serif {
-  font-family: var(--dm-serif);
+  font-family: "Filson Pro", sans-serif;
 }
 .home-three .text-heading {
   color: var(--heading-color_home-three);
@@ -7322,7 +7322,7 @@ svg.radial-progress text {
   font-size: var(--heading-six_home-five);
 }
 .home-five .font-dm-serif {
-  font-family: var(--dm-serif);
+  font-family: "Filson Pro", sans-serif;
 }
 .home-five .text-heading {
   color: var(--heading-color_home-five);

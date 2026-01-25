@@ -76,11 +76,11 @@ const Header: FC = () => {
       if (header) {
         // Update header padding based on scroll state
         if (shouldBeFixed) {
-          header.style.paddingTop = 'clamp(0.25rem, 1vw, 0.5rem)';
-          header.style.paddingBottom = 'clamp(0.25rem, 1vw, 0.5rem)';
+          header.style.paddingTop = 'clamp(0.05rem, 0.4vw, 0.15rem)';
+          header.style.paddingBottom = 'clamp(0.05rem, 0.4vw, 0.15rem)';
         } else {
-          header.style.paddingTop = 'clamp(0.4rem, 1.5vw, 0.8rem)';
-          header.style.paddingBottom = 'clamp(0.4rem, 1.5vw, 0.8rem)';
+          header.style.paddingTop = 'clamp(0.15rem, 0.8vw, 0.35rem)';
+          header.style.paddingBottom = 'clamp(0.15rem, 0.8vw, 0.35rem)';
         }
         
         // Update logo size based on scroll state
@@ -259,12 +259,14 @@ const Header: FC = () => {
           transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
           transform: "translateY(0)",
           pointerEvents: "auto",
-          paddingTop: scroll ? "clamp(0.25rem, 1vw, 0.5rem)" : "clamp(0.4rem, 1.5vw, 0.8rem)",
-          paddingBottom: scroll ? "clamp(0.25rem, 1vw, 0.5rem)" : "clamp(0.4rem, 1.5vw, 0.8rem)",
+          paddingTop: scroll ? "clamp(0.05rem, 0.4vw, 0.15rem)" : "clamp(0.15rem, 0.8vw, 0.35rem)",
+          paddingBottom: scroll ? "clamp(0.05rem, 0.4vw, 0.15rem)" : "clamp(0.15rem, 0.8vw, 0.35rem)",
+          display: "flex",
+          alignItems: "center",
         }}
       >
-        <div className='container container-two' style={{ paddingLeft: "clamp(1rem, 3vw, 2rem)", paddingRight: "clamp(1rem, 3vw, 2rem)" }}>
-          <nav className='d-flex align-items-center justify-content-between' style={{ gap: "clamp(0.5rem, 2vw, 1rem)", width: "100%" }}>
+        <div className='container container-two' style={{ paddingLeft: "clamp(1rem, 3vw, 2rem)", paddingRight: "clamp(1rem, 3vw, 2rem)", width: "100%", display: "flex", alignItems: "center" }}>
+          <nav className='d-flex align-items-center justify-content-between' style={{ gap: "clamp(0.5rem, 2vw, 1rem)", width: "100%", alignItems: "center" }}>
             {/* Logo Start */}
             <div className='logo' style={{ 
               minWidth: "clamp(160px, 22vw, 260px)",
@@ -312,8 +314,8 @@ const Header: FC = () => {
             </div>
 
             {/* Menu Start */}
-            <div className='header-menu d-lg-block d-none' style={{ flex: "1 1 auto", display: "flex", justifyContent: "center" }}>
-              <ul className='nav-menu d-lg-flex align-items-center tw-gap-7' style={{ margin: 0, padding: 0 }}>
+            <div className='header-menu d-lg-block d-none' style={{ flex: "1 1 auto", display: "flex", justifyContent: "center", alignItems: "center" }}>
+              <ul className='nav-menu d-lg-flex align-items-center tw-gap-7' style={{ margin: 0, padding: 0, display: "flex", alignItems: "center", justifyContent: "center", height: "100%" }}>
                 {navItems.map((item) => {
                   const sectionId = item.href.substring(1);
                   const isActive = activeSection === sectionId;
@@ -323,6 +325,10 @@ const Header: FC = () => {
                       className={`nav-menu__item ${
                         isActive ? "activePage" : ""
                       }`}
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                      }}
                     >
                       <a
                         href={item.href}
@@ -333,6 +339,8 @@ const Header: FC = () => {
                           transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
                           position: "relative",
                           cursor: "pointer",
+                          display: "flex",
+                          alignItems: "center",
                         }}
                         onClick={(e) => {
                           const currentPath = window.location.pathname;
@@ -372,7 +380,7 @@ const Header: FC = () => {
             </div>
 
             {/* Header Right start */}
-            <div className='d-flex align-items-center tw-gap-4 header-right-mobile' style={{ gap: "clamp(0.5rem, 2vw, 1.5rem)" }}>
+            <div className='d-flex align-items-center tw-gap-4 header-right-mobile' style={{ gap: "clamp(0.5rem, 2vw, 1.5rem)", flexShrink: 0, alignItems: "center" }}>
               {/* Register On Text - Desktop Only */}
               <span 
                 className="d-lg-block d-none"
@@ -399,6 +407,10 @@ const Header: FC = () => {
                   cursor: "pointer",
                   fontSize: "clamp(0.75rem, 2vw, 1rem)",
                   padding: "clamp(0.5rem, 2vw, 0.75rem) clamp(1rem, 3vw, 1.5rem)",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  whiteSpace: "nowrap",
                 }}
               >
                 <span ref={whatsappFlairRef} className="button__flair"></span>

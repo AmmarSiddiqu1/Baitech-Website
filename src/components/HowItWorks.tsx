@@ -122,13 +122,13 @@ const HowItWorks: FC = () => {
               </div>
 
               {/* 3 Steps */}
-              <div className="d-flex justify-content-center position-relative z-1 tw-gap-2 tw-pb-6" style={{ marginTop: "clamp(3rem, 6vw, 5rem)", gap: "clamp(3rem, 10vw, 6rem)" }}>
+              <div className="d-flex justify-content-center position-relative z-1 tw-gap-2 tw-pb-6 how-it-works-steps-container" style={{ marginTop: "clamp(3rem, 6vw, 5rem)", gap: "clamp(3rem, 10vw, 6rem)" }}>
                 {/* Connecting Line */}
-                <span className="tw-h-px how-it-works-connecting-line position-absolute z-n1" style={{ top: "12px", left: "47%", transform: "translateX(-50%)", width: "calc(80% - 12px)" }}></span>
+                <span className="tw-h-px how-it-works-connecting-line position-absolute z-n1" style={{ top: "11px", left: "50%", transform: "translateX(-50%)", width: "calc(70.66% - 23px)" }}></span>
 
                 {/* Step 1 */}
                 <div 
-                  className="text-center how-it-works-circle-container"
+                  className="text-center how-it-works-circle-container how-it-works-step-1"
                   onClick={() => handleCircleClick(0)}
                   style={{ 
                     cursor: "pointer",
@@ -137,12 +137,12 @@ const HowItWorks: FC = () => {
                   }}
                 >
                   <span className={`tw-w-405 tw-h-405 bg-deep-green rounded-circle ${activeStep === 0 ? 'how-it-works-active-circle' : ''}`}></span>
-                  <span className="text-heading fw-semibold d-block tw-mt-4 text-capitalize">Sign up</span>
+                  <span className="text-heading fw-semibold d-block tw-mt-4 text-capitalize how-it-works-step-text">Sign up</span>
                 </div>
 
                 {/* Step 2 */}
                 <div 
-                  className="text-center how-it-works-circle-container"
+                  className="text-center how-it-works-circle-container how-it-works-step-2"
                   onClick={() => handleCircleClick(1)}
                   style={{ 
                     marginLeft: "1rem",
@@ -152,12 +152,12 @@ const HowItWorks: FC = () => {
                   }}
                 >
                   <span className={`tw-w-405 tw-h-405 rounded-circle bg-white common-shadow-twentyEight ${activeStep === 1 ? 'how-it-works-active-circle' : ''}`}></span>
-                  <span className="text-heading fw-semibold d-block tw-mt-4 text-capitalize">Set preferences</span>
+                  <span className="text-heading fw-semibold d-block tw-mt-4 text-capitalize how-it-works-step-text">Preferences</span>
                 </div>
 
                 {/* Step 3 */}
                 <div 
-                  className="text-center how-it-works-circle-container"
+                  className="text-center how-it-works-circle-container how-it-works-step-3"
                   onClick={() => handleCircleClick(2)}
                   style={{ 
                     cursor: "pointer",
@@ -166,7 +166,7 @@ const HowItWorks: FC = () => {
                   }}
                 >
                   <span className={`tw-w-405 tw-h-405 rounded-circle how-it-works-step3-circle ${activeStep === 2 ? 'how-it-works-active-circle' : ''}`}></span>
-                  <span className="text-heading fw-semibold d-block tw-mt-4 text-capitalize">Start managing</span>
+                  <span className="text-heading fw-semibold d-block tw-mt-4 text-capitalize how-it-works-step-text">Managing</span>
                 </div>
               </div>
             </div>
