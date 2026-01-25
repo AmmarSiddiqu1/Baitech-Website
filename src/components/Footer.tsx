@@ -251,7 +251,7 @@ const Footer: FC = () => {
               </div>
 
               {/* Divider 1 */}
-              <div className="d-lg-flex d-none">
+              <div className="d-lg-flex d-none footer-divider">
                 <div style={{ width: "2px", height: "100%", background: "linear-gradient(180deg, #84DADE 0%, #1ECAD3 50%, #0099A8 100%)" }} />
               </div>
 
@@ -298,91 +298,104 @@ const Footer: FC = () => {
               </div>
 
               {/* Divider 2 */}
-              <div className="d-lg-flex d-none">
+              <div className="d-lg-flex d-none footer-divider">
                 <div style={{ width: "2px", height: "100%", background: "linear-gradient(180deg, #84DADE 0%, #1ECAD3 50%, #0099A8 100%)" }} />
               </div>
 
               {/* Column 3 - Newsletter */}
-              <div>
-                <h5
-                  style={{
-                    fontWeight: 700,
-                    color: "#002B49",
-                    marginBottom: "2rem",
-                    fontSize: "clamp(14px, 2vw, 18px)",
-                    textTransform: "uppercase",
-                    letterSpacing: "1px",
-                  }}
-                >
-                  Newsletter
-                </h5>
-                <form
-                  action="#"
-                  style={{
-                    position: "relative",
-                    boxShadow: "0 4px 12px rgba(30, 202, 211, 0.2)",
-                    borderRadius: "50px",
-                  }}
-                >
-                  <input
-                    type="email"
-                    placeholder="Enter your e-mail"
+              <div style={{ display: "flex", flexDirection: "column", height: "100%", justifyContent: "space-between" }}>
+                <div>
+                  <h5
                     style={{
-                      padding: "16px 56px 16px 48px",
-                      border: "2px solid #84DADE",
+                      fontWeight: 700,
+                      color: "#002B49",
+                      marginBottom: "2rem",
+                      fontSize: "clamp(14px, 2vw, 18px)",
+                      textTransform: "uppercase",
+                      letterSpacing: "1px",
+                    }}
+                  >
+                    Newsletter
+                  </h5>
+                  <form
+                    action="#"
+                    style={{
+                      position: "relative",
+                      boxShadow: "0 4px 12px rgba(30, 202, 211, 0.2)",
                       borderRadius: "50px",
-                      fontSize: "16px",
-                      outline: "none",
-                      width: "100%",
-                      background: "#FFFFFF",
-                    }}
-                  />
-                  <span
-                    style={{
-                      position: "absolute",
-                      left: "20px",
-                      top: "50%",
-                      transform: "translateY(-50%)",
-                      fontSize: "clamp(16px, 2.5vw, 20px)",
-                      color: "#1ECAD3",
+                      marginBottom: "2rem",
                     }}
                   >
-                    <i className="ph-bold ph-envelope-simple" />
-                  </span>
-                  <button
-                    type="button"
-                    style={{
-                      position: "absolute",
-                      right: "8px",
-                      top: "50%",
-                      transform: "translateY(-50%)",
-                      width: "44px",
-                      height: "44px",
-                      background: "linear-gradient(135deg, #1ECAD3 0%, #0099A8 100%)",
-                      border: "none",
-                      borderRadius: "50%",
-                      cursor: "pointer",
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      fontSize: "clamp(16px, 2.5vw, 20px)",
-                      color: "#FFFFFF",
-                      transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
-                    }}
-                    onMouseEnter={(e) => {
-                      e.currentTarget.style.background = "linear-gradient(135deg, #FF4438 0%, #FF6B5E 100%)";
-                      e.currentTarget.style.transform = "translateY(-50%) scale(1.1)";
-                    }}
-                    onMouseLeave={(e) => {
-                      e.currentTarget.style.background = "linear-gradient(135deg, #1ECAD3 0%, #0099A8 100%)";
-                      e.currentTarget.style.transform = "translateY(-50%) scale(1)";
-                    }}
-                  >
-                    <i className="ph-bold ph-arrow-up-right" />
-                  </button>
-                </form>
+                    <input
+                      type="email"
+                      placeholder="Enter your e-mail"
+                      style={{
+                        padding: "16px 56px 16px 48px",
+                        border: "2px solid #84DADE",
+                        borderRadius: "50px",
+                        fontSize: "15px",
+                        outline: "none",
+                        width: "100%",
+                        background: "#FFFFFF",
+                      }}
+                    />
+                    <span
+                      style={{
+                        position: "absolute",
+                        left: "20px",
+                        top: "50%",
+                        transform: "translateY(-50%)",
+                        fontSize: "clamp(16px, 2.5vw, 20px)",
+                        color: "#1ECAD3",
+                      }}
+                    >
+                      <i className="ph-bold ph-envelope-simple" />
+                    </span>
+                    <button
+                      type="button"
+                      style={{
+                        position: "absolute",
+                        right: "8px",
+                        top: "50%",
+                        transform: "translateY(-50%)",
+                        width: "44px",
+                        height: "44px",
+                        background: "linear-gradient(135deg, #1ECAD3 0%, #0099A8 100%)",
+                        border: "none",
+                        borderRadius: "50%",
+                        cursor: "pointer",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        fontSize: "clamp(16px, 2.5vw, 20px)",
+                        color: "#FFFFFF",
+                        transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
+                      }}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.background = "linear-gradient(135deg, #FF4438 0%, #FF6B5E 100%)";
+                        e.currentTarget.style.transform = "translateY(-50%) scale(1.1)";
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.background = "linear-gradient(135deg, #1ECAD3 0%, #0099A8 100%)";
+                        e.currentTarget.style.transform = "translateY(-50%) scale(1)";
+                      }}
+                    >
+                      <i className="ph-bold ph-arrow-up-right" />
+                    </button>
+                  </form>
+                </div>
                 {/* Terms and Conditions Links */}
-                <div style={{ marginTop: "1.5rem", display: "flex", gap: "1rem", flexWrap: "wrap" }}>
+                <div 
+                  className="footer-terms-links"
+                  style={{ 
+                    marginTop: "auto", 
+                    paddingTop: "clamp(7.5rem, 3vw, 2rem)", 
+                    display: "flex", 
+                    gap: "1rem", 
+                    flexWrap: "wrap",
+                    justifyContent: "flex-start",
+                  }}
+                >
                   <a
                     href="/terms-and-conditions"
                     style={{
@@ -401,7 +414,7 @@ const Footer: FC = () => {
                   >
                     Terms and Conditions
                   </a>
-                  <span style={{ color: "#84DADE" }}>|</span>
+                  <span className="terms-separator" style={{ color: "#84DADE" }}>|</span>
                   <a
                     href="/privacy-policy"
                     style={{
@@ -425,7 +438,7 @@ const Footer: FC = () => {
             </div>
 
             {/* Footer Bottom */}
-            <div style={{ padding: "32px 0" }}>
+            <div style={{ padding: "32px 0", borderTop: "1px solid #84DADE" }}>
               <div className="container">
                 <div className="d-flex align-items-center justify-content-between tw-gap-4 flex-wrap" style={{ gap: "16px" }}>
                   <p style={{ fontWeight: 600, color: "#002B49", margin: 0, fontSize: "16px" }}>
@@ -437,34 +450,36 @@ const Footer: FC = () => {
                   </p>
                   <div className="d-flex align-items-center" style={{ gap: "12px" }}>
                     {[
-                      { icon: "ph-facebook-logo", color: "#1ECAD3" },
-                      { icon: "ph-twitter-logo", color: "#0099A8" },
-                      { icon: "ph-instagram-logo", color: "#FF4438" },
+                      { icon: "ph-facebook-logo", gradient: "linear-gradient(135deg, #1ECAD3 0%, #0099A8 100%)" },
+                      { icon: "ph-twitter-logo", gradient: "linear-gradient(135deg, #0099A8 0%, #1ECAD3 100%)" },
+                      { icon: "ph-instagram-logo", gradient: "linear-gradient(135deg, #FF4438 0%, #FF6B5E 100%)" },
                     ].map((social, idx) => (
                       <button
                         key={idx}
                         type="button"
                         style={{
-                          width: "48px",
-                          height: "48px",
-                          border: `2px solid ${social.color}`,
-                          background: "#FFFFFF",
+                          width: "40px",
+                          height: "40px",
+                          background: social.gradient,
                           borderRadius: "50%",
-                          fontSize: "clamp(18px, 2.5vw, 22px)",
-                          color: social.color,
+                          fontSize: "clamp(16px, 2.5vw, 20px)",
+                          color: "#FFFFFF",
                           cursor: "pointer",
                           transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                          border: "none",
+                          padding: 0,
                         }}
                         onMouseEnter={(e) => {
-                          e.currentTarget.style.background = social.color;
-                          e.currentTarget.style.color = "#FFFFFF";
+                          e.currentTarget.style.transform = "scale(1.1)";
                         }}
                         onMouseLeave={(e) => {
-                          e.currentTarget.style.background = "#FFFFFF";
-                          e.currentTarget.style.color = social.color;
+                          e.currentTarget.style.transform = "scale(1)";
                         }}
                       >
-                        <i className={`ph-fill ${social.icon}`} />
+                        <i className={`ph-fill ${social.icon}`} style={{ display: "flex", alignItems: "center", justifyContent: "center" }} />
                       </button>
                     ))}
                   </div>
