@@ -1,5 +1,5 @@
 import type { FC } from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const HowItWorks: FC = () => {
   const [activeStep, setActiveStep] = useState<number>(0); // 0 = Sign Up, 1 = Set Preferences, 2 = Start Managing
@@ -24,21 +24,35 @@ const HowItWorks: FC = () => {
     },
   ];
 
+  // Preload all images on component mount
+  useEffect(() => {
+    const imagePromises = content.map((item) => {
+      return new Promise<void>((resolve) => {
+        const img = new Image();
+        img.onload = () => resolve();
+        img.onerror = () => resolve(); // Resolve even on error to not block
+        img.src = item.image;
+      });
+    });
+
+    Promise.all(imagePromises);
+  }, []);
+
   const handleCircleClick = (step: number) => {
     if (step === activeStep || isTransitioning) return;
     
     // Prevent rapid clicking
     setIsTransitioning(true);
     
-    // Use requestAnimationFrame for smoother transitions
-    requestAnimationFrame(() => {
-      setActiveStep(step);
-    });
-    
-    // Reset transition state after animation completes (slightly longer for smoother feel)
+    // Fade out current content
     setTimeout(() => {
-      setIsTransitioning(false);
-    }, 700);
+      // Change content while faded out
+      setActiveStep(step);
+      // Fade in new content
+      setTimeout(() => {
+        setIsTransitioning(false);
+      }, 50);
+    }, 300);
   };
 
   return (
@@ -75,10 +89,9 @@ const HowItWorks: FC = () => {
         <div className="position-relative tw-mt-17 stair-bg tw-rounded-28-px" style={{ marginTop: "clamp(2rem, 4vw, 4rem)" }}>
           <div className="tw-px-40-px d-flex tw-pt-14 gradient-bg-seven tw-rounded-28-px position-relative flex-md-nowrap flex-wrap tw-gap-6" style={{ paddingTop: "clamp(2rem, 4vw, 3.5rem)", paddingLeft: "clamp(1rem, 2.5vw, 2.5rem)", paddingRight: "clamp(1rem, 2.5vw, 2.5rem)", paddingBottom: 0 }}>
             <div className="max-w-780-px mx-auto">
-              <div className="text-center" style={{ minHeight: "clamp(120px, 15vw, 180px)" }}>
+              <div className="text-center" style={{ minHeight: "clamp(120px, 15vw, 180px)", position: "relative" }}>
                 {/* Title */}
                 <h2
-                  key={`heading-${activeStep}`}
                   className="splitTextStyleOne text-heading text-capitalize tw-leading-none max-w-500-px mx-auto how-it-works-text"
                   style={{
                     fontSize: "clamp(24px, 3vw, 36px)",
@@ -89,16 +102,19 @@ const HowItWorks: FC = () => {
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
+                    opacity: isTransitioning ? 0 : 1,
+                    transition: "opacity 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94)",
                   }}
                 >
                   {content[activeStep].heading}
                 </h2>
                 {/* Description */}
                 <p 
-                  key={`description-${activeStep}`}
                   className="text-neutral-600 tw-text-xl tw-mt-605 splitTextStyleOne max-w-5 mx-auto fw-medium tw-leading-145 max-w-548-px how-it-works-text"
                   style={{
                     minHeight: "clamp(64px, 8vw, 96px)",
+                    opacity: isTransitioning ? 0 : 1,
+                    transition: "opacity 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.05s",
                   }}
                 >
                   {content[activeStep].description}
@@ -116,7 +132,6 @@ const HowItWorks: FC = () => {
                   onClick={() => handleCircleClick(0)}
                   style={{ 
                     cursor: "pointer",
-                    transition: "transform 0.3s ease-in-out, opacity 0.3s ease-in-out",
                     transform: activeStep === 0 ? "scale(1.1)" : "scale(1)",
                     opacity: activeStep === 0 ? 1 : 0.7,
                   }}
@@ -132,7 +147,6 @@ const HowItWorks: FC = () => {
                   style={{ 
                     marginLeft: "1rem",
                     cursor: "pointer",
-                    transition: "transform 0.3s ease-in-out, opacity 0.3s ease-in-out",
                     transform: activeStep === 1 ? "scale(1.1)" : "scale(1)",
                     opacity: activeStep === 1 ? 1 : 0.7,
                   }}
@@ -147,7 +161,6 @@ const HowItWorks: FC = () => {
                   onClick={() => handleCircleClick(2)}
                   style={{ 
                     cursor: "pointer",
-                    transition: "transform 0.3s ease-in-out, opacity 0.3s ease-in-out",
                     transform: activeStep === 2 ? "scale(1.1)" : "scale(1)",
                     opacity: activeStep === 2 ? 1 : 0.7,
                   }}
@@ -161,7 +174,6 @@ const HowItWorks: FC = () => {
             {/* Right Side Image */}
             <div className="d-flex flex-column justify-content-end how-it-works-image-container" style={{ alignSelf: "flex-end", position: "relative", minHeight: "300px", willChange: "contents" }}>
               <img
-                key={activeStep}
                 src={content[activeStep].image}
                 alt="How It Works"
                 className="how-it-works-image"
@@ -171,6 +183,9 @@ const HowItWorks: FC = () => {
                   width: "100%",
                   height: "auto",
                   willChange: "transform, opacity",
+                  opacity: isTransitioning ? 0 : 1,
+                  transform: isTransitioning ? "translate3d(0, 12px, 0) scale(0.96)" : "translate3d(0, 0, 0) scale(1)",
+                  transition: "opacity 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94)",
                 }}
               />
             </div>

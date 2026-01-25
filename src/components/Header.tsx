@@ -41,9 +41,10 @@ const Header: FC = () => {
         if (isMobile) {
           // On mobile: header always on top (no overlap)
           header.style.zIndex = '9999';
-          header.style.backdropFilter = shouldBeFixed ? 'blur(24px)' : 'none';
-          header.style.backgroundColor = shouldBeFixed ? 'rgba(255, 255, 255, 0.95)' : '#FFFFFF';
-          header.style.transition = 'z-index 0.3s ease-out, backdrop-filter 0.3s ease-out, background-color 0.3s ease-out';
+          // Keep visual style identical - no backdrop-filter or background changes
+          header.style.backdropFilter = 'none';
+          header.style.backgroundColor = '#FFFFFF';
+          header.style.transition = 'z-index 0.3s ease-out';
           
           // Hide overlay on mobile
           if (headerOverlayRef.current) {
@@ -54,9 +55,10 @@ const Header: FC = () => {
           if (shouldBeFixed) {
             // When scrolled, header comes to front
             header.style.zIndex = '9999';
-            header.style.backdropFilter = 'blur(24px)';
-            header.style.backgroundColor = 'rgba(255, 255, 255, 0.95)';
-            header.style.transition = 'z-index 0.3s ease-out, backdrop-filter 0.3s ease-out, background-color 0.3s ease-out';
+            // Keep visual style identical - no backdrop-filter or background changes
+            header.style.backdropFilter = 'none';
+            header.style.backgroundColor = '#FFFFFF';
+            header.style.transition = 'z-index 0.3s ease-out';
             // Hide overlay when scrolled (header handles clicks)
             if (headerOverlayRef.current) {
               headerOverlayRef.current.style.display = 'none';
@@ -66,7 +68,7 @@ const Header: FC = () => {
             header.style.zIndex = '1000';
             header.style.backdropFilter = 'none';
             header.style.backgroundColor = '#FFFFFF';
-            header.style.transition = 'z-index 0.3s ease-out, backdrop-filter 0.3s ease-out, background-color 0.3s ease-out';
+            header.style.transition = 'z-index 0.3s ease-out';
             // Show transparent overlay for clickability
             if (headerOverlayRef.current) {
               headerOverlayRef.current.style.display = 'block';
@@ -167,12 +169,12 @@ const Header: FC = () => {
           left: 0,
           right: 0,
           zIndex: 1000,
-          boxShadow: scroll ? "0 2px 10px rgba(0,0,0,0.1)" : "none",
+          boxShadow: "none",
           transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
           transform: "translateY(0)",
           pointerEvents: "auto",
-          paddingTop: scroll ? "clamp(0.25rem, 1vw, 0.5rem)" : "clamp(0.4rem, 1.5vw, 0.8rem)",
-          paddingBottom: scroll ? "clamp(0.25rem, 1vw, 0.5rem)" : "clamp(0.4rem, 1.5vw, 0.8rem)",
+          paddingTop: "clamp(0.4rem, 1.5vw, 0.8rem)",
+          paddingBottom: "clamp(0.4rem, 1.5vw, 0.8rem)",
         }}
       >
         <div className='container container-two'>
@@ -208,11 +210,10 @@ const Header: FC = () => {
                   alt='Baitech Logo'
                   className="header-logo"
                   style={{ 
-                    height: scroll ? "clamp(28px, 5vw, 50px)" : "clamp(32px, 6vw, 60px)", 
-                    width: scroll ? "clamp(140px, 18vw, 220px)" : "clamp(160px, 22vw, 260px)", 
-                    maxHeight: scroll ? "clamp(28px, 5vw, 50px)" : "clamp(32px, 6vw, 60px)",
+                    height: "clamp(32px, 6vw, 60px)", 
+                    width: "clamp(160px, 22vw, 260px)", 
+                    maxHeight: "clamp(32px, 6vw, 60px)",
                     objectFit: "contain",
-                    transition: "height 0.3s cubic-bezier(0.4, 0, 0.2, 1), width 0.3s cubic-bezier(0.4, 0, 0.2, 1)"
                   }}
                 />
               </a>
