@@ -56,7 +56,7 @@ const Features: FC = () => {
                           marginTop: "1rem",
                         }}
                       >
-                        Why should you choose Baitech property management
+                        Why property owners choose BaiTech
                       </h2>
                       {/* Description */}
                       <p

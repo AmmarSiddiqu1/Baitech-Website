@@ -54,8 +54,8 @@ const Metrics: FC = () => {
               }
             };
             
-            // Animate counter 3: 24
-            const target3 = 24;
+            // Animate counter 3: 100
+            const target3 = 100;
             const animate3 = () => {
               const elapsed = Date.now() - startTime;
               const progress = Math.min(elapsed / duration, 1);
@@ -169,7 +169,7 @@ const Metrics: FC = () => {
                 letterSpacing: "1px",
               }}
             >
-              Properties Managed
+              Measured by real properties
             </span>
           </div>
 
@@ -223,7 +223,7 @@ const Metrics: FC = () => {
                 letterSpacing: "1px",
               }}
             >
-              Client Satisfaction
+              real usage
             </span>
           </div>
 
@@ -265,7 +265,7 @@ const Metrics: FC = () => {
               }}
             >
               <span className="counter">{count3}</span>
-              <span>/7</span>
+              <span>+</span>
             </h2>
             <span
               style={{
@@ -277,7 +277,7 @@ const Metrics: FC = () => {
                 letterSpacing: "1px",
               }}
             >
-              AI Support Available
+              real outcomes
             </span>
           </div>
         </div>

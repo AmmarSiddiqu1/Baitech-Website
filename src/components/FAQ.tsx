@@ -7,29 +7,44 @@ const FAQ: FC = () => {
 
   const faqs = [
     {
-      question: "Do you support Bahrain payments?",
+      question: "Who is BaiTech for?",
       answer:
-        "Yes—BenefitPay for Bahrain and Tap for GCC. Both payment methods are fully integrated with webhook reconciliation and instant receipts.",
+        "BaiTech is built for property owners, landlords, and property managers who want clearer oversight and less daily manual work.",
     },
     {
-      question: "Do you work without WhatsApp?",
+      question: "Who is Basem and how does he help me?",
       answer:
-        "Yes—SMS/email fallback is available. While WhatsApp is our primary communication channel, we support multiple notification methods.",
+        "Basem is BaiTech’s AI assistant. You can talk to him on WhatsApp to ask questions, request updates, or take action. He helps organize information, provides instant updates, and assists with daily property management tasks.",
     },
     {
-      question: "Arabic support?",
+      question: "Do I need technical knowledge to use BaiTech?",
       answer:
-        "Full EN/AR UI, RTL support, and large text options for elderly-friendly interface. All content can be displayed in both languages.",
+        "No. BaiTech is designed to be simple and easy to use, even if you’ve never used property management software before",
     },
     {
-      question: "Security?",
+      question: "Can I manage multiple properties and units?",
       answer:
-        "Role-based access control, comprehensive audit logs, and encrypted data storage. We follow industry best practices for data security.",
+        "Yes. BaiTech allows you to manage multiple properties and units from one dashboard.",
     },
     {
-      question: "Who is Baitech for?",
+      question: "How does maintenance management work?",
       answer:
-        "Landlords and operators managing 50+ units. Our platform scales from small portfolios to enterprise-level property management across the GCC.",
+        "Tenants can take a photo of the issue and send it through the system.You review the request, choose the maintenance provider, set the time and price, and then follow the status of the maintenance until the work is completed.",
+    },
+    {
+      question: "Is BaiTech available on mobile?",
+      answer:
+        "Yes. You can access BaiTech through the app, and interact with Basem directly on WhatsApp.",
+    },
+    {
+      question: "How much does it cost to use BaiTech?",
+      answer:
+        "BaiTech is priced at 1 BHD per unit, with no complicated plans or tiers.",
+    },
+    {
+      question: "Is there a free trial?",
+      answer:
+        "Yes. You can try BaiTech free for one month before committing.",
     },
   ];
 
